@@ -8062,23 +8062,6 @@ send(msg.chat_id_, msg.id_,"- ارسل لي الاسم الان ")
 end
 return false
 end
-if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
-Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
-local MERO_Msg = {
-'دا اشرب جاي مفارغلك',
-'يعني '..Namebot..' ابتلئ بيك هاااا هاا كول',
-'عمري الحلووو بشنو اساعدك',
-'يمه شكد احبك من تصيح '..Namebot..'',
-'لابسك لتلح',
-'فداك '..Namebot..' وعشيرته ائمرني',
-'ها حبي وياك',
-'كارونا ودنيا عالكه وبعدك تصيح '..Namebot..' الله ياخذك',
-'كول حبيبي ؟ اني '..Namebot..'',
-'ها حبي وياك مكتب ئلسيد .',
-'عفت الدنيا كلها وطرت وره '..Namebot..' وخر',
-'مشغول حالياً',
-'عمري فداك '..Namebot..' كول حب',
-}
 if text == 'الاوامر' then
 if not Mod(msg) then
 send(msg.chat_id_, msg.id_,'- عذراً الاوامر هذي لا تخصك ') 
