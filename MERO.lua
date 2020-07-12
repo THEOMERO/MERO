@@ -2292,13 +2292,13 @@ if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 '☬┋Welcome To Source mero . 
       -------------------------------------  
-⁂︎ | [𝐌𝐄𝐑𝐎 T𝐄Δ𝐌 ⁂︎](http://t.me/MERO170)
+-» | [𝐌𝐄𝐑𝐎 T𝐄Δ𝐌 -»](http://t.me/MERO170)
       --------------------------------
-⁂︎ | [𝐋𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 𝐌𝐄𝐑𝐎](http://t.me/MERO_01)
+-» | [𝐋𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 𝐌𝐄𝐑𝐎](http://t.me/MERO_01)
       --------------------------------
-⁂︎ | [D𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑](http://t.me/FEEEM)
+-» | [D𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑](http://t.me/FEEEM)
       --------------------------------
-⁂︎ | [T𝐖𝐒T𝐄𝐀𝐌.](http://t.me/OMER45Bot)
+-» | [T𝐖𝐒T𝐄𝐀𝐌.](http://t.me/OMER45Bot)
      --------------------------------
      --------------------------------
      THE BEST SOURCE ON TELEGRAM
@@ -7665,7 +7665,7 @@ for i,lock in pairs(list) do
 database:set(bot_id..lock..msg.chat_id_,'del')    
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'⁂︎︙بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'MERO170')..') \n⁂︎︙تـم قفـل التفليش ')  
+send(msg.chat_id_, msg.id_,'-»︙بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'MERO170')..') \n-»︙تـم قفـل التفليش ')  
 end,nil)   
 end
 if text == 'فتح التفليش' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
@@ -7675,7 +7675,7 @@ for i,lock in pairs(list) do
 database:del(bot_id..lock..msg.chat_id_)    
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-send(msg.chat_id_, msg.id_,'⁂︎︙بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'MERO170')..') \n⁂︎︙تـم فـتح التفليش ')  
+send(msg.chat_id_, msg.id_,'-»︙بواسطه ← ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'MERO170')..') \n-»︙تـم فـتح التفليش ')  
 end,nil)   
 end
 if text == 'طرد المحذوفين' or text == 'مسح المحذوفين' then  
@@ -9300,13 +9300,22 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'» ايديه »(`'..iduser..'`)\n» معرفه »('..username..')\n» رتبته »('..rtp..')\n» تعديلاته »('..edit..')\n» النقاط »('..NUMPGAME..')\n» جهاته »('..Contact..')\n» رسائله »('..Msguser..')')
+send(msg.chat_id_, msg.id_,'-»︙ايديه ~⪼ '..iduser..'\n-»︙معرفه ~⪼ '..username..'\n-»︙رتبته ~⪼ '..rtp..'\n-»︙تعديلاته ~⪼ '..edit..'\n-»︙نقاطه ~⪼ '..NUMPGAME..'\n-»︙جهاته ~⪼ '..Contact..'\n-»︙رسائله ~⪼ '..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 end
 if text and text:match("^ايدي @(.*)$") then
 local username = text:match("^ايدي @(.*)$")
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'-»︙لا تستطيع استخدام البوت \n -»︙يرجى الاشتراك بالقناه اولا \n -»︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
 function start_function(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
@@ -9315,12 +9324,12 @@ local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..
 local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.id_) or 0)
 local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
 local rtp = Rutba(result.id_,msg.chat_id_)
-local username = '[@'..data.username_..']' or 'لا يوجد'
+local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'- ايديه » `'..iduser..'`\n- معرفه » '..username..'\n- رتبته » '..rtp..'\n- تعديلاته » '..edit..'\n- النقاط » '..NUMPGAME..'\n- جهاته » '..Contact..'\n- رسائله » '..Msguser..'')
+send(msg.chat_id_, msg.id_,'-»︙ايديه ~⪼('..iduser..')\n-»︙معرفه ~⪼('..username..')\n-»︙رتبته ~⪼('..rtp..')\n-»︙تعديلاته ~⪼('..edit..')\n-»︙نقاطه ~⪼('..NUMPGAME..')\n-»︙جهاته ~⪼('..Contact..')\n-»︙رسائله ~⪼('..Msguser..')')
 end,nil)
 else
-send(msg.chat_id_, msg.id_,'- المعرف غير صحيح ')
+send(msg.chat_id_, msg.id_,'-»︙المعرف غير صحيح ')
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
