@@ -9958,12 +9958,12 @@ send(msg.chat_id_,msg.id_,'\n-اهلا عزيزي البوت هنا ادمن'..'
 end
 end
 end
-if text and text:match("^قول (.*)$") then
+if text and text:match("^كول (.*)$") then
 if not Special(msg) then
-send(msg.chat_id_, msg.id_,'تخسي اقول') 
+send(msg.chat_id_, msg.id_,'تخسي اكول') 
 return false
 end
-local txt = {string.match(text, "^(قول) (.*)$")}
+local txt = {string.match(text, "^(كول) (.*)$")}
 send(msg.chat_id_, 0, txt[2], "md")
 local id = msg.id_
 local msgs = {
@@ -10691,8 +10691,8 @@ name = string.gsub(name,'الخيل','من قلة___شدو على الچلاب �
 name = string.gsub(name,'حداد','موكل من صخم وجهه كال آني___')
 name = string.gsub(name,'المبلل','___ما يخاف من المطر')
 name = string.gsub(name,'الحبل','اللي تلدغة الحية يخاف من جرة___')
-name = string.gsub(name,'يركص','المايعرف___يكول الكاع عوجه')
-name = string.gsub(name,'العنب','المايلوح___يكول حامض')
+name = string.gsub(name,'يركص','المايعرف___يقول الكاع عوجه')
+name = string.gsub(name,'العنب','المايلوح___يقول حامض')
 name = string.gsub(name,'العمه','___إذا حبت الچنة ابليس يدخل الجنة')
 name = string.gsub(name,'الخبز','انطي___للخباز حتى لو ياكل نصه')
 name = string.gsub(name,'باحصاد','اسمة___ومنجله مكسور')
