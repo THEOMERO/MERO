@@ -8062,6 +8062,26 @@ msgm = msgm - 1048576
 end
 send(msg.chat_id_,msg.id_,'- تم حذف {'..num..'}')  
 end
+if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
+Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
+local MERO_Msg = {
+'دا اشرب جاي مفارغلك',
+'يعني '..Namebot..' ابتلئ بيك هاااا هاا احجي',
+'عمري الحلووو بشنو اساعدك',
+'يمه شكد احبك من تصيح '..Namebot..'',
+'لابسك لتلح',
+'فداك '..Namebot..' وعشيرته ائمرني',
+'ها حبي وياك',
+'كارونا ودنيا عالكه وبعدك تصيح '..Namebot..' الله ياخذك',
+'كول حبيبي ؟ اني '..Namebot..'',
+'ها حبي وياك مكتب ئلسيد .',
+'عفت الدنيا كلها وطرت وره '..Namebot..' وخر',
+'مشغول حالياً',
+'عمري فداك '..Namebot..' كول حب',
+}
+send(msg.chat_id_, msg.id_,'['..MERO_Msg[math.random(#MERO_Msg)]..']') 
+return false
+end
 if text == "تغير اسم البوت" or text == "تغيير اسم البوت" then 
 if SudoBot(msg) then
 if AddChannel(msg.sender_user_id_) == false then
