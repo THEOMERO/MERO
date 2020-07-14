@@ -140,7 +140,7 @@ print([[
 ┋        M   E   R   O ┋
 ┗━━━━━━━━━━━┛
 > CH › @MERO170
-~> DEVELOPER › @FEEEM
+~> DEVELOPER › @MERO170
 ]])
 sudos = dofile("./Info.lua") 
 SUDO = tonumber(sudos.SUDO)
