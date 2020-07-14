@@ -4636,6 +4636,22 @@ if text == 'مسح الادمنيه' and Manager(msg) then
 database:del(bot_id..'Mod:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, '-  تم مسح  قائمة الادمنية  ')
 end
+if text == ("الادمنيه") then
+local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
+t = "\n-»︙قائمة الادمنيه \n… … … … … … … … … … …\n"
+for k,v in pairs(list) do
+local username = database:get(bot_id.."user:Name" .. v)
+if username then
+t = t..""..k.."- ([@"..username.."])\n"
+else
+t = t..""..k.."- (`"..v.."`)\n"
+end
+end
+if #list == 0 then
+t = "-»︙لا يوجد ادمنيه"
+end
+send(msg.chat_id_, msg.id_, t)
+end
 if text == ("تاك للادمنيه") or text == ("منشن الادمنيه") then
 local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
 t = "\n- وينكم تعالو ينادوكم بالكروب \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
@@ -9707,7 +9723,7 @@ send(msg.chat_id_, msg.id_,'-تم مسح سحكاتك'  )
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
 if text == "مسح جهاتي" or text == "حذف جهاتي" then  
-send(msg.chat_id_, msg.id_,'⌯︙تم مسح جهاتك'  )  
+send(msg.chat_id_, msg.id_,'-»︙تم مسح جهاتك'  )  
 database:del(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text == 'جهاتي' or text == 'شكد ضفت' then
@@ -9716,15 +9732,15 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⌯︙لا تستطيع استخدام البوت \n ⌯︙يرجى الاشتراك بالقناه اولا \n ⌯︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'-»︙لا تستطيع استخدام البوت \n -»︙يرجى الاشتراك بالقناه اولا \n -»︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 if Num == 0 then 
-Text = '⌯︙لم تقم بأضافه احد'
+Text = '-»︙لم تقم بأضافه احد'
 else
-Text = '⌯︙عدد جهاتك *» { '..Num..' } *'
+Text = '-»︙عدد جهاتك *» { '..Num..' } *'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -10866,14 +10882,14 @@ end
 
 if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلام" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"و͠ع͠ل͠ي͠گ͠م͠ س͠ل͠آ͠م͠ ن͠و͠رت͠😍💋✨","ي͠م͠ه͠ ه͠ل͠آ͠ ب͠آ͠ل͠غ͠آ͠ل͠ي͠/ل͠ي͠ه͠ ب͠ب͠گ͠ن͠ آ͠ز͠ح͠ف͠😻 ♛⇣🐰☄️₎✦","وعليكم السلام حياتي ☺️","كافي بس تسلمون شكد تلحون ماشبعتو 🌝💔" }
+local texting = {"عـٰٰٰٖٖٖۧـ๋͜ـَٰـلــ̥̐ـيــ͋͢ـكـۧـ͟م آلـٰٰٰٖٖٖۧـ๋͜ـَٰـســٗ‍ؒؒـٰٰٰٰٖٜٖٖٖٜ۬ـٰٰٰٰٖٖٖٖٜ۬لـٰٰٰٖٖٖۧـ๋͜ـَٰـآم حـٌٰـٰۧيــ͈͛ـٱتـ✧َُِــي 😻♥ֆ ء","عـَٰـُٰلــ̯͢͡ـي̯كــ͇͛ـم آلــ۪ؒـســ͒͜ـلــ۪ؒـآم ໑وًّرحــ͚͆ـمــ๋͜ـه إلّٰلّٰهــہٰ🧸💧","عــ̥̐ـلّٰيــ̼ۡـكـٰـٓـم اَلـٰۧسـٰۧلـٰۧاَم هـ↶ـل̯͡ا ୬ومــٰ̲رحــ̰͂ـب 💗☘ .","يـ↶ـمــ̺͈͡ـهــہٰ̲ هــ̼ۤـلّٰا آلـٰ̲ـغـۧـٰ͟آلـٰ̲ـي مـٰཻمـٰཻكــ̼͊ـن آزحـٌٰـٰۧف 😻♥ֆ ء","عــ͒͜ـلــ͊͜ـيـْـٰٰٰٖٖٖۧـ๋͜ــكــ͒͜ـم آلــ؅͜ـســ͚͛ـلام نـٰٓــّٰٓٔ୭ورت ֆ ،☁️♥️." }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "شلونك" or text == "شلونكم" or text == "شونك" or text == "شلونج" or text == "شونج" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"ت͠م͠آ͠م͠ و͠آ͠ن͠ت͠/ي͠ 💔ۦ","مو بخير عافتني حبيبتي🙁🤞","شہعہُلہيہكُہ ٳنٍتہ 🧐😂ٻًخہيہر ٳنٍتہ/يہ شہلہﯝنٍكُہ/جہ ☺️🙊﴾" }
+local texting = {"تــُ̲ـٰٰمـہٰ۪۬ﹻﹻإم ونٌّ̯͡تـَـُـه عــ͋͟ـمــُ̲ـٰٰري ¦ ˛♥️🍫₎","بـٰ̲ـخـُৡـٌٍّٓـيـۧـ͟ر اَذا اٌّنــ͟͞ـًُتــ̢ۖـهــہٰ̲ بـ†ـْٰٓخــۦ٭ۦٰ۪۫ــيــ̼ۤـر 💗☘ .","آلــ̰͂ـح̯مــۦ٭ۦٰ۪۫ــدآلــ̰͂ـلــ̰͂ـه آسـ͜ــًٍُِِّّْ℘ـۛئل عــٰ̲نـٰۧــك 😻💗♪⇣۽","بخـٰـَـيـُـٰ̲ر بِـٰشــُ̲وفّٰتــۦ٭ۦٰ۪۫ــك اَبــ͒͜ـو اَلــؑ͢ـحـٰـٓـب | 🐣❤️!" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -10887,7 +10903,7 @@ end
 
 if text == "🙊" or text == "🙈" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"اول مره اشوف قرد صخله تستحي من روحه🤔😂","اهو هذا عود ستحه وهوا حيروح يزحف خاص😉😂" }
+local texting = {"اَر୭وح فٖٖدوﯟه لٰٰلٰٰخــ̯͢͡ـجــ۠ؗـلٰٰآن 💗☘","يٰٰمــٕ۬ـٔهــہٰ̲ فـٰཻديــ͚͞ـت إلــ͇͛ـخــ͈͛ـجــ̯͢͡ـول 💗☘","فٰٰديــ̺͈͡ـت اٌّلــ̥̑̕ـحـَٰـُٰلــ̥̑̕ـويــ۪ؒـن😻♥ֆ ء"}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -10901,7 +10917,14 @@ end
 
 if text == "هلو" or text == "هاي" or text == "هلاو" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {" ﮩلُآوُآتْ حيُآتْيُ  •💝ֆ﴿♂✨₎ֆ","يۧمۘهِ هِلۛا بسورُهِا ونۨورُهِا 😻🐼🌿"," لأ هلأ ولأ مہرحہبہه بہلثہول شہلونہكہ يہول 😻😂✨","هلنہ وسہهلنہ بہزأحہفہنہه 🐸😂✨","هلوات يروحي💓😎" }
+local texting = {"هــؑ͢ـلــ̯̮ـاَوﯟاَت حــ̼ۡـيــ̺͈͡ـإتـہٰ۪۬ﹻﹻي 💗☘","هــؑ͢ـلا إبــ̥̑̕ـو آلــ̻͛ـح̯ب ֆ ،☁️♥️","هــ͚͂ـلا عــ͍̈́ـمٔري نــ͚͆ـّٔورت 😻💗♪","هــ͚͂ـلا بــ̯͢͡ـشِـٰمٓعــٰۛـۛه اَلــ۪ؒـكـٰـَـُِـ̯ر୭وب ♥️✨‌ ₎","إجــ͕͔͡ـه آلــٰ̲عــ̥̐ـآفــ̰͂ـيــ̺̽ـه ،💛🌸 " }
+send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
+end
+end
+
+if text == "صباحوا" or text == "صباح الخير" or text == "صباحو" then
+if not database:get(bot_id..'lock:add'..msg.chat_id_) then
+local texting = {"يــ͚͂ـسـٰـٓـعـٰـَـُِـ̯د صــ̯̮ـبـ๋͜✾ـ๋͜آحــ͈͛ـك ،♥️🐼","يـٰـٓـســ͇͛ـعـ✮̚͢ـْٰٰدك يـَٰـُٰعــ؅͜ـســ̥̐ـل 🙊َ♥️َֆء͡⇣","صــۦ٭ۦٰ۪۫ــبــٰۛـۛإحـوا يا حــ؅͜ـلا صـَـُـبـ✮̚͢ـْٰٰٱح ˛⁽💍💞⇣" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -10922,28 +10945,28 @@ end
 
 if text == "باي" or text == "رايح" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"بايات حياتي بلا رجعه 💛","گلعه حشمر وراك مي حته ترد بسلامه😔😹💔","الله ومحمد وعلي  😻😂","ميثالا 😂🌝✋🏾","الله وياك راحتن وخفتن😂😶" }
+local texting = {"ويــٰ̲ن بـْـٰٰٰٖٖٖۧـ๋͜ــعٰٰد ୬وكــۦ٭ۦٰ۪۫ــت ،💛🌸","ديــ۫͜ـربــ̰͂ـاَلـﮧ͡ـ̷ٰ̯ــك ع نـًُۧفـ↶ـسٌّك ⇣℡ ،♡ᴖ🙊","بــ͟͞ـعٰٰد ໑وًّكــؑ͢ـت ع ٱلـۧـ͟طــ̼ۤـمـُـٰ̲س 🥺😹💗","رآح تــ̼ۡـر୭وح اَلـِْ࿔ـْـعــ۠ؗـاَفٓيــ͚͂ـه ☹️💘ֆ ء" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "جاو" or text == "ججاو" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"لا تكول جاو كول باي مطي😳شاقه جايات😹","جاوات ₎✿❥" }
+local texting = {"جٔآوآت حـِْ࿔ـْـب ℡⁽❥̚͢₎ |💗💁🏽","بــٰ̲س͡لّٰاٌّمــ̯͢͡ـه ضـۧـٰ͟لـٰـٓـعـۧي ،💜👋" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "نورت" or text == "منور" or text == "منوره" or text == "نورتي" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"نورك/ج هذا يل غالي/يه 🌝","بوجودك/غلا تسلم 😻✨","ضواج حركني وحرك جيراني 😋","نورك عماني وحرك جيراني 😣😂" }
+local texting = {"بـﮧ͡ـ̷ٰ̯ــوﯟجــ͇͛ـوﯟدكٔم آكــ๋͜ـيّٰد ℡⁽❥̚͢₎ |💗💁🏽","آكـَٰـُٰيــ๘ึِْ้้ؖـد هــ̼͊ـذا نــ؅͜ـورك/ج 😻💗","نــؑ͢ـ໑وًّرك حــ̼͊ـيــٕ۬ـٔآتــ̼ۤـي 💗☘ " }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "بوسني" or text == "بوسه" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"موواحح💋😘","مابوس ولي بيك/ج جرب😌😹","حلكك/ج نضيف 😂","للاسف مابوس صخلاه 🌝💋","خلي يزحفلي خاص وابوسه 🙊😻","حبي اسف ما ابوس صار البوس بلفين 😏","اف شهل جماله امح عشفه","مابوس اهل الوصخ😐😂"}
+local texting = {"موواحح💋😘","مابوس ولي بيك/ج جرب😌😹","حلكك/ج نضيف 😂","خلي يزحفلي خاص وابوسه 🙊😻","حبي اسف ما ابوس صار البوس بلفين 😏","اف شهل جماله امح عشفه","مابوس اهل الوصخ😐😂"}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -10957,7 +10980,7 @@ end
 
 if text == "😌" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"مرتاح الزاحف🙊😹" }
+local texting = {"عٌّوفــ̥̐ـوا مـ͜ــًٍُِِّّْ℘ـۛرتّٰاٌّح ،♥️🐼 ","لـَﹻٰ۫حــ̺͈͡ـد يــ̼۬ـضــ̡̢͡ـوجٰٰه⇣℡ ،♡ᴖ🙊","شـِْ࿔ـْـهــ͕͔͡ـل كــ̺͈͡ـمـ͜ــًٍُِِّّْ℘ـۛر هــ̻͛ـذا 😻💗♪⇣۽" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -10978,35 +11001,35 @@ end
 
 if text == "😂" or text == "😂😂" or text == "😂😂😂😂" or text == "😂😂😂" or text == "😹😹" or text == "😹😹😹" or text == "😹" or text == "😹😹😹😹" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"كافـي ضحــك ولو هيا خربانه 😐","لا تضحك هواي مو زين 🌝😹","هذ شبي مصيويل بس يضحك 🙀??","اضحك هيه الدنيا خربانه بعد روحي  😂😂" }
+local texting = {"شــؑ͢ـهــ۠ؗـل ضٰۛـ͒حـ๋͜✾ـ๋͜كــؑ͢ـهــہٰ̲ اٌّلــ̰͂ـحـٰۧــلــ̰͂ـوه ♥️َ😻َֆء͡⇣","عـٌٰـٰۧسـٰٰٰٖٖٖۧـ๋͜ـَٰـل ໑وًّربــ๋͜ـي عــ͕͔͡ـسٰٰل ،💜👋ֆ⇣","فـٰۧديــ͕͔͡ـت آلــ͕͔͡ـضــ͍̈́ـحــ̼ۡـكــ͒͜ـه آنـﮩ๋͜͡ﮧُْٰ۪۫ـًُيــہٰ̲ ┇ٰٰٖ💔🎡℡͎‌‎","مــ̢ۖـا تـۧـ͟فٓٱرق وٰجـﮧ͡ـ̷ٰ̯ــهـۧـ͟ك نــ͚͞ـًُشـَﹻٰ۫ٱلّٰلّٰه😻♥ֆ ء" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "😡" or text == "😡😡" or text == "😡😡😡" or text == "😡😡😡😡" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"لصير عصبي لا يصير عمدك جالي 😌😂","باع وجه عبسي جنه وجه مرتي الله يرحمها 🙊😹","شحلاتك ونته ضايج جنك عادل عبد المهدي ترا اجق دكمت النتر نيت😹😂","شبي هذا الحلبوسي ضاج اهو ارجعو البيوتكم ماكو مضاهرات 😼😹","مو بخير عافتني حبيبتي🙁🤞","يممه هدي اعصابك هديهه😹اهم شي صحتك😹" }
+local texting = {"لصير عصبي لا يصير عندك جالي 😌😂","باع وجه عبسي جنه وجه مرتي الله يرحمها 🙊😹","شحلاتك ونته ضايج جنك عادل عبد المهدي 😹🥺","شبي هذا الحلبوسي ضاج اهو ارجعو البيوتكم كورانا يمعودين 🥺😹","يممه هدي اعصابك هديهه😹اهم شي صحتك😹" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "😒" or text == "😒😒" or text == "😒😒😒" or text == "😒😒😒😒" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = { " شبي ابو العدس ضاج 🤭😹","يمه زعلان مقدته ابو حفاضه 😻😹","عدل جهرتك/ج ابو كمل ام كمل 😼👊🏼" }
+local texting = {"ٱروﯟح فـ๋͜✾ـ๋͜دوه للزعــ͋͢ـلان إنـٰۧــٌّي ֆ ،💘🥺","لٰۛـ͒يـٰۧــش إلٖٖحـلٖٖو ضــٖ۪ـۡاَيـَـُـج⇣℡ ،♡ᴖ🙊","مـِْ࿔ـْـنـ✧َُِــًُو ضــٰ̲୬وج إلّٰحــ͋͟ـلّٰو 🧸💧","شــ̯͢͡ـحــؑ͢ـلٔاَتــ̼͊ـك وٰ୭̷͒نّّٰٔتــ̯͢͡ـه ض̯آيـُـٰ̲ج😻♥ֆ ء"}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "🌝" or text == "🌝🌝" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"يمه شحلات الكمر مضوي الكروب 🙊😻","عود هوا نضيف شوفوني وهوا كاتله الوصخ 😹😹","كافي حبي لا تهمبل ترا وصخت الكروب بضواك 😼😹" }
+local texting = {"شٓحــ̰͂ـلــ۪ؒـإتـِْ࿔ـْـهــہٰ̲ آلـُৡـٌٍّٓـكـٰٓــٰٓمـہٰ۪۬ﹻﹻر ♥️✨‌ ₎","ضـ✧َُِــوﯟيـﹻۦٰ۪۫ۦ٭ۦٰ۪۫ۦٕ٘ﹻـت حـٰཻحـٰཻب💗☘ ","تــ۠ؗـخــؓ͢ـبـٌٰـٰۧل ع͡مـﮧ͡ـ̷ٰ̯ــري ˛⁽🎻♥️⇣"}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "💋" or text == "💋💋" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"كبر عيع صار عندي تسوس 🙀 جان ستحيتو الخاص موجود 😹😹","عسل +🐸 😋🙊" }
+local texting = {"عـٰـٓـســ๘ึِْ้้ؖـل ♥️✨‌ ₎","تـﮩ๋͜͡ﮧُْٰ۪۫ـمــ̈͜ـوٰ୭̷͒ت ˛⁽💍💞⇣","آفــ͇͛ـيٰۛـ͒ش دخــ̡̢͡ـت⇣℡ ،♡ᴖ🙊" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11020,42 +11043,42 @@ end
 
 if text == "😻" or text == "😻😻" or text == "😍😍" or text == "😍" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"ها عار ناوي تخوني🌚😹","استقر لا تنطرد 😹😹","ها عار زحفت🐸" }
+local texting = {"فــ۪ؒـديـْـٰٰٰٖٖٖۧـ๋͜ــت إنــ͚͛ـًُي😻♥ֆ ء","بــ͟͞ـاٌّع آلــ̻͛ـحِـٰحِـٰب🙊َ♥️َֆء͡⇣","يــٖ۪ـۡمــٰ̲ه ٱلــٰۛـۛحـٰཻب يــ̰͂ـمــ͜͠ـه💘🥺" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "😐" or text == "🙂" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"شبيك حبيبي هذا وجهك يطرد نعمه 😂💔","منور جمعه العتاك 😐😹" }
+local texting = {"مــَ۪۪ٜ۪۪ؒؔ͢ــ۪۪ٜنًُ̯͡و ضِـٰوجـك كــٰ̲بـِْ࿔ـْـدٱيــٕ۬ـٔتـُৡـٌٍّٓـي 🍧💜","ي̯مــ۪ؒـه ضـْـٰٰٰٖٖٖۧـ๋͜ــإج 🙊َ♥️َֆء͡⇣","شــ̼͊ـبـَﹻٰ۫ي̯ه اٌّلّٰحــُ̲ـٰٰلّٰو💘🥺" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "جوعان" or text == "جوعانه" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"روح شتري فلافل😟😔مالي خلك" }
+local texting = {"ونــ͈͛ـيـٰ̲ـهــ͚͞ـم 💘🥺","ٱصٖٖيــۙ͜ـرلــ۫͜ـك لـٰۧــفِـٰه فـٰۧلافل😻💗","ت̯ريــۙ͜ـد ٱسـۧـٰ͟୬ويــ̺͈͡ـلـﹻۦٰ۪۫ۦ٭ۦٰ۪۫ۦٕ٘ﹻـك بــ̻͛ـيــ۪ؒـتــٕ۬ـٔزا 🙊َ♥️َ" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "ههه" or text == "هههه" or text == "ههههه" or text == "هههههه" or text == "ههههههه" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"دووم  🙊","دوم الضحكه حبيبي/تي ℡̮⇣┆👑😻⇣ۦ ٰ" }
+local texting = {"ضـٌٰـٰۧحــ̺͈͡ـكـِْ࿔ـْـه لــ̼۬ـو عـٰཻاٌّفـيـٰۧهــہ🙊َ♥️َֆ","عــ͈͛ـســٰۛـۛاَهــٰ̲ا د୭وم😻💗♪","داٌّيـ↶ـمــ͍ـه عٔشـْـٰٰٰٖٖٖۧـ๋͜ــقــ͒͜ـي ،💛🌸" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "اكلك" or text == "اكلج" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"اي دا اسمع 👂🏽😹","كافي شكد تحجي😔😹","ها حياتي 🙊" }
+local texting = {"كـِْ࿔ـْـوﯟل ع͡مـُৡـٌٍّٓـري 😻♥ֆ ء","كـٰٰٰٖٖٖۧـ๋͜ـَٰـول مــ͋͢ـآكــ͟͞ـول لـ†ـْٰٓحـٰـَـُِـ̯د 😻♥ֆ ء"!"حــ๘ึِْ้้ؖـبــؓ͢ـيـٰۧــبــؓ͢ـي كـہٰ۪۬ﹻﹻوﯟل | 🐣❤️!","هـ✧َُِــا حــ͕͔͡ـبــ͕͔͡ـي 😻♥ֆ ء" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
 if text == "شبيك" or text == "شبيج" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"انت/ي شبيك/ج خما بيج كمل😣","شبيك انكلش هاي انته لو غيرك 💋😹" }
+local texting = {"كـٰཻلـہٰ۪۬ﹻﹻشـْـٰٰٰٖٖٖۧـ๋͜ــي مـۧـٰ͟ا بٖٖيــؑ͢ـه💘🥺","مــ͊͜ـا بـٰཻيـٌٰـٰۧه شـٰٓــٰٓي ┇ٰٰٖ💔🎡℡͎‌‎","مـﮧ͡ـ̷ٰ̯ــا بـِْ࿔ـْـيــ̼͝ـه شٰٰي ،💜👋ֆ⇣˝","بــٰۛـۛيــ͋͟ـه اَنــ̼ۡـٌّتــ͜͠ـه 😻💗♪⇣۽" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11069,7 +11092,7 @@ end
 
 if text == "فديتك" or text == "فديتج" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"هاي شحرك وجهك/جهج ولك/ج😂♥️","هاي منو كاسر كلبك ها بس لا عافتك جكمه😡","اهو هم اجانه المحترك👌" }
+local texting = {"ٱنـٰۧــًُي اٌّر୬وحـٌٰـٰۧن فــؑ͢ـد୬وه💘🥺","فٰٰداٌّك كــ؅͜ـل شٔخــ̻͛ـص ظــ๘ึِْ้้ؖـآلــ̢ۖـم ⇣℡ ،♡ᴖ🙊","فﹷツـ᭄ٰ۪۫ﹷـدٱك كــٰۛـۛلــ͚͛ـبـہٰ۪۬ﹻﹻي 😻♥ֆ ء","آنــ͒͜ـّٔي فــٰ̲ديــ̯͢͡ـتــ̼ۡـك | 🐣❤️!" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11097,7 +11120,7 @@ end
 
 if text == "☺️" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"عود اني حباب ونت بليس يتعلم منك🙈😂","وجهك بي كرش ميساعد🤢😂" }
+local texting = {"فٌّديـﹻۦٰ۪۫ۦ٭ۦٰ۪۫ۦٕ٘ﹻـت اَلـُـٰ̲حــ͍̈́ـلـُـٰ̲و 🙊َ♥️َֆء͡⇣","فـ†ـْٰٓديــٰۛـۛت اَلــ͍̈́ـخــ̺͈͡ـجــٗ‍ؒؒـٰٰٰٰٖٜٖٖٖٜ۬ـٰٰٰٰٖٖٖٖٜ۬୬ول ˛⁽💍💞⇣","فــ͚͆ـدوﯟهــہٰ̲ ل͡ل͡خٔجــ۪ؒـل͡اٌّن 💗☘ ." }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11353,7 +11376,7 @@ local name = data.first_name_
 local iduser = data.id_
 local users = ('[@'..data.username_..']' or iduser)
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n⌯︙شخص ما يحاول تعديل الميديا \n"
+t = "\n-»︙شخص ما يحاول تعديل الميديا \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -11363,9 +11386,9 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⌯︙لا يوجد ادمن"
+t = "-»︙لا يوجد ادمن"
 end
-send(msg.chat_id_,0,''..t..'\n… … … … … … … … … … …\n⌯︙تم التعديل على الميديا\n⌯︙الشخص الي قام بالتعديل\n⌯︙ايدي الشخص ← '..result.sender_user_id_..'\n⌯︙معرف الشخص←{ '..users..' }') 
+send(msg.chat_id_,0,''..t..'\n… … … … … … … … … … …\n-»︙تم التعديل على الميديا\n-»︙الشخص الي قام بالتعديل\n-»︙ايدي الشخص ← '..result.sender_user_id_..'\n-»︙معرف الشخص←{ '..users..' }') 
 end,nil)
 DeleteMessage(msg.chat_id_,{[0] = msg.message_id_}) 
 end
@@ -11439,9 +11462,9 @@ local MEROAbot = database:get(bot_id.."MERO1:Add:Filter:Rp2"..text..result.chat_
 if MEROAbot then    
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n⌯︙["..MEROAbot.."] \n") 
+send(msg.chat_id_,0,"-»︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n-»︙["..MEROAbot.."] \n") 
 else
-send(msg.chat_id_,0,"⌯︙العضو : {["..data.first_name_.."](T.ME/BOBBW)}\n⌯︙["..MEROAbot.."] \n") 
+send(msg.chat_id_,0,"-»︙العضو : {["..data.first_name_.."](T.ME/BOBBW)}\n-»︙["..MEROAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
@@ -11464,7 +11487,7 @@ end
 if text then
 local MERO1_Msg = database:get(bot_id.."MERO1:Add:Filter:Rp2"..text..result.chat_id_)   
 if MERO1_Msg then    
-send(msg.chat_id_, msg.id_,"⌯︙"..MERO1_Msg)
+send(msg.chat_id_, msg.id_,"-»︙"..MERO1_Msg)
 DeleteMessage(result.chat_id_, {[0] = data.message_id_})     
 return false
 end
