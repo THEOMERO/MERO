@@ -9478,49 +9478,200 @@ send(msg.chat_id_, msg.id_,'لا تمتلك صوره في حسابك', 1, 'md')
   end end
 tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = msg.sender_user_id_, offset_ = 0, limit_ = 1 }, getpro, nil)
 end
-if text == 'ايدي' and tonumber(msg.reply_to_message_id_) > 0 then
-function start_function(extra, result, success)
-tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extra,data) 
-local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) or 1) 
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..result.sender_user_id_) or 0) 
-local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_) or 0)
-local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_user_id_) or 0)
-local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
-local username = ('[@'..data.username_..']' or 'لا يوجد')
-local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'※︙︙ايديه ~⪼ '..iduser..'\n※︙︙معرفه ~⪼ '..username..'\n※︙︙رتبته ~⪼ '..rtp..'\n※︙︙تعديلاته ~⪼ '..edit..'\n※︙︙نقاطه ~⪼ '..NUMPGAME..'\n※︙︙جهاته ~⪼ '..Contact..'\n※︙︙رسائله ~⪼ '..Msguser..'')
-end,nil)
+if text == 'تغير الايدي' and Manager(msg) then 
+local List = {
+[[
+゠𝚄𝚂𝙴𝚁 𖨈 #username 𖥲 .
+゠𝙼𝚂𝙶 𖨈 #msgs 𖥲 .
+゠𝚂𝚃𝙰 𖨈 #stast 𖥲 .
+゠𝙸𝙳 𖨈 #id 𖥲 .
+]],
+[[
+👳🏼‍♂ - 𝄬 username . #username . 🇮🇶
+👳🏼‍♂ - 𝄬 stast . #stast . 🇮🇶
+👳🏼‍♂ - 𝄬 id . #id . 🇮🇶
+👳🏼‍♂ - 𝄬 gmas . #gmas . 🇮🇶
+👳🏼‍♂ - 𝄬 msgs . #msgs . 🇮🇶
+]],
+[[
+⚕ 𓆰 𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝑻𝒐 𝑮𝒓𝒐𝒖𝒑 ★
+• 🖤 | 𝑼𝑬𝑺 : #username ‌‌‏⚚
+• 🖤 | 𝑺𝑻𝑨 : #stast 🧙🏻‍♂ ☥
+• 🖤 | 𝑰𝑫 : #id ‌‌‏♕
+• 🖤 | 𝑴𝑺𝑮 : #msgs 𓆊
+]],
+[[
+𝟓 𝟔 𖡻 ايديك ← #id 
+𝟓 𝟔 𖡻 معرفك ← #username 
+𝟓 𝟔 𖡻 رتبتك ← #stast 
+𝟓 𝟔 𖡻 موقعك ← #stast 
+𝟓 𝟔 𖡻 تفاعلك ← #auto 
+𝟓 𝟔 𖡻 رسائلك ← #msgs 
+𝟓 𝟔 𖡻 السحكات ← #edit
+]],
+[[
+𓄼🇮🇶 𝑼𝒔𝒆𝒓𝑵𝒂𝒎𝒆 :#username 
+𓄼🇮🇶 𝑺𝒕𝒂𝒔𝒕 :#stast 
+𓄼🇮🇶 𝒊𝒅 :#id 
+𓄼🇮🇶 𝑮𝒂𝒎𝒆𝑺 :#game 
+𓄼🇮🇶 𝑴𝒔𝒈𝒔 :#msgs
+]],
+[[
+❤️|-وف اتفاعل يحلو😍🙈
+👨‍👧|- ☆يوزرك #username 🎫
+💌|- ☆رسائلك #msgs 💌
+🎫|- ☆ايديك #id   🥇
+🎟|- ☆موقعك #stast 🌐 
+🤸‍♂|- ☆جفصاتك #edit  🌬
+🥉|- ☆تفاعلك #auto 🚀
+🏆|- ☆نقاطك#game🕹
+]],
+[[
+• ﮼ايديك  #id 🌻 ٬
+• ﮼يوزرك ➺ #username 🌻 ٬
+• ﮼مسجاتك ➺ #msgs 🌻 ٬
+•  ﮼رتبتك➺ #stast 🌻 ٬
+• ﮼تعديلك ➺ #edit 🌻 ٬
+]],
+[[
+- ᴜѕᴇʀɴᴀᴍᴇ ➣ #username .
+- ᴍѕɢѕ ➣ #msgs .
+- ѕᴛᴀᴛѕ ➣ #stast .
+- ʏᴏᴜʀ ɪᴅ ➣ #id  .
+- ᴇᴅɪᴛ ᴍsɢ ➣ #edit .
+- ᴅᴇᴛᴀɪʟs ➣ #auto . 
+-  ɢᴀᴍᴇ ➣ #game .
+]],
+[[
+- ايديڪ  ⁞ #id 💘 ٬
+- يوزرڪ القميل ⁞ #username 💘 ٬
+- رسائلڪ  الطيفهہَ ⁞ #msgs 💘 ٬
+- رتبتڪ الحلوه ⁞ #stast  💘٬
+- سحڪاتڪ الفول ⁞ #edit 💘 ٬
+]],
+[[
+.𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 , #username  
+.𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
+.𖣂 𝙡𝘿 , #id  
+.𖣂 𝙂𝙖𝙢𝙨 , #game 
+.𖣂 𝙢𝙨𝙂𝙨 , #msgs
+]]}
+local Text_Rand = List[math.random(#List)]
+database:set(bot_id.."KLISH:ID"..msg.chat_id_,Text_Rand)
+send(msg.chat_id_, msg.id_,'تم تغير الايدي ارسل ايدي لرؤيته')
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
-end
-if text and text:match("^ايدي @(.*)$") then
-local username = text:match("^ايدي @(.*)$")
+if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then     
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'※︙︙لا تستطيع استخدام البوت \n ※︙︙يرجى الاشتراك بالقناه اولا \n ※︙︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ※︙لا تستطيع استخدام البوت \n  ※︙يرجى الاشتراك بالقناه اولا \n  ※︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-function start_function(extra, result, success)
-if result.id_ then
-tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data) 
-local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..result.id_) or 1) 
-local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..result.id_) or 0) 
-local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..result.id_) or 0)
-local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or 0)
-local rtp = Rutba(result.id_,msg.chat_id_)
-local username = ('[@'..data.username_..']' or 'لا يوجد')
-local iduser = result.id_
-send(msg.chat_id_, msg.id_,'※︙︙ايديه ~⪼('..iduser..')\n※︙︙معرفه ~⪼('..username..')\n※︙︙رتبته ~⪼('..rtp..')\n※︙︙تعديلاته ~⪼('..edit..')\n※︙︙نقاطه ~⪼('..NUMPGAME..')\n※︙︙جهاته ~⪼('..Contact..')\n※︙︙رسائله ~⪼('..Msguser..')')
-end,nil)
+if not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
+database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text) 
+tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da)  tdcli_function ({ ID = "SendChatAction",  chat_id_ = msg.sender_user_id_, action_ = {  ID = "SendMessageTypingAction", progress_ = 100}  },function(arg,ta)  tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)  tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,amer,success) 
+if da.status_.ID == "ChatMemberStatusCreator" then 
+rtpa = 'المالك'
+elseif da.status_.ID == "ChatMemberStatusEditor" then 
+rtpa = 'مشرف' 
+elseif da.status_.ID == "ChatMemberStatusMember" then 
+rtpa = 'عضو'
+end
+local Msguser = tonumber(database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) or 1) 
+local nummsggp = tonumber(msg.id_/2097152/0.5)
+local nspatfa = tonumber(Msguser / nummsggp * 100)
+local Contact = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
+local NUMPGAME = tonumber(database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0)
+local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
+if result.username_ then
+username = '@'..result.username_ 
 else
-send(msg.chat_id_, msg.id_,'※︙︙المعرف غير صحيح ')
+username = 'لا يوجد '
+end
+local iduser = msg.sender_user_id_
+local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_) or 0)
+local photps = (amer.total_count_ or 0)
+local interaction = Total_Msg(Msguser)
+local rtpg = rtpa
+local amera = {
+" ※︙اروح فـدوه للـحلوين",
+" ※︙فديت الصاك محح",
+" ※︙فـدشـي عمـي",
+" ※︙دغـيرهـا شبـي هـاذ",
+" ※︙شهل الگيمر ",
+" ※︙شهل الصوره تخمبش ",
+" ※︙فديت الحلو ",
+" ※︙بـبكن حـلك ",
+}
+local rdphoto = amera[math.random(#amera)]
+if not database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_) then      
+local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
+if get_id_text then
+if result.username_ then
+username = '@'..result.username_ 
+else
+username = 'لا يوجد '
+end
+get_id_text = get_id_text:gsub('#rdphoto',rdphoto) 
+get_id_text = get_id_text:gsub('#id',iduser) 
+get_id_text = get_id_text:gsub('#username',username) 
+get_id_text = get_id_text:gsub('#msgs',Msguser) 
+get_id_text = get_id_text:gsub('#edit',edit) 
+get_id_text = get_id_text:gsub('#stast',rtp) 
+get_id_text = get_id_text:gsub('#auto',interaction) 
+get_id_text = get_id_text:gsub('#game',NUMPGAME) 
+get_id_text = get_id_text:gsub('#photos',photps) 
+if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then   
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, amer.photos_[0].sizes_[1].photo_.persistent_id_,get_id_text)       
+else 
+if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
+send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
+else
+send(msg.chat_id_, msg.id_, '\n ※︙ليس لديك صور في حسابك \n['..get_id_text..']')      
+end 
+end
+else
+if result.username_ then
+username = '@'..result.username_ 
+else
+username = 'لا يوجد '
+end
+if result.status_.ID == "UserStatusRecently" and result.profile_photo_ ~= false then
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, amer.photos_[0].sizes_[1].photo_.persistent_id_,''..rdphoto..'\n ※︙ايديك ~⪼ '..msg.sender_user_id_..'\n ※︙معرفك ~⪼ '..username..'\n ※︙رتبتك ~⪼ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ※︙موقعك ~⪼ '..rtpa..'\n ※︙تفاعلك ~⪼ '..Total_Msg(Msguser)..'\n ※︙رسائلك ~⪼ '..Msguser..'\n ※︙نسبه تفاعلك ~⪼ '..string.sub(nspatfa, 1,5)..' %\n ※︙السحكات ~⪼ '..edit..'\n ※︙نقاطك ~⪼ '..NUMPGAME..'\n')
+else 
+if result.status_.ID == "UserStatusEmpty" and result.profile_photo_ == false then
+send(msg.chat_id_, msg.id_,'[\n ※︙ايديك ~⪼ '..msg.sender_user_id_..'\n ※︙معرفك ~⪼ '..username..'\n ※︙رتبتك ~⪼ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ※︙موقعك ~⪼ '..rtpa..'\n ※︙تفاعلك ~⪼ '..Total_Msg(Msguser)..'\n ※︙رسائلك ~⪼ '..Msguser..'\n ※︙نسبه  تفاعلك ~⪼ '..string.sub(nspatfa, 1,5)..' %\n ※︙السحكات ~⪼ '..edit..'\n ※︙نقاطك ~⪼ '..NUMPGAME..']\n')
+else
+send(msg.chat_id_, msg.id_, '\n ※︙الصوره ~⪼ ليس لديك صور في حسابك'..'[\n ※︙ايديك ~⪼ '..msg.sender_user_id_..'\n ※︙معرفك ~⪼ '..username..'\n ※︙رتبتك ~⪼ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ※︙موقعك ~⪼ '..rtpa..'\n ※︙تفاعلك ~⪼ '..Total_Msg(Msguser)..'\n ※︙رسائلك ~⪼ '..Msguser..'\n ※︙نسبه تفاعلك ~⪼ '..string.sub(nspatfa, 1,5)..' %\n ※︙السحكات ~⪼ '..edit..'\n ※︙نقاطك ~⪼ '..NUMPGAME..']\n')
+end 
 end
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
+else
+local get_id_text = database:get(bot_id.."KLISH:ID"..msg.chat_id_)
+if get_id_text then
+get_id_text = get_id_text:gsub('#rdphoto',rdphoto) 
+get_id_text = get_id_text:gsub('#id',iduser) 
+get_id_text = get_id_text:gsub('#username',username) 
+get_id_text = get_id_text:gsub('#msgs',Msguser) 
+get_id_text = get_id_text:gsub('#edit',edit) 
+get_id_text = get_id_text:gsub('#stast',rtp) 
+get_id_text = get_id_text:gsub('#auto',interaction) 
+get_id_text = get_id_text:gsub('#game',NUMPGAME) 
+get_id_text = get_id_text:gsub('#photos',photps) 
+send(msg.chat_id_, msg.id_,'['..get_id_text..']')   
+else
+send(msg.chat_id_, msg.id_,'[\n※︙ايديك ~⪼ '..msg.sender_user_id_..'\n ※︙معرفك ~⪼ '..username..'\n ※︙رتبتك ~⪼ '..Rutba(msg.sender_user_id_,msg.chat_id_)..'\n ※︙موقعك ~⪼ '..rtpa..'\n ※︙تفاعلك ~⪼ '..Total_Msg(Msguser)..'\n ※︙رسائلك ~⪼ '..Msguser..'\n ※︙نسبه تفاعلك ~⪼ '..string.sub(nspatfa, 1,5)..' %\n ※︙السحكات ~⪼ '..edit..'\n ※︙نقاطك ~⪼ '..NUMPGAME..']\n')
+end
+end
+
+end,nil)
+end,nil)
+end,nil)
+end,nil)
+end
 end
 if text == 'رتبتي' then
 local rtp = Rutba(msg.sender_user_id_,msg.chat_id_)
