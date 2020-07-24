@@ -9518,7 +9518,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,' ※︙ ايديه ~⪼('..iduser..')\n ※︙ معرفه ~⪼('..username..')\n ※︙ رتبته ~⪼('..rtp..')\n ※︙ تعديلاته ~⪼('..edit..')\n ※︙ نقاطه ~⪼('..NUMPGAME..')\n ※︙ جهاته ~⪼('..Contact..')\n ※︙ رسائله ~⪼('..Msguser..')')
+send(msg.chat_id_, msg.id_,'  ※︙ ايديه ~⪼('..iduser..')\n ※︙ معرفه ~⪼('..username..')\n ※︙ رتبته ~⪼('..rtp..')\n ※︙ تعديلاته ~⪼('..edit..')\n ※︙ نقاطه ~⪼('..NUMPGAME..')\n ※︙ جهاته ~⪼('..Contact..')\n ※︙ رسائله ~⪼('..Msguser..')')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,' ※︙ المعرف غير صحيح ')
