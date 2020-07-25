@@ -8618,15 +8618,12 @@ Text = [[
 ※︙ الحظر
 ※︙ الرفع 
 ※︙ الايدي
-※︙ الزخرفه
 ※︙ الالعاب
 ※︙ ردود المطور
 ※︙ الترحيب
 ※︙ ردود المدير
 ※︙ الردود
 ※︙ صورتي
-※︙ الابراج
-※︙ حساب العمر
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 𓅛│CH » @MERO170 ࿐
 ]]
@@ -10235,64 +10232,6 @@ end,nil)
 end
 return false
 end
-if text == "تعطيل الزخرفه" and Owner(msg) then
-send(msg.chat_id_, msg.id_, '※︙ تم تعطيل الزخرفه')
-database:set(bot_id.."MERO:zhrf_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل الزخرفه" and Owner(msg) then
-send(msg.chat_id_, msg.id_,'※︙ تم تفعيل الزخرفه')
-database:set(bot_id.."MERO:zhrf_Bots"..msg.chat_id_,"open")
-end
-if text and text:match("^زخرفه (.*)$") and database:get(bot_id.."MERO:zhrf_Bots"..msg.chat_id_) == "open" then
-local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-zx = JSON.decode(zh)
-t = "\n※︙قائمه الزخرفه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
-i = 0
-for k,v in pairs(zx.ok) do
-i = i + 1
-t = t..i.."-  `"..v.."` \n"
-end
-send(msg.chat_id_, msg.id_, t..'┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n※︙اضغط على الاسم ليتم نسخه')
-end
-if text == "تعطيل الابراج" and Owner(msg) then
-send(msg.chat_id_, msg.id_, '※︙ تم تعطيل الابراج')
-database:set(bot_id.."MERO:brj_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل الابراج" and Owner(msg) then
-send(msg.chat_id_, msg.id_,'※︙ تم تفعيل الابراج')
-database:set(bot_id.."MERO:brj_Bots"..msg.chat_id_,"open")
-end
-if text and text:match("^برج (.*)$") and database:get(bot_id.."MERO:brj_Bots"..msg.chat_id_) == "open" then
-local Textbrj = text:match("^برج (.*)$")
-gk = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-br = JSON.decode(gk)
-i = 0
-for k,v in pairs(br.ok) do
-i = i + 1
-t = v.."\n"
-end
-send(msg.chat_id_, msg.id_, t)
-end
-if text == "تعطيل حساب العمر" and Owner(msg) then
-send(msg.chat_id_, msg.id_, '※︙ تم تعطيل حساب العمر')
-database:set(bot_id.."MERO:age_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل حساب العمر" and Owner(msg) then
-send(msg.chat_id_, msg.id_,'※︙ تم تفعيل حساب العمر')
-database:set(bot_id.."MERO:age_Bots"..msg.chat_id_,"open")
-end
-if text and text:match("^احسب (.*)$") and database:get(bot_id.."MERO:age_Bots"..msg.chat_id_) == "open" then
-local Textage = text:match("^احسب (.*)$")
-ge = https.request("https://api.telegram.org/bot"..token.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
-ag = JSON.decode(ge)
-i = 0
-for k,v in pairs(ag.ok) do
-i = i + 1
-t = v.."\n"
-end
-send(msg.chat_id_, msg.id_, t)
-end
 
 if text ==("مسح") and Mod(msg) and tonumber(msg.reply_to_message_id_) > 0 then
 DeleteMessage(msg.chat_id_,{[0] = tonumber(msg.reply_to_message_id_),msg.id_})   
@@ -11337,7 +11276,7 @@ send(msg.chat_id_, msg.id_, '📮¦ تم تعطيل الردود')
 database:set(bot_id..'lock:add'..msg.chat_id_, true)
 end
 
-if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلام" then
+if text == "السلام عليكم" or text == "سلام عليكم" or text == "سلامن عليكم" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"يمـــهـہٰ هــ̼ۤـلّٰا بآلـغـــآلـي مـٰمكــن آزحـــف😻♥","عليــ̼ۡـكـٰـٓـم اَلـٰۧســـلام هـلا ومــرحــ̰͂ـب💕","عـَٰلــيكــم آلـ۪ؒـســـلآم وًّرحــمــه إلّٰلّٰهــہٰ🥺💘","عـلـيـكـم آلـــســلام حـيــ͈͛ـٱتـــي💕😻" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
@@ -11374,7 +11313,7 @@ end
 
 if text == "هلو" or text == "هاي" or text == "هلاو" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"هــللاواَت حـيإتــﹻي💘🙊","هــؑلا أبـو آلحــب🤤💘","هــلا عــمري نــورت😻💗","هــلا بشـمعــه اَلـكـــروب💕","إجــه آلـعــافيــه🌸 " }
+local texting = {"هــللاواَت حـيإتــﹻي💘🙊","هــؑلا أبـو آلحــب🤤💘","هــلا عــمري نــورت😻💗","هــلا بشـمعــه اَلـكـــروب🙊💕 " }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
