@@ -4729,20 +4729,11 @@ database:del(bot_id..'Manager'..msg.chat_id_)
 texts = ' ※︙تم مسح المدراء '
 send(msg.chat_id_, msg.id_, texts)
 end
-if text == ("المدراء") and Constructor(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'※︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ※︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-local list = database:smembers(bot_id.."MERO:Manager"..msg.chat_id_)
-t = "\n※︙قائمة المدراء \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+if text == ("المدراء") and Constructor(msg) then
+local list = database:smembers(bot_id..'Manager'..msg.chat_id_)
+t = "\n ※︙قائمة المدراء \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do
-local username = database:get(bot_id.."MERO:User:Name" .. v)
+local username = database:get(bot_id.."user:Name" .. v)
 if username then
 t = t..""..k.."- ([@"..username.."])\n"
 else
@@ -4750,7 +4741,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "※︙لا يوجد مدراء"
+t = " ※︙لا يوجد مدراء"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -4946,20 +4937,11 @@ if text == 'مسح الادمنيه' and Manager(msg) then
 database:del(bot_id..'Mod:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, ' ※︙تم مسح الادمنيه')
 end
-if text == ("الادمنيه") and Owner(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'※︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ※︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-local list = database:smembers(bot_id.."MERO:Mod:User"..msg.chat_id_)
-t = "\n※︙قائمة الادمنيه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+if text == ("الادمنيه") and Manager(msg) then
+local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
+t = "\n ※︙قائمة الادمنيه \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do
-local username = database:get(bot_id.."MERO:User:Name" .. v)
+local username = database:get(bot_id.."user:Name" .. v)
 if username then
 t = t..""..k.."- ([@"..username.."])\n"
 else
@@ -4967,7 +4949,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "※︙لا يوجد ادمنيه"
+t = " ※︙لا يوجد ادمنيه"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -5291,11 +5273,11 @@ if text == 'مسح المميزين' and Mod(msg) then
 database:del(bot_id..'Special:User'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, ' ※︙تم مسح المميزين')
 end
-if text == ("المميزين") and Addictive(msg) then
-local list = database:smembers(bot_id.."MERO:Special:User"..msg.chat_id_)
-t = "\n※︙قائمة مميزين المجموعه \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ \n"
+if text == ("المميزين") and Mod(msg) then
+local list = database:smembers(bot_id..'Special:User'..msg.chat_id_)
+t = "\n ※︙قائمة مميزين الكروب \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do
-local username = database:get(bot_id.."MERO:User:Name" .. v)
+local username = database:get(bot_id.."user:Name" .. v)
 if username then
 t = t..""..k.."- ([@"..username.."])\n"
 else
@@ -5303,7 +5285,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "※︙لا يوجد مميزين"
+t = " ※︙لا يوجد مميزين"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -8692,7 +8674,7 @@ Text = [[
 ※︙قفل/فتح + الاوامر الادناه 
 ※︙قفل/فتح + الامر بالتقيد • بالطرد • بالكتم
  — — — — — — — — — 
-※︙الروابط
+ ※︙الروابط
 ※︙المعرف
 ※︙التاك
 ※︙الشارحه
