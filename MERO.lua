@@ -8614,11 +8614,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'※︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n※︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'※︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n ※︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-local help_text = database:get(bot_id..'help5_text')
+local help_text = database:get(bot_id..'help4_text')
 Text = [[
 ※︙ اهلا بك في اوامر رفع وتغير√
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
@@ -8656,7 +8656,7 @@ Text = [[
 𓅛│CH » @MERO170 ࿐
 ----------------------------------------------------------------------------
 ----------------------------------------------------------------------------
-if text == 'م7' or text == 'م المطور' then
+if text == 'م7' then
 if not Sudo(msg) then
 send(msg.chat_id_, msg.id_,'- عذراً الاوامر هذي لا تخصك ') 
 return false
@@ -8666,10 +8666,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'- عذراً عليك الاشتراك في القناة\n※︙قناة الاشتراك ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'※︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n ※︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
+local help_text = database:get(bot_id..'help7_text')
 Text = [[
 ※︙ اوامر المطور الاساسي √
 ※︙ توجد اوامر مطورين اسفل الكليشه ↓
