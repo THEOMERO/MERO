@@ -5212,7 +5212,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Mote:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو شيخ في المجموعه \nاستلم البشت والسبحه وصير عاقل'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو شيخ في المجموعه \n※︙استلم السبحه ولعكال وصير عاقل'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5234,7 +5234,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Mote:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو شيخ في المجموعه\nتعال رد البشت والسبحه ي ورع'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو شيخ في المجموعه\n※︙تعال جيب السبحه ولعكال وسرسح'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5281,7 +5281,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Sakl:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو تاج بنجاح\nاهلا بك في قائمه التوج عزيزي'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو تاج بنجاح\n※︙اهلا بك في قائمه التوج عزيزي'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5304,7 +5304,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Sakl:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو تاج\nارجع بيتكم'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو تاج\n※︙ارجع بيتكم'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5351,7 +5351,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Motte:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو إلى كلب بنجاح\nتعال حبي خد عضمه'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو إلى كلب بنجاح\n※︙تعال حبي خد عضمه'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5373,7 +5373,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Motte:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ - تم تنزيل العضو كلب\nحبي رجع عضمه'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ - تم تنزيل العضو كلب\n※︙حبي رجع عضمه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5420,7 +5420,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Motee:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ - تم رفع العضو قرد\n بلقروب تعال ستلم لموز'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ - تم رفع العضو قرد\n※︙بلكروب حبي تعا استلم موزايتك'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5442,7 +5442,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Motee:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو قرد\nرجع موزه'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو قرد\n※︙رجع موزه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5489,7 +5489,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Hors:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو دجاجة\n بيض نبي فطور شكشوكه'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو دجاجة\n※︙يالله حته نتريك بيض'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5511,7 +5511,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Hors:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو دجاجة\nرجع البيض'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو دجاجة\n※︙مو خوش دجاجه سرسح'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5558,7 +5558,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Tele:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو عروسه\nافيششش عروستنه لصاكه'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو عروسه\n※︙افيششش عروستنه لصاكه'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5580,7 +5580,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Tele:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو عروسه\nطلعي من قائمه العروسات لجج'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو عروسه\n※︙طلعي من قائمه العروسات لجج'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5627,7 +5627,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Mode:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n تم رفع العضــو الحاته في الكروب \n تعال يحاته ممكن نتعرف'
+local  statuss  = '\n تم رفع العضــو الحاته في الكروب \n※︙تعال يحاته ممكن نتعرف'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5649,7 +5649,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Mode:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n تم تنزيل العضــو الحاته من الكروب\n مشيي مو خوش حاتهه'
+status  = '\n تم تنزيل العضــو الحاته من الكروب\n※︙مشيي مو خوش حاتهه'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5696,7 +5696,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Modde:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n تم رفع العضــو الحات في الكروب \n تعال حبي الحات نطيني بوسه'
+local  statuss  = '\n تم رفع العضــو الحات في الكروب \n※︙تعال حبي الحات نطيني بوسه'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5718,7 +5718,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Modde:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n تم تنزيل العضــو الحات من الكروب\n مشيي مو خوش حات'
+status  = '\n تم تنزيل العضــو الحات من الكروب\n※︙مشيي مو خوش حات'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5765,7 +5765,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو زاحف\nكمشتك حبي جيب رقم'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو زاحف\n※︙كمشتك حبي جيب رقم'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5787,7 +5787,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Zahf:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو زاحف\n هاك حبي هاذا رقم مالك'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو زاحف\n※︙هاك حبي هاذا رقم مالك'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5834,7 +5834,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Jred:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو بكلبي\nويلكم بكم في قلبي'
+local  statuss  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم رفع العضو بكلبي\n※︙ويلكم بكم في قلبي'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5856,7 +5856,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Jred:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n※︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو من كلبي\nبرا كلبي يلااااا'
+status  = '\n※︙ الايدي » `'..result.sender_user_id_..'`\n※︙ تم تنزيل العضو من كلبي\n※︙برا كلبي يلااااا'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
