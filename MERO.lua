@@ -9641,7 +9641,7 @@ local List = {
 ]]}
 local Text_Rand = List[math.random(#List)]
 database:set(bot_id.."KLISH:ID"..msg.chat_id_,Text_Rand)
-send(msg.chat_id_, msg.id_,'تم تغير الايدي ارسل ايدي لرؤيته')
+send(msg.chat_id_, msg.id_,'※︙تم تغير الايدي ارسل ايدي لرؤيته')
 end
 if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then     
 if AddChannel(msg.sender_user_id_) == false then
@@ -10299,7 +10299,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
 end
-if text == 'نقاطيي' or text == 'نقاطي' then 
+if text == 'نقاطيي' then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -10311,7 +10311,7 @@ return false
 end
 local Num = database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0
 if Num == 0 then 
-Text = '-لم تلعب اي لعبه للحصول على نقاط'
+Text = '※︙لم تلعب اي لعبه للحصول على نقاط'
 else
 Text = '※︙عدد نقاط التي ربحتها هي *» { '..Num..' } نقاطه *'
 end
@@ -11173,7 +11173,7 @@ return false
 end
 local Num = database:get(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_) or 0
 if Num == 0 then 
-Text = '-لم تلعب اي لعبهہ‌‏ للحصول على نقاط'
+Text = '※︙لم تلعب اي لعبهہ‌‏ للحصول على نقاط'
 else
 Text = '🤹‍♂️┋ عدد نقاط التي رحبتها هي *» { '..Num..' } مجوهرهہ‌‏ *'
 end
