@@ -2303,7 +2303,7 @@ if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
 '☬┋Welcome To Source mero . 
       -------------------------------------  
-※︙ | [𝐌𝐄𝐑𝐎 T𝐄Δ𝐌 ※︙](http://t.me/MERO170)
+※︙ | [𝐌𝐄𝐑𝐎 T𝐄Δ𝐌 ※](http://t.me/MERO170)
       --------------------------------
 ※︙ | [𝐋𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 𝐌𝐄𝐑𝐎](http://t.me/MERO_01)
       --------------------------------
@@ -7450,8 +7450,8 @@ end
 if text == 'ضع ترحيب' or text == 'وضع ترحيب' then  
 if Mod(msg) then
 database:setex(bot_id.."Welcome:Group" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
-t  = '※︙ارسل لي الترحيب الان'
-tt = '\n※︙ تستطيع اضافة مايلي !\n※︙ دالة عرض الاسم »{`name`}\n※︙ دالة عرض المعرف »{`user`}'
+t  = ' ※︙ ارسل لي الترحيب الان'
+tt = '\n ※︙ تستطيع اضافة مايلي !\n ※︙ دالة عرض الاسم »{`name`}\n ※︙ دالة عرض المعرف »{`user`}'
 send(msg.chat_id_, msg.id_,t..tt) 
 end
 return false  
@@ -7461,7 +7461,7 @@ local GetWelcomeGroup = database:get(bot_id..'Get:Welcome:Group'..msg.chat_id_)
 if GetWelcomeGroup then 
 GetWelcome = GetWelcomeGroup
 else 
-GetWelcome = '※︙لم يتم تعيين ترحيب للمجموعه'
+GetWelcome = ' ※︙ لم يتم تعيين ترحيب للكروب'
 end 
 send(msg.chat_id_, msg.id_,'['..GetWelcome..']') 
 return false  
@@ -7472,12 +7472,12 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'※︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n※︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ※︙ لا تستطيع استخدام البوت \n  ※︙ يرجى الاشتراك بالقناه اولا \n  ※︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 database:set(bot_id..'Chek:Welcome'..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,'※︙ تم تفعيل ترحيب المجموعه') 
+send(msg.chat_id_, msg.id_,' ※︙ تم تفعيل ترحيب الكروب') 
 return false  
 end
 if text == 'تعطيل الترحيب' and Mod(msg) then  
@@ -7486,18 +7486,18 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'※︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n※︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ※︙ لا تستطيع استخدام البوت \n  ※︙ يرجى الاشتراك بالقناه اولا \n  ※︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 database:del(bot_id..'Chek:Welcome'..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,'※︙ تم تعطيل ترحيب المجموعه') 
+send(msg.chat_id_, msg.id_,' ※︙ تم تعطيل ترحيب الكروب') 
 return false  
 end
 if text == 'مسح الترحيب' or text == 'حذف الترحيب' then 
 if Mod(msg) then
 database:del(bot_id..'Get:Welcome:Group'..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,'※︙ تم ازالة ترحيب المجموعه') 
+send(msg.chat_id_, msg.id_,' ※︙ تم ازالة ترحيب الكروب') 
 end
 end
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and Manager(msg)  then       
