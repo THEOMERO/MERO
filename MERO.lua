@@ -8500,6 +8500,8 @@ Text = [[
 ※︙ اسم بوت + الرتبه
 ※︙ الاوامر المضافه
 ※︙ قائمه المنع
+※︙تنظيف الميديا
+※︙تنظيف الرسائل المعدله
  ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
 𓅛│CH » @MERO170 ࿐
 ]]
@@ -10172,6 +10174,49 @@ end
 end
 end,nil)
 end,nil)
+end
+return false
+end
+if text == "تنظيف جميع الرسائل المعدله" or text == "تنظيف الرسائل المعدلة" or text == "تنظيف الرسائل المعدله" and Mod(msg) then   
+ls_sajad = {[0]=msg.id_}
+local Message = msg.id_
+for i=1,100 do
+Message = Message - 1048576
+ls_sajad[i] = Message
+end
+tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = ls_sajad},function(arg,data)
+new = 0
+ls_sajad2 = {}
+for i=0 ,data.total_count_ do
+if data.messages_[i] and (not data.messages_[i].edit_date_ or data.messages_[i].edit_date_ ~= 0) then
+ls_sajad2[new] = data.messages_[i].id_
+new = new + 1
+end
+end
+Delete_Message(msg.chat_id_,ls_sajad2)
+end,nil)  
+send(msg.chat_id_, msg.id_,'※︙ تم ازالة 100 رساله معدلة ✔️') 
+return false
+end
+if text == "تنظيف جميع الميديا" or text == "تنظيف الميديا" and Mod(msg) then   
+ls_sajad = {[0]=msg.id_}
+local Message = msg.id_
+for i=1,100 do
+Message = Message - 1048576
+ls_sajad[i] = Message
+end
+tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = ls_sajad},function(arg,data)
+new = 0
+ls_sajad2 = {}
+for i=0 ,data.total_count_ do
+if data.messages_[i] and data.messages_[i].content_ and data.messages_[i].content_.ID ~= "MessageText" then
+ls_sajad2[new] = data.messages_[i].id_
+new = new + 1
+end
+end
+Delete_Message(msg.chat_id_,ls_sajad2)
+end,nil)  
+send(msg.chat_id_, msg.id_,"※︙ تم ازالة 100 من وسائط 🛡") 
 end
 return false
 end
