@@ -10177,7 +10177,7 @@ end,nil)
 end
 return false
 end
-if text == "تنظيف جميع الرسائل المعدله" or text == "تنظيف الرسائل المعدلة" or text == "تنظيف الرسائل المعدله" and Mod(msg) then   
+elseif text and (text == "تنظيف جميع الرسائل المعدله" or text == "تنظيف الرسائل المعدلة" or text == "تنظيف الرسائل المعدله") and Mod(msg) then   
 ls_sajad = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -10196,9 +10196,8 @@ end
 Delete_Message(msg.chat_id_,ls_sajad2)
 end,nil)  
 send(msg.chat_id_, msg.id_,'※︙ تم ازالة 100 رساله معدلة ✔️') 
-return false
 end
-if text == "تنظيف جميع الميديا" or text == "تنظيف الميديا" and Mod(msg) then   
+elseif text and (text == "تنظيف جميع الميديا" or text == "تنظيف الميديا") and Mod(msg) then   
 ls_sajad = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -10217,9 +10216,6 @@ end
 Delete_Message(msg.chat_id_,ls_sajad2)
 end,nil)  
 send(msg.chat_id_, msg.id_,"※︙ تم ازالة 100 من وسائط 🛡") 
-end
-return false
-end
 if text == "تنظيف الكروبات" and SudoBot(msg) then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
