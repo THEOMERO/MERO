@@ -9526,7 +9526,7 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
-if text == 'تنزيل جميع الرتب' or text == 'تنزيل الرتب' and BasicConstructor(msg) then
+if text == 'تنزيل جميع الرتب' and BasicConstructor(msg) then  
 database:del(bot_id..'Constructor'..msg.chat_id_)
 database:del(bot_id..'Manager'..msg.chat_id_)
 database:del(bot_id..'Mod:User'..msg.chat_id_)
