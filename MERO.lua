@@ -8203,8 +8203,8 @@ Text = '\n⌯┆ بالتاكيد تم تعطيل البوت الخدمي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and Manager(msg) or text and text:match('^حذف (%d+)$') and Manager(msg) or text and text:match('^مسح (%d+)$') and Manager(msg) then    
-local num = tonumber(text:match('^تنظيف (%d+)$')) or tonumber(text:match('^حذف (%d+)$'))  or tonumber(text:match('^مسح (%d+)$')) 
+if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
+local num = tonumber(text:match('^تنظيف (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8214,8 +8214,8 @@ send(msg.chat_id_, msg.id_,'⌯┆ لا تستطيع استخدام البوت �
 end
 return false
 end
-if num > 1000 then 
-send(msg.chat_id_, msg.id_,'⌯┆ تستطيع التنظيف ل1000 رساله كحد اقصى') 
+if num > 100 then 
+send(msg.chat_id_, msg.id_,' ⌯┆تستطيع التنظيف ل100 رساله كحد اقصى')
 return false  
 end  
 local msgm = msg.id_
@@ -8223,7 +8223,7 @@ for i=1,tonumber(num) do
 DeleteMessage(msg.chat_id_, {[0] = msgm})
 msgm = msgm - 1048576
 end
-send(msg.chat_id_,msg.id_,'⌯┆ تم حذف {'..num..'}')  
+send(msg.chat_id_,msg.id_,' ⌯┆تم حذف {'..num..'}')  
 end
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
 Namebot = (database:get(bot_id..'Name:Bot') or 'ميرو')
