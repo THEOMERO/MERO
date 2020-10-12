@@ -2284,7 +2284,7 @@ t = t..i.."-  `"..v.."` \n"
 end
 send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
 end
-if text == "تعطيل الابراج" and Manger(msg) then
+if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
 database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"close")
 end
