@@ -1007,12 +1007,12 @@ end
 if text == 'تحديث السورس' and SudoBot(msg) then 
 os.execute('rm -rf MERO.lua')
 os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
+send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.3v}') 
 dofile('MERO.lua')  
 end
 if text == 'الاصدار 📟' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.3v}') 
+send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.2v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2249,11 +2249,21 @@ end
 database:set(bot_id..'Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⌯┆ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  >> {'..Num..'} عضو')
 end
-if text == 'تحديث السورس' and SudoBot(msg) then    
+if text == 'تحديث السورس' and SudoBot(msg) then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⌯┆  𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒏𝒊𝒈𝒈𝒂 ⌯┆~ ⌯┆\n⌯┆ لايمكنك استخدام البوت ⌯┆~ ⌯┆\n⌯┆ عليك الاشتراك في القناة ⌯┆~ ⌯┆\n⌯┆ اشترك اولا ['..database:get(bot_id..'add:ch:username')..'⌯┆~]')
+end
+return false
+end
+os.execute('rm -rf MEROlua')
+os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
+send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.2v}')
 dofile('MERO.lua')  
-send(msg.chat_id_, msg.id_,'⌯┆ تم تحديث البوت \n⌯┆ لديك اخر اصدار لسورس ميرو')
-end 
-
+end
 if text == "تعطيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
 database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
@@ -2303,7 +2313,7 @@ database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^احسب (.*)$") and database:get(bot_id.." MERO:age_Bots"..msg.chat_id_) == "open" then
 local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://mode-dev.tk/Api1/niggaapi.php?age='..URL.escape(Textage)..'')
+ge = https.request('https://mode-dev.tk/Api1/MEROapi.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
 i = 0
 for k,v in pairs(ag.ok) do
@@ -5910,7 +5920,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'Jred:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n⌯┆ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n⌯┆ الايدي » `'..result.sender_user_id_..'`\n⌯┆ تم رفع العضو بكلبي\n⌯┆ويلكم بك في قلبي'
+local  statuss  = '\n⌯┆ الايدي » `'..result.sender_user_id_..'`\n⌯┆ تم رفع العضو بكلبي\n⌯┆ويلكم بكم في قلبي'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -10716,7 +10726,7 @@ return false
 end
 if database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 database:del(bot_id..'Set:Sma'..msg.chat_id_)
-Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','??','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
+Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
 SM = Random[math.random(#Random)]
 database:set(bot_id..'Random:Sm'..msg.chat_id_,SM)
 send(msg.chat_id_, msg.id_,'⌯┆اسرع واحد يدز هذا السمايل ? » {`'..SM..'`}')
