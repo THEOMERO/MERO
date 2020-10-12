@@ -1007,12 +1007,12 @@ end
 if text == 'تحديث السورس' and SudoBot(msg) then 
 os.execute('rm -rf MERO.lua')
 os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.2v}')
+send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
 dofile('MERO.lua')  
 end
 if text == 'الاصدار 📟' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.2v}') 
+send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.3v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
