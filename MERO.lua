@@ -2254,6 +2254,65 @@ dofile('MERO.lua')
 send(msg.chat_id_, msg.id_,'⌯┆ تم تحديث البوت \n⌯┆ لديك اخر اصدار لسورس ميرو')
 end 
 
+if text == "تعطيل الزخرفه" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
+database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل الزخرفه" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الزخرفه')
+database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." MERO:zhrf_Bots"..msg.chat_id_) == "open" then
+local TextZhrfa = text:match("^زخرفه (.*)$")
+zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
+zx = JSON.decode(zh)
+t = "\n⌯┆قائمه الزخرفه \nٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ \n"
+i = 0
+for k,v in pairs(zx.ok) do
+i = i + 1
+t = t..i.."-  `"..v.."` \n"
+end
+send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
+end
+if text == "تعطيل الابراج" and Manger(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
+database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل الابراج" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الابراج')
+database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^برج (.*)$") and database:get(bot_id.." MERO:brj_Bots"..msg.chat_id_) == "open" then
+local Textbrj = text:match("^برج (.*)$")
+gk = https.request('https://mode-dev.tk/Api2/Modbr.php?br='..URL.escape(Textbrj)..'')
+br = JSON.decode(gk)
+i = 0
+for k,v in pairs(br.ok) do
+i = i + 1
+t = v.."\n"
+end
+send(msg.chat_id_, msg.id_, t)
+end
+if text == "تعطيل حساب العمر" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
+database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
+end
+if text == "تفعيل حساب العمر" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل حساب العمر')
+database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"open")
+end
+if text and text:match("^احسب (.*)$") and database:get(bot_id.." MERO:age_Bots"..msg.chat_id_) == "open" then
+local Textage = text:match("^احسب (.*)$")
+ge = https.request('https://mode-dev.tk/Api1/MEROapi.php?age='..URL.escape(Textage)..'')
+ag = JSON.decode(ge)
+i = 0
+for k,v in pairs(ag.ok) do
+i = i + 1
+t = v.."\n"
+end
+send(msg.chat_id_, msg.id_, t)
+end
+
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌯┆حسنآ ارسل لي معرف القناة') 
@@ -2261,7 +2320,7 @@ return false
 end
 if text and text:match("^تغير رساله الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '-حسنآ ارسل لي النص الذي تريده') 
+send(msg.chat_id_, msg.id_, '⌯┆حسنآ ارسل لي النص الذي تريده') 
 return false  
 end
 if text == "حذف رساله الاشتراك 🚫" and SudoBot(msg) then  
