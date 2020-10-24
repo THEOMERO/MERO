@@ -2311,6 +2311,29 @@ if text == "تعطيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
 end
+if text == "تعطيل الافلام" and Mod(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الافلام')
+database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
+end
+if text == "تفعيل الافلام" and Mod(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الافلام')
+database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"open")
+end
+if text and text:match("^فلم (.*)$") and database:get(bot_id.."AMIR:movie_bot"..msg.chat_id_) == "open" then
+local Textm = text:match("^فلم (.*)$")
+data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
+if res == 200 then
+getmo = json:decode(data)
+if getmo.Info == true then
+local Text ='قصه الفلم'..getmo.info
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
+{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
 if text == "تفعيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"open")
@@ -7465,31 +7488,32 @@ end
 if text == "تفعيل رابط" or text == 'تفعيل الرابط' then
 if Mod(msg) then  
 database:set(bot_id.."Link_Group:status"..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,"⌯┆ تم تفعيل الرابط") 
+send(msg.chat_id_, msg.id_," ⌯┆ تم تفعيل الرابط") 
 return false  
 end
 end
 if text == "تعطيل رابط" or text == 'تعطيل الرابط' then
 if Mod(msg) then  
 database:del(bot_id.."Link_Group:status"..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,"⌯┆ تم تعطيل الرابط") 
+send(msg.chat_id_, msg.id_," ⌯┆ تم تعطيل الرابط") 
 return false end
 end
 if text == "الرابط" then 
 local status_Link = database:get(bot_id.."Link_Group:status"..msg.chat_id_)
 if not status_Link then
-send(msg.chat_id_, msg.id_,"⌯┆ الرابط معطل") 
+send(msg.chat_id_, msg.id_," ⌯ الرابط معطل") 
 return false  
 end
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'⌯┆ *رابط المجموعه* -\n┉ ┉ ┉  ┉  ┉  ┉  ┉  ┉\n ['..link..']')                          
+send(msg.chat_id_,msg.id_,'𝒍𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  𖠐\n≪━━━━━━━━━━━━━≫\n ['..link..']')                          
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
+database:set(bot_id.."Private:Group:Link"..msg.chat_id_,linkgpp.result)
 linkgp = '𝒍𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  ??\n≪━━━━━━━━━━━━━≫\n ['..linkgpp.result..']'
 else
-linkgp = '⌯┆ لا يوجد رابط ارسل ضع رابط'
+linkgp = ' ⌯ لا يوجد رابط ارسل ضع رابط'
 end  
 send(msg.chat_id_, msg.id_,linkgp)              
 end            
@@ -7501,11 +7525,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⌯┆ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ⌯┆ لا تستطيع استخدام البوت \n  ⌯┆ يرجى الاشتراك بالقناه اولا \n  ⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-send(msg.chat_id_,msg.id_,"⌯┆ تم مسح الرابط ")           
+send(msg.chat_id_,msg.id_," ⌯┆ تم مسح الرابط")           
 database:del(bot_id.."Private:Group:Link"..msg.chat_id_) 
 return false      
 end
@@ -8754,6 +8778,7 @@ Text = [[
 ⌯┆ صورتي
 ⌯┆ الزخرفه
 ⌯┆ الابراج
+⌯┆ الافلام
 ⌯┆ التنزيل
 ⌯┆ الانستا
 ⌯┆ التحويل
