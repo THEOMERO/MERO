@@ -2264,55 +2264,25 @@ os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua
 send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
 dofile('MERO.lua')  
 end
-if text == "تفعيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
-local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل الزخرفه بنجاح'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
-DevAbs:del(DevProx..'bot:Zrf:Abs'..msg.chat_id_) 
+if text == "تعطيل الزخرفه" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
+database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
 end
-if text == "تعطيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
-local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل الزخرفه بنجاح'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
-DevAbs:set(DevProx..'bot:Zrf:Abs'..msg.chat_id_,true)  
+if text == "تفعيل الزخرفه" and Manager(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الزخرفه')
+database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"open")
 end
---     Source DevProx     --
-if DevAbs:get(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_) then 
-if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء امر الزخرفه', 1, 'md')
-DevAbs:del(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
-return false  
-end 
-UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)) 
-Zrf = JSON.decode(UrlZrf) 
-t = "⌁︙قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." MERO:zhrf_Bots"..msg.chat_id_) == "open" then
+local TextZhrfa = text:match("^زخرفه (.*)$")
+zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
+zx = JSON.decode(zh)
+t = "\n⌯┆قائمه الزخرفه \nٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ \n"
 i = 0
-for k,v in pairs(Zrf.ok) do
+for k,v in pairs(zx.ok) do
 i = i + 1
-t = t..i.."⌯ `"..v.."` \n"
+t = t..i.."-  `"..v.."` \n"
 end
-Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
-DevAbs:del(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
-return false   
-end
-if not DevAbs:get(DevProx..'bot:Zrf:Abs'..msg.chat_id_) then
-if text == 'زخرفه' and Abbas_Abs(msg) or text == 'الزخرفه' and Abbas_Abs(msg)  then  
-DevAbs:setex(DevProx.."Zrf:Abs"..msg.chat_id_..""..msg.sender_user_id_,10000,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمة لزخرفتها \nيمكنك الزخرفة باللغة { en } ⌯ { ar } ', 1, 'md')
-end
-end
---     Source DevProx     --
-if not DevAbs:get(DevProx..'bot:Zrf:Abs'..msg.chat_id_) then
-if text and text:match("^زخرفه (.*)$") or text and text:match("^زخرف (.*)$") then 
-local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
-UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
-Zrf = JSON.decode(UrlZrf) 
-t = "⌁︙قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
-i = 0
-for k,v in pairs(Zrf.ok) do
-i = i + 1
-t = t..i.."⌯ `"..v.."` \n"
-end
-Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
-end
+send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
 end
 if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الابراج')
