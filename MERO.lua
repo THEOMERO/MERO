@@ -2253,23 +2253,19 @@ if text == 'تحديث السورس' and SudoBot(msg) then
 dofile('MERO.lua')  
 send(msg.chat_id_, msg.id_,'⌯┆ تم تحديث البوت \n⌯┆ لديك اخر اصدار لسورس ميرو')
 end 
-if text == "تعطيل الزخرفه" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
-database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
-end
 if text == "تفعيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الزخرفه')
 database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." MERO:zhrf_Bots"..msg.chat_id_) == "open" then
 local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf'')
+zh = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZhrfa)..'')
 zx = JSON.decode(zh)
 t = "\n⌯┆قائمه الزخرفه \nٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ \n"
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
-t = t..i.."-  `"..v.."` \n"
+t = t..i.."-  "..v.." \n"
 end
 send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
 end
