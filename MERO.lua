@@ -2249,21 +2249,11 @@ end
 database:set(bot_id..'Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⌯┆ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  >> {'..Num..'} عضو')
 end
-if text == 'تحديث السورس' and SudoBot(msg) then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⌯┆  𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒏𝒊𝒈𝒈𝒂 ⌯┆~ ⌯┆\n⌯┆ لايمكنك استخدام البوت ⌯┆~ ⌯┆\n⌯┆ عليك الاشتراك في القناة ⌯┆~ ⌯┆\n⌯┆ اشترك اولا ['..database:get(bot_id..'add:ch:username')..'⌯┆~]')
-end
-return false
-end
-os.execute('rm -rf MEROlua')
-os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.2v}')
+if text == 'تحديث السورس' and SudoBot(msg) then    
 dofile('MERO.lua')  
-end
+send(msg.chat_id_, msg.id_,'⌯┆ تم تحديث البوت \n⌯┆ لديك اخر اصدار لسورس ميرو')
+end 
+
 if text == "تعطيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
 database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
@@ -2284,9 +2274,10 @@ t = t..i.."-  `"..v.."` \n"
 end
 send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
 end
-if text == "تعطيل الابراج" and Manager(msg) then
+if text == "تعطيل الابراج" and Manger(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
 database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"close")
+end
 if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الابراج')
 database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"open")
@@ -2306,13 +2297,17 @@ if text == "تعطيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
 end
+if text == "تعطيل حساب العمر" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
+database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
+end
 if text == "تفعيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^احسب (.*)$") and database:get(bot_id.." MERO:age_Bots"..msg.chat_id_) == "open" then
 local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://mode-dev.tk/Api1/MEROapi.php?age='..URL.escape(Textage)..'')
+ge = https.request('https://mode-dev.tk/Api1/niggaapi.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
 i = 0
 for k,v in pairs(ag.ok) do
