@@ -2265,45 +2265,47 @@ send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك �
 dofile('MERO.lua')  
 end
 if text == "تفعيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
-send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الزخرفه')
+local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
-DevAbs:del(MERO..'bot:Zrf:Abs'..msg.chat_id_) 
+DevAbs:del(DevProx..'bot:Zrf:Abs'..msg.chat_id_) 
 end
 if text == "تعطيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
+local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل الزخرفه بنجاح'
 absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
-DevAbs:set(MERO..'bot:Zrf:Abs'..msg.chat_id_,true)  
+DevAbs:set(DevProx..'bot:Zrf:Abs'..msg.chat_id_,true)  
 end
-if DevAbs:get(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_) then 
+--     Source DevProx     --
+if DevAbs:get(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌯┆تم الغاء امر الزخرفه', 1, 'md')
-DevAbs:del(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙تم الغاء امر الزخرفه', 1, 'md')
+DevAbs:del(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
 return false  
 end 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "⌯┆قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+t = "⌁︙قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
 t = t..i.."⌯ `"..v.."` \n"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
-DevAbs:del(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
+DevAbs:del(DevProx..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
 return false   
 end
-if not DevAbs:get(MERO..'bot:Zrf:Abs'..msg.chat_id_) then
+if not DevAbs:get(DevProx..'bot:Zrf:Abs'..msg.chat_id_) then
 if text == 'زخرفه' and Abbas_Abs(msg) or text == 'الزخرفه' and Abbas_Abs(msg)  then  
-DevAbs:setex(MERO.."Zrf:Abs"..msg.chat_id_..""..msg.sender_user_id_,10000,true)
-Dev_Abs(msg.chat_id_, msg.id_, 1, '⌯┆ارسل لي الكلمة لزخرفتها \nيمكنك الزخرفة باللغة { العربيه } ⌯ { الانكليزيه } ', 1, 'md')
+DevAbs:setex(DevProx.."Zrf:Abs"..msg.chat_id_..""..msg.sender_user_id_,10000,true)
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌁︙ارسل لي الكلمة لزخرفتها \nيمكنك الزخرفة باللغة { en } ⌯ { ar } ', 1, 'md')
 end
 end
-if not DevAbs:get(MERO..'bot:Zrf:Abs'..msg.chat_id_) then
+--     Source DevProx     --
+if not DevAbs:get(DevProx..'bot:Zrf:Abs'..msg.chat_id_) then
 if text and text:match("^زخرفه (.*)$") or text and text:match("^زخرف (.*)$") then 
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
 UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
 Zrf = JSON.decode(UrlZrf) 
-t = "⌯┆اليـك زخرفتك  ↫\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+t = "⌁︙قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 i = 0
 for k,v in pairs(Zrf.ok) do
 i = i + 1
@@ -2311,10 +2313,6 @@ t = t..i.."⌯ `"..v.."` \n"
 end
 Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
 end
-end
-if text == "تعطيل الابراج" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
-database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"close")
 end
 if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الابراج')
@@ -7516,7 +7514,7 @@ else
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
 database:set(bot_id.."Private:Group:Link"..msg.chat_id_,linkgpp.result)
-linkgp = '𝒍𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  ??\n≪━━━━━━━━━━━━━≫\n ['..linkgpp.result..']'
+linkgp = '??𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  ??\n≪━━━━━━━━━━━━━≫\n ['..linkgpp.result..']'
 else
 linkgp = ' ⌯ لا يوجد رابط ارسل ضع رابط'
 end  
