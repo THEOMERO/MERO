@@ -2264,25 +2264,53 @@ os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua
 send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
 dofile('MERO.lua')  
 end
-if text == "تعطيل الزخرفه" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
-database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
-end
-if text == "تفعيل الزخرفه" and Manager(msg) then
+if text == "تفعيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الزخرفه')
-database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"open")
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
+DevAbs:del(MERO..'bot:Zrf:Abs'..msg.chat_id_) 
 end
-if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." MERO:zhrf_Bots"..msg.chat_id_) == "open" then
-local TextZhrfa = text:match("^زخرفه (.*)$")
-zh = https.request('https://forhassan.ml/Black/hso.php?en='..URL.escape(TextZhrfa)..'')
-zx = JSON.decode(zh)
-t = "\n⌯┆قائمه الزخرفه \nٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ \n"
+if text == "تعطيل الزخرفه" and is_owner(msg.sender_user_id_, msg.chat_id_) and Abbas_Abs(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
+absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 15, string.len(msg.sender_user_id_))
+DevAbs:set(MERO..'bot:Zrf:Abs'..msg.chat_id_,true)  
+end
+if DevAbs:get(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_) then 
+if text == 'الغاء' then 
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌯┆تم الغاء امر الزخرفه', 1, 'md')
+DevAbs:del(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
+return false  
+end 
+UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(text)) 
+Zrf = JSON.decode(UrlZrf) 
+t = "⌯┆قائمة الزخرفه ↫ ⤈\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
 i = 0
-for k,v in pairs(zx.ok) do
+for k,v in pairs(Zrf.ok) do
 i = i + 1
-t = t..i.."-  `"..v.."` \n"
+t = t..i.."⌯ `"..v.."` \n"
 end
-send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
+Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
+DevAbs:del(MERO..'Zrf:Abs'..msg.chat_id_..''..msg.sender_user_id_)
+return false   
+end
+if not DevAbs:get(MERO..'bot:Zrf:Abs'..msg.chat_id_) then
+if text == 'زخرفه' and Abbas_Abs(msg) or text == 'الزخرفه' and Abbas_Abs(msg)  then  
+DevAbs:setex(MERO.."Zrf:Abs"..msg.chat_id_..""..msg.sender_user_id_,10000,true)
+Dev_Abs(msg.chat_id_, msg.id_, 1, '⌯┆ارسل لي الكلمة لزخرفتها \nيمكنك الزخرفة باللغة { العربيه } ⌯ { الانكليزيه } ', 1, 'md')
+end
+end
+if not DevAbs:get(MERO..'bot:Zrf:Abs'..msg.chat_id_) then
+if text and text:match("^زخرفه (.*)$") or text and text:match("^زخرف (.*)$") then 
+local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
+UrlZrf = https.request('https://apiabs.ml/zrf.php?abs='..URL.escape(TextZrf)) 
+Zrf = JSON.decode(UrlZrf) 
+t = "⌯┆اليـك زخرفتك  ↫\n┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉\n"
+i = 0
+for k,v in pairs(Zrf.ok) do
+i = i + 1
+t = t..i.."⌯ `"..v.."` \n"
+end
+Dev_Abs(msg.chat_id_, msg.id_, 1, t, 1, 'md')
+end
 end
 if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
@@ -8583,7 +8611,7 @@ Text = [[
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ⌯┆ اسم البوت + الامر ↑↓
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⌯┆ شنو رئيك بهاذا بالرد
+⌯┆ شنو رئيك بهذا بالرد
 ⌯┆ تحب هذا
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ⌯┆ اوامر المجموعه ↓
@@ -8755,7 +8783,6 @@ Text = [[
 ⌯┆ صورتي
 ⌯┆ الزخرفه
 ⌯┆ الابراج
-⌯┆ الافلام
 ⌯┆ التنزيل
 ⌯┆ الانستا
 ⌯┆ التحويل
@@ -11191,7 +11218,7 @@ name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍�
 name = string.gsub(name,'??‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
 name = string.gsub(name,'🧚‍♀','🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂')
 name = string.gsub(name,'🧜‍♂','🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧚‍♂🧜‍♀🧜‍♀🧜‍♀')
-name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♂🧝‍♀🧝‍♀🧝‍♀')
+name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀??‍♂🧝‍♀🧝‍♀🧝‍♀')
 name = string.gsub(name,'🙍‍♂️','🙎‍♂️🙎‍♂️🙎‍♂️??‍♂️??‍♂️🙍‍♂️🙎‍♂️🙎‍♂️🙎‍♂️')
 name = string.gsub(name,'🧖‍♂️','🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
@@ -11379,31 +11406,6 @@ local iduserr = database:get(bot_id..'idgem:user'..msg.chat_id_)
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..iduserr,numadded)  
 send(msg.chat_id_, msg.id_,  1, "📥┋ تم اضافة لهہ‌‏ {"..numadded..'} من النقاط', 1, 'md')  
 end
-if text == "تعطيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الافلام')
-database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
-end
-if text == "تفعيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الافلام')
-database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"open")
-end
-if text and text:match("^فلم (.*)$") and database:get(bot_id.."AMIR:movie_bot"..msg.chat_id_) == "open" then
-local Textm = text:match("^فلم (.*)$")
-data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
-if res == 200 then
-getmo = json:decode(data)
-if getmo.Info == true then
-local Text ='قصه الفلم'..getmo.info
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
-{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
-end
 if text == "شنو رأيك بهذا" or text == "شنو رأيك بهذ" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"واحد سرسري لتمشي ويا يخربك😔😂","صخل ما احبه 😾😹","هذا الحب 🤭🍿","هذا 🥺💞كلبي"}
@@ -11573,7 +11575,7 @@ end
 
 if text == "ههه" or text == "هههه" or text == "ههههه" or text == "هههههه" or text == "ههههههه" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"ضحكـه لــ̼۬ـو عـافـيهــہ🙊??","عــساهـا دوم😻💗","دايـمــه عـشـقي" }
+local texting = {"ضحكـه لــ̼۬ـو عـافـيهــہ🙊💞","عــساهـا دوم😻💗","دايـمــه عـشـقي" }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11728,7 +11730,7 @@ database:del(bot_id.."Fun_Bots:"..msg.chat_id_)
 end
 local Name_Bot = (database:get(bot_id..'Name:Bot') or 'ميرو')
 if not database:get(bot_id.."Fun_Bots:"..msg.chat_id_) then
-if text ==  ""..Name_Bot..' شنو رأيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
+if text ==  ""..Name_Bot..' شنو رئيك بهذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
 local Fun = {" ذا مب صاحي  😶","خروف ما احبه 😾😹","هذا الحب 🤭🍿","هذا قلبي"}
 send(msg.chat_id_, result.id_,''..Fun[math.random(#Fun)]..'')   
