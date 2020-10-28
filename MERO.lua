@@ -1007,12 +1007,12 @@ end
 if text == 'تحديث السورس' and SudoBot(msg) then 
 os.execute('rm -rf MERO.lua')
 os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
+send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.2v}')
 dofile('MERO.lua')  
 end
 if text == 'الاصدار 📟' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.3v}')
+send(msg.chat_id_, msg.id_,'⌯┆ اصدار سورس ميرو \n📟| الاصدار ←{ 1.2v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2255,13 +2255,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⌯┆ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⌯┆  𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒏𝒊𝒈𝒈𝒂 ⌯┆~ ⌯┆\n⌯┆ لايمكنك استخدام البوت ⌯┆~ ⌯┆\n⌯┆ عليك الاشتراك في القناة ⌯┆~ ⌯┆\n⌯┆ اشترك اولا ['..database:get(bot_id..'add:ch:username')..'⌯┆~]')
 end
 return false
 end
 os.execute('rm -rf MEROlua')
 os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.3v}')
+send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⌯┆ لديك اخر اصدار سورس ميرو\n⌯┆ الاصدار ← { 1.2v}')
 dofile('MERO.lua')  
 end
 if text == "تعطيل الزخرفه" and Manager(msg) then
@@ -2284,6 +2284,9 @@ t = t..i.."-  `"..v.."` \n"
 end
 send(msg.chat_id_, msg.id_, t..'ٴ⌯┆○━━━𝓝𝓰━━━⌯┆○ٴ\n⌯┆اضغط على الاسم ليتم نسخه')
 end
+if text == "تعطيل الابراج" and Manager(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
+database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"close")
 if text == "تفعيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الابراج')
 database:set(bot_id.." MERO:brj_Bots"..msg.chat_id_,"open")
@@ -2303,17 +2306,13 @@ if text == "تعطيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
 end
-if text == "تعطيل حساب العمر" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل حساب العمر')
-database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"close")
-end
 if text == "تفعيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل حساب العمر')
 database:set(bot_id.." MERO:age_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^احسب (.*)$") and database:get(bot_id.." MERO:age_Bots"..msg.chat_id_) == "open" then
 local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://mode-dev.tk/Api1/niggaapi.php?age='..URL.escape(Textage)..'')
+ge = https.request('https://mode-dev.tk/Api1/MEROapi.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
 i = 0
 for k,v in pairs(ag.ok) do
@@ -2330,7 +2329,7 @@ return false
 end
 if text and text:match("^تغير رساله الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."textch:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
-send(msg.chat_id_, msg.id_, '⌯┆حسنآ ارسل لي النص الذي تريده') 
+send(msg.chat_id_, msg.id_, '-حسنآ ارسل لي النص الذي تريده') 
 return false  
 end
 if text == "حذف رساله الاشتراك 🚫" and SudoBot(msg) then  
@@ -7020,7 +7019,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text == 'اعدادات الكروب' and Mod(msg) then    
+if text == 'الاعدادات' and Mod(msg) then    
 if database:get(bot_id..'lockpin'..msg.chat_id_) then    
 lock_pin = '✓'
 else 
@@ -7449,11 +7448,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' ⌯┆ لا تستطيع استخدام البوت \n  ⌯┆ يرجى الاشتراك بالقناه اولا \n  ⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⌯┆ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-send(msg.chat_id_,msg.id_," ⌯┆ حسنآ ارسل اليه الرابط الان")
+send(msg.chat_id_,msg.id_,"⌯┆ ارسل رابط المجموعه او رابط قناة المجموعه")
 database:setex(bot_id.."Set:Priovate:Group:Link"..msg.chat_id_..""..msg.sender_user_id_,120,true) 
 return false
 end
@@ -7461,32 +7460,31 @@ end
 if text == "تفعيل رابط" or text == 'تفعيل الرابط' then
 if Mod(msg) then  
 database:set(bot_id.."Link_Group:status"..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_," ⌯┆ تم تفعيل الرابط") 
+send(msg.chat_id_, msg.id_,"⌯┆تم تفعيل الرابط") 
 return false  
 end
 end
 if text == "تعطيل رابط" or text == 'تعطيل الرابط' then
 if Mod(msg) then  
 database:del(bot_id.."Link_Group:status"..msg.chat_id_) 
-send(msg.chat_id_, msg.id_," ⌯┆ تم تعطيل الرابط") 
+send(msg.chat_id_, msg.id_,"⌯┆تم تعطيل الرابط") 
 return false end
 end
 if text == "الرابط" then 
 local status_Link = database:get(bot_id.."Link_Group:status"..msg.chat_id_)
 if not status_Link then
-send(msg.chat_id_, msg.id_," ⌯ الرابط معطل") 
+send(msg.chat_id_, msg.id_,"⌯┆ الرابط معطل") 
 return false  
 end
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'𝒍𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  𖠐\n≪━━━━━━━━━━━━━≫\n ['..link..']')                          
+send(msg.chat_id_,msg.id_,'⌯┆ 𝙻𝙸𝙽𝙺  𝙶𝚁𝚄𝙿  : \n⌯┆ ['..link..']')                          
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
-database:set(bot_id.."Private:Group:Link"..msg.chat_id_,linkgpp.result)
-linkgp = '??𝒊𝒏𝒌 𝒈𝒓𝒐𝒖𝒑  ??\n≪━━━━━━━━━━━━━≫\n ['..linkgpp.result..']'
+linkgp = '- 𝙻𝙸𝙽𝙺  𝙶𝚁𝚄𝙿  : \n⌯┆ ['..linkgpp.result..']'
 else
-linkgp = ' ⌯ لا يوجد رابط ارسل ضع رابط'
+linkgp = '⌯┆لا يوجد رابط ارسل ضع رابط'
 end  
 send(msg.chat_id_, msg.id_,linkgp)              
 end            
@@ -7498,11 +7496,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' ⌯┆ لا تستطيع استخدام البوت \n  ⌯┆ يرجى الاشتراك بالقناه اولا \n  ⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⌯┆ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⌯┆ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-send(msg.chat_id_,msg.id_," ⌯┆ تم مسح الرابط")           
+send(msg.chat_id_,msg.id_,"⌯┆ تم مسح الرابط ")           
 database:del(bot_id.."Private:Group:Link"..msg.chat_id_) 
 return false      
 end
@@ -8579,7 +8577,7 @@ Text = [[
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ⌯┆ اسم البوت + الامر ↑↓
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
-⌯┆ شنو رئيك بهذا بالرد
+⌯┆ شنو رئيك بهاذا بالرد
 ⌯┆ تحب هذا
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 ⌯┆ اوامر المجموعه ↓
@@ -8749,13 +8747,6 @@ Text = [[
 ⌯┆ ردود المدير
 ⌯┆ الردود
 ⌯┆ صورتي
-⌯┆ الزخرفه
-⌯┆ الابراج
-⌯┆ التنزيل
-⌯┆ الانستا
-⌯┆ التحويل
-⌯┆ التحقق
-⌯┆ حساب العمر
 ≪━━━━━━𓆩𖠐𓆪━━━━━━≫
  𓅛│CH » @MERO170 ࿐
 ]]
@@ -9725,7 +9716,7 @@ local List = {
 ᯓ 𝗜𝗗  #id 🇺🇸 ꙰
 ᯓ 𝗚𝗮𝗺𝗘𝗦  #game 🇺🇸 ꙰
 ᯓ 𝗺𝗦𝗚𝗦  #msgs 🇺🇸 ꙰
-ᯓ 𝙥𝙝𝙤𝙩𝙤??  #photos 🇺🇸 ꙰
+ᯓ 𝙥𝙝𝙤𝙩𝙤𝙨  #photos 🇺🇸 ꙰
 ᯓ 𝙖𝙪𝙩𝙤  #auto 🇺🇸 ꙰
 ᯓ 𝙚𝙙𝙞𝙩  #edit 🇺🇸 ꙰
 ]],
@@ -11186,7 +11177,7 @@ name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍�
 name = string.gsub(name,'??‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
 name = string.gsub(name,'🧚‍♀','🧚‍♂🧚‍♂🧚‍♂🧚‍♂🧚‍♀🧚‍♂🧚‍♂')
 name = string.gsub(name,'🧜‍♂','🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧜‍♀🧚‍♂🧜‍♀🧜‍♀🧜‍♀')
-name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀??‍♂🧝‍♀🧝‍♀🧝‍♀')
+name = string.gsub(name,'🧝‍♂','🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♀🧝‍♂🧝‍♀🧝‍♀🧝‍♀')
 name = string.gsub(name,'🙍‍♂️','🙎‍♂️🙎‍♂️🙎‍♂️??‍♂️??‍♂️🙍‍♂️🙎‍♂️🙎‍♂️🙎‍♂️')
 name = string.gsub(name,'🧖‍♂️','🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
@@ -11515,7 +11506,7 @@ end
 
 if text == "😂" or text == "😂😂" or text == "😂😂😂😂" or text == "😂😂😂" or text == "😹😹" or text == "😹😹😹" or text == "😹" or text == "😹😹😹😹" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"شـهضحڪًــة  ๋͜͡اٰ͡لحلوة بربڪً  ͜اٰ͡مڪً على شـو متوحمة😉","دوم حياتي " }
+local texting = {"شـهضحڪًــة  ๋͜͡اٰ͡لحلوة بربڪً  ͜اٰ͡مڪً على شـو متوحمة😉😉","كافي لزكت 😒","دوم حياتي " }
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
@@ -11698,7 +11689,7 @@ database:del(bot_id.."Fun_Bots:"..msg.chat_id_)
 end
 local Name_Bot = (database:get(bot_id..'Name:Bot') or 'ميرو')
 if not database:get(bot_id.."Fun_Bots:"..msg.chat_id_) then
-if text ==  ""..Name_Bot..' شنو رئيك بهذا' and tonumber(msg.reply_to_message_id_) > 0 then     
+if text ==  ""..Name_Bot..' شنو رأيك بهاذا' and tonumber(msg.reply_to_message_id_) > 0 then     
 function FunBot(extra, result, success) 
 local Fun = {" ذا مب صاحي  😶","خروف ما احبه 😾😹","هذا الحب 🤭🍿","هذا قلبي"}
 send(msg.chat_id_, result.id_,''..Fun[math.random(#Fun)]..'')   
