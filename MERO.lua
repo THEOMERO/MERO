@@ -2253,6 +2253,7 @@ if text == 'تحديث السورس' and SudoBot(msg) then
 dofile('MERO.lua')  
 send(msg.chat_id_, msg.id_,'⌯┆ تم تحديث البوت \n⌯┆ لديك اخر اصدار لسورس ميرو')
 end 
+
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⌯┆حسنآ ارسل لي معرف القناة') 
@@ -8678,12 +8679,14 @@ Text = [[
 ⌯┆ ردود المدير
 ⌯┆ الردود
 ⌯┆ صورتي
-⌯┆ الابراج
+⌯┆ التنزيل
 ⌯┆ الانستا
 ⌯┆ التحويل
-⌯┆ التنزيل
-⌯┆ حساب العمر
+⌯┆ التحقق
+⌯┆ الافلام
+⌯┆ الابراج
 ⌯┆ الزخرفه
+⌯┆ حساب العمر
 ≪━━━━━━𓆩𖠐𓆪━━━━━━≫
  𓅛│CH » @MERO170 ࿐
 ]]
@@ -10662,7 +10665,7 @@ return false
 end
 if database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 database:del(bot_id..'Set:Sma'..msg.chat_id_)
-Random = {'🍏','🍎','🍐','🍊','🍋','🍉','??','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
+Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','🎯','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
 SM = Random[math.random(#Random)]
 database:set(bot_id..'Random:Sm'..msg.chat_id_,SM)
 send(msg.chat_id_, msg.id_,'⌯┆اسرع واحد يدز هذا السمايل ? » {`'..SM..'`}')
@@ -11119,7 +11122,7 @@ name = string.gsub(name,'🙍‍♂️','🙎‍♂️🙎‍♂️🙎‍♂️
 name = string.gsub(name,'🧖‍♂️','🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♂️🧖‍♀️🧖‍♀️🧖‍♀️🧖‍♀️')
 name = string.gsub(name,'👬','👭👭👭👭👭👬👭👭👭')
 name = string.gsub(name,'👨‍👨‍👧','👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👦👨‍👨‍👧👨‍👨‍👦👨‍👨‍👦')
-name = string.gsub(name,'🕒','🕒🕒🕒🕒🕒🕒🕓🕒🕒??')
+name = string.gsub(name,'🕒','🕒🕒🕒🕒🕒🕒🕓🕒🕒🕒')
 name = string.gsub(name,'🕤','🕥🕥🕥🕥🕥🕤🕥🕥🕥')
 name = string.gsub(name,'⌛️','⏳⏳⏳⏳⏳⏳⌛️⏳⏳')
 name = string.gsub(name,'📅','📆📆📆📆📆??📅📆📆')
@@ -11302,29 +11305,6 @@ local iduserr = database:get(bot_id..'idgem:user'..msg.chat_id_)
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..iduserr,numadded)  
 send(msg.chat_id_, msg.id_,  1, "📥┋ تم اضافة لهہ‌‏ {"..numadded..'} من النقاط', 1, 'md')  
 end
-if text == "تعطيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الافلام')
-database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
-end
-if text == "تفعيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الافلام')
-database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"open")
-end
-if text and text:match("^فلم (.*)$") and database:get(bot_id.."AMIR:movie_bot"..msg.chat_id_) == "open" then
-local Textm = text:match("^فلم (.*)$")
-data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
-if res == 200 then
-getmo = json:decode(data)
-if getmo.Info == true then
-local Text ='قصه الفلم'..getmo.info
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
-{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
 if text == "تعطيل الزخرفه" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الزخرفه')
 database:set(bot_id.." amir:zhrf_Bots"..msg.chat_id_,"close")
@@ -11337,13 +11317,13 @@ if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." amir:zhrf
 local TextZhrfa = text:match("^زخرفه (.*)$")
 zh = https.request('https://rudi-dev.tk/Amir1/Boyka.php?en='..URL.escape(TextZhrfa)..'')
 zx = JSON.decode(zh)
-t = "\n⌯┆قائمه الزخرفه \nٴ⌯┆○━━━MR━━━⌯┆○ٴ \n"
+t = "\n⌯┆ قائمه الزخرفه \nٴ⌯┆━━━━━━𝐌𝐑━━━━━━⌯┆○ٴ \n"
 i = 0
 for k,v in pairs(zx.ok) do
 i = i + 1
 t = t..i.."-  "..v.." \n"
 end
-send(msg.chat_id_, msg.id_, t..'ٴ⌯┆━━━━━MR━━━━━⌯┆○ٴ\n⌯┆ 彡 .[MERO TEAM𝘭](t.me/MERO170)➢ ')
+send(msg.chat_id_, msg.id_, t..'ٴ⌯┆━━━━━━𝐌𝐑━━━━━━⌯┆○ٴ\n⌯┆ 彡 .[𝐌𝐄𝐑𝐎 𝐓𝐄𝐀𝐌𝘭](t.me/MERO170)➢ ')
 end
 if text == "تعطيل الابراج" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الابراج')
@@ -11386,6 +11366,31 @@ i = i + 1
 t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
+end
+if text == "تعطيل الافلام" and Mod(msg) then
+send(msg.chat_id_, msg.id_, '⌯┆ تم تعطيل الافلام')
+database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
+end
+if text == "تفعيل الافلام" and Mod(msg) then
+send(msg.chat_id_, msg.id_,'⌯┆ تم تفعيل الافلام')
+database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"open")
+end
+if text and text:match("^فلم (.*)$") and database:get(bot_id.."AMIR:movie_bot"..msg.chat_id_) == "open" then
+local Textm = text:match("^فلم (.*)$")
+data,res = https.request('https://forhassan.ml/Black/movie.php?serch='..URL.escape(Textm)..'')
+if res == 200 then
+getmo = json:decode(data)
+if getmo.Info == true then
+local Text ='قصه الفلم'..getmo.info
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'مشاهده الفلم بجوده 240',url=getmo.sd}},
+{{text = 'مشاهده الفلم بجوده 480', url=getmo.Web},{text = 'مشاهده الفلم بجوده 1080', url=getmo.hd}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
 end
 if text == "شنو رأيك بهذا" or text == "شنو رأيك بهذ" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
