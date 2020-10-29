@@ -9878,7 +9878,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extr
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'» الايدي » ('..iduser..')\n» العضو » ('..username..')\n» الرتبه » ('..rtp..')\n» نوع الكشف » بالرد')
+send(msg.chat_id_, msg.id_,'۵︙المستخدم ↵ ('..username..')/n۵︙ الايدي ↵ ('..iduser..')/n۵︙ الرتبه ↵ ('..rtp..')n/۵︙ نوع الكشف ↵ بالرد')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9892,7 +9892,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'⌯┆ الايدي » '..iduser..'\n⌯┆ المعرف » '..username..'\n⌯┆ الرتبه » '..rtp..'\n⌯┆ نوع الكشف » بالمعرف')
+send(msg.chat_id_, msg.id_,'۵︙ الايدي ↵ '..iduser..'\n۵︙ المعرف ↵ '..username..'\n۵︙ الرتبه ↵ '..rtp..'\n۵︙ نوع الكشف ↵ بالمعرف')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'⌯┆ المعرف غير صحيح ')
