@@ -4875,7 +4875,7 @@ return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-statusk  = '\n۵︙ الايدي » `'..result.sender_user_id_..'` \n۵︙ تم طرد العضو من هنا'
+statusk  = '\n۵︙ الايدي » `'..result.sender_user_id_..'` \n*۵︙ تم طرد العضو من هنا*'
 send(msg.chat_id_, msg.id_, usertext..statusk)
 end,nil)
 chat_kick(result.chat_id_, result.sender_user_id_)
@@ -4923,7 +4923,7 @@ send(msg.chat_id_, msg.id_,'۵︙البوت ليس ادمن يرجى ترقيت�
 return false  
 end
 usertext = '\n۵︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-statusk  = '\n۵︙ تم طرد العضو من هنا'
+statusk  = '\n*۵︙ تم طرد العضو من هنا*'
 texts = usertext..statusk
 chat_kick(msg.chat_id_, result.id_)
 send(msg.chat_id_, msg.id_, texts)
@@ -4972,7 +4972,7 @@ chat_kick(msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
  usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
- statusk  = '\n۵︙ تم طرد العضو من هنا'
+ statusk  = '\n*۵︙ تم طرد العضو من هنا*'
 send(msg.chat_id_, msg.id_, usertext..statusk)
 else
  usertext = '\n۵︙ العضو » '..userid..''
@@ -5925,7 +5925,7 @@ end
 database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n۵︙ تم حظره من المجموعه'
+status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n*۵︙ تم حظره من المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 chat_kick(result.chat_id_, result.sender_user_id_)
@@ -5962,7 +5962,7 @@ return false
 end
 database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.id_)
 usertext = '\n۵︙ المستخدم » ['..result.title_..'](t.me/'..(username or 'GLOBLA')..')'
-status  = '\n۵︙ تم حظره من المجموعه'
+status  = '\n*۵︙ تم حظره من المجموعه*'
 texts = usertext..status
 chat_kick(msg.chat_id_, result.id_)
 send(msg.chat_id_, msg.id_, texts)
@@ -6012,11 +6012,11 @@ chat_kick(msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ تم حظره من المجموعه'
+status  = '\n*۵︙ تم حظره من المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n۵︙ العضو » '..userid..''
-status  = '\n۵︙ تم حظره من المجموعه'
+status  = '\n*۵︙ تم حظره من المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end,nil)   
@@ -6157,7 +6157,7 @@ end
 database:sadd(bot_id..'Muted:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n ۵︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n ۵︙تم كتمه'
+status  = '\n *۵︙تم كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -6195,7 +6195,7 @@ return false
 end      
 database:sadd(bot_id..'Muted:User'..msg.chat_id_, result.id_)
 usertext = '\n ۵︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n ۵︙تم كتمه'
+status  = '\n *۵︙تم كتمه*'
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -6303,11 +6303,11 @@ database:sadd(bot_id..'Muted:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n ۵︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n ۵︙تم كتمه'
+status  = '\n *۵︙تم كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n ۵︙العضو » '..userid..''
-status  = '\n ۵︙تم كتمه'
+status  = '\n *۵︙تم كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
@@ -6406,7 +6406,7 @@ else
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n۵︙ تم تقييده في المجموعه'
+status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n*۵︙ تم تقييده في المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -6443,7 +6443,7 @@ end
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_)
  
 usertext = '\n۵︙ العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n۵︙ تم تقييده في المجموعه'
+status  = '\n*۵︙ تم تقييده في المجموعه*'
 texts = usertext..status
 else
 texts = '۵︙لا يوجد حساب بهاذا المعرف'
@@ -6548,11 +6548,11 @@ https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?ch
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ تم تقييده في المجموعه'
+status  = '\n*۵︙ تم تقييده في المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n۵︙ العضو » '..userid..''
-status  = '\n۵︙ تم تقييده في المجموعه'
+status  = '\n*۵︙ تم تقييده في المجموعه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
