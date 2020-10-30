@@ -9868,7 +9868,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extr
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
 local iduser = result.sender_user_id_
-  send(msg.chat_id_, msg.id_,'* ۵︙المستخدم * ↵ '..username..'*\n*۵︙ الايدي * ↵ `'..iduser..'`*\n*۵︙ الرتبه * ↵ '..rtp..'*\n*۵︙ نوع الكشف ↵ بالرد *')
+send(msg.chat_id_, msg.id_,'* ۵︙المستخدم * ↵ '..username..'*\n*۵︙ الايدي * ↵ `'..iduser..'`*\n*۵︙ الرتبه * ↵ '..rtp..'*\n*۵︙ نوع الكشف ↵ بالرد *')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
