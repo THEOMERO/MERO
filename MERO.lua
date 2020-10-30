@@ -8462,7 +8462,7 @@ end
 ----------------------------------------------------------------------------
 if text == 'م2' then
 if not Mod(msg) then
-send(msg.chat_id_, msg.id_,'۵︙ عذراً الاوامر هذي لا تخصك ') 
+send(msg.chat_id_, msg.id_,'⌯┆ عذراً الاوامر هذي لا تخصك ') 
 return false
 end
 if AddChannel(msg.sender_user_id_) == false then
@@ -8470,7 +8470,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'۵︙ عذراً عليك الاشتراك في القناة\n۵︙قناة الاشتراك ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⌯┆ عذراً عليك الاشتراك في القناة\n⌯┆قناة الاشتراك ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
