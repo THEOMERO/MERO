@@ -6041,7 +6041,7 @@ end
 database:srem(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n۵︙ تم الغاء حظره من هنا'
+status  = '\n۵︙ الايدي » `'..result.sender_user_id_..'`\n*۵︙ تم الغاء حظره من هنا*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
@@ -6070,7 +6070,7 @@ end
 database:srem(bot_id..'Ban:User'..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 usertext = '\n۵︙ العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n۵︙ تم الغاء حظره من هنا'
+status  = '\n*۵︙ تم الغاء حظره من هنا*'
 texts = usertext..status
 else
 texts = '۵︙لا يوجد حساب بهاذا المعرف'
@@ -6101,11 +6101,11 @@ tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_i
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n۵︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n۵︙ تم الغاء حظره من هنا'
+status  = '\n*۵︙ تم الغاء حظره من هنا*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n۵︙لعضو » '..userid..''
-status  = '\n۵︙ تم الغاء حظره من هنا'
+status  = '\n*۵︙ تم الغاء حظره من هنا*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -6327,7 +6327,7 @@ function start_function(extra, result, success)
 database:srem(bot_id..'Muted:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n ۵︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n ۵︙تم الغاء كتمه'
+status  = '\n *۵︙تم الغاء كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -6349,7 +6349,7 @@ function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Muted:User'..msg.chat_id_, result.id_)
 usertext = '\n ۵︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n ۵︙تم الغاء كتمه'
+status  = '\n *۵︙تم الغاء كتمه*'
 texts = usertext..status
 else
 texts = ' ۵︙لا يوجد حساب بهاذا المعرف'
@@ -6375,11 +6375,11 @@ database:srem(bot_id..'Muted:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n ۵︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n ۵︙تم الغاء كتمه'
+status  = '\n *۵︙تم الغاء كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n ۵︙العضو » '..userid..''
-status  = '\n ۵︙تم الغاء كتمه'
+status  = '\n *۵︙تم الغاء كتمه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -6573,7 +6573,7 @@ function start_function(extra, result, success)
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n » ︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'BOBBW')..')'
-status  = '\n » ︙تم الغاء تقيد'
+status  = '\n *۵︙تم الغاء تقيد*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -6596,7 +6596,7 @@ function start_function(extra, result, success)
 if result.id_ then
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 usertext = '\n » ︙العضو » ['..result.title_..'](t.me/'..(username or 'BOBBW')..')'
-status  = '\n » ︙تم الغاء تقيد'
+status  = '\n *۵︙تم الغاء تقيد*'
 texts = usertext..status
 else
 texts = ' » ︙لا يوجد حساب بهاذا المعرف'
@@ -6622,11 +6622,11 @@ https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?ch
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n » ︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'BOBBW')..')'
-status  = '\n » ︙تم الغاء تقيد'
+status  = '\n *۵︙تم الغاء تقيد*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n » ︙العضو » '..userid..''
-status  = '\n » ︙تم الغاء تقيد'
+status  = '\n *۵︙تم الغاء تقيد*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
