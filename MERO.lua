@@ -9882,7 +9882,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-  send(msg.chat_id_, msg.id_,'*۵︙ الايدي * ↵ `'..iduser..'`*\n*۵︙ المعرف * ↵ '..username..'*\n*۵︙ الرتبه * ↵ '..rtp..'*\n*۵︙ نوع الكشف ↵ بالمعرف*')
+send(msg.chat_id_, msg.id_,' *۵︙ الايدي * ↵ `'..iduser..'`*\n ۵︙ المعرف * ↵ '..username..'*\n ۵︙ الرتبه * ↵ '..rtp..'*\n ۵︙ نوع الكشف ↵ بالمعرف*')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'⌯┆ المعرف غير صحيح ')
