@@ -1092,12 +1092,12 @@ return false
 end
 if text=="اذاعه خاص 🗣️" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
+send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء ↫ { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
 return false
 end 
 if text=="اذاعه 👥" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
 database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
+send(msg.chat_id_, msg.id_,"📥¦ ارسل لي سواء ↫ { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
 return false
 end  
 if text=="اذاعه بالتثبيت 📣" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
@@ -1366,7 +1366,7 @@ for k,v in pairs(list) do
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى >>{"..#list.."} مشترك في البوت ")     
+send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى ↫{"..#list.."} مشترك في البوت ")     
 database:del(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 
@@ -1399,7 +1399,7 @@ for k,v in pairs(list) do
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى >>{"..#list.."} مجموعه في البوت ")     
+send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى ↫{"..#list.."} مجموعه في البوت ")     
 database:del(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end
 
@@ -1419,7 +1419,7 @@ message_ids_ = {[0] = msg.id_},
 disable_notification_ = 0,
 from_background_ = 1},function(a,t) end,nil) 
 end   
-send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى >>{"..#list.."} مجموعات في البوت ")     
+send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى ↫{"..#list.."} مجموعات في البوت ")     
 database:del(bot_id.."Send:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end 
 end
@@ -1439,7 +1439,7 @@ message_ids_ = {[0] = msg.id_},
 disable_notification_ = 0,
 from_background_ = 1},function(a,t) end,nil) 
 end   
-send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى >>{"..#list.."} مشترك في البوت ")     
+send(msg.chat_id_, msg.id_,"⋄︙ تمت الاذاعه الى ↫{"..#list.."} مشترك في البوت ")     
 database:del(bot_id.."Send:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 end 
 end
@@ -2098,7 +2098,7 @@ return false
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not SudoBot(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+send(msg.chat_id_, msg.id_,'⋄︙ عدد اعضاء المجموعه قليله يرجى جمع ↫ {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2187,7 +2187,7 @@ return false
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = getChatId(msg.chat_id_).ID }, function(arg,data)  
 if tonumber(data.member_count_) < tonumber(database:get(bot_id..'Num:Add:Bot') or 0) and not SudoBot(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ عدد اعضاء المجموعه قليله يرجى جمع >> {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
+send(msg.chat_id_, msg.id_,'⋄︙ عدد اعضاء المجموعه قليله يرجى جمع ↫ {'..(database:get(bot_id..'Num:Add:Bot') or 0)..'} عضو')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -2247,7 +2247,7 @@ end
 return false
 end
 database:set(bot_id..'Num:Add:Bot',Num) 
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  >> {'..Num..'} عضو')
+send(msg.chat_id_, msg.id_,'⋄︙ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ↫ {'..Num..'} عضو')
 end
 if text == 'تحديث السورس' and SudoBot(msg) then    
 dofile('MERO.lua')  
@@ -2368,9 +2368,9 @@ for k,v in pairs(list) do
 Cmds = database:get(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..':'..v)
 print(Cmds)
 if Cmds then 
-t = t..""..k..">> ("..v..") ↫ {"..Cmds.."}\n"
+t = t..""..k.."↫ ("..v..") ↫ {"..Cmds.."}\n"
 else
-t = t..""..k..">> ("..v..") \n"
+t = t..""..k.."↫ ("..v..") \n"
 end
 end
 if #list == 0 then
@@ -7761,7 +7761,7 @@ end
 if (c - x) == 0 then
 send(msg.chat_id_, msg.id_, "📌¦ لا توجد بوتات في المجموعه")
 else
-local t = '📮¦ عدد البوتات هنا >> {'..c..'}\n📬¦ عدد البوتات التي هي ادمن >> {'..x..'}\n🔖¦ تم طرد >> {'..(c - x)..'} من البوتات'
+local t = '📮¦ عدد البوتات هنا ↫ {'..c..'}\n📬¦ عدد البوتات التي هي ادمن ↫ {'..x..'}\n🔖¦ تم طرد ↫ {'..(c - x)..'} من البوتات'
 send(msg.chat_id_, msg.id_,t) 
 end 
 end,nil)  
@@ -7792,14 +7792,14 @@ elseif result.members_[i].status_.ID == "ChatMemberStatusEditor" then
 t = t + 1
 tr = ' {★}'
 end
-text = text..">> [@"..ta.username_..']'..tr.."\n"
+text = text.."↫ [@"..ta.username_..']'..tr.."\n"
 if #admins == 0 then
 send(msg.chat_id_, msg.id_, "⋄︙لا توجد بوتات في المجموعه")
 return false 
 end
 if #admins == i then 
-local a = '\n━━━━━━━━━━━━━\n⋄︙ عدد البوتات التي هنا >> {'..n..'} بوت\n'
-local f = '⋄︙عدد البوتات التي هي ادمن >> {'..t..'}\n⋄︙ ملاحضه علامة ال (✯) تعني ان البوت ادمن \n⋄︙'
+local a = '\n━━━━━━━━━━━━━\n⋄︙ عدد البوتات التي هنا ↫ {'..n..'} بوت\n'
+local f = '⋄︙عدد البوتات التي هي ادمن ↫ {'..t..'}\n⋄︙ ملاحضه علامة ال (✯) تعني ان البوت ادمن \n⋄︙'
 send(msg.chat_id_, msg.id_, text..a..f)
 end
 end,nil)
@@ -8795,7 +8795,7 @@ end
 return false
 end
 database:setex(bot_id.."Send:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
+send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء ↫ { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
 return false
 end 
 if text=="اذاعه" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
@@ -8813,7 +8813,7 @@ end
 return false
 end
 database:setex(bot_id.."Send:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
+send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء ↫ { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
 return false
 end  
 if text=="اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
@@ -8831,7 +8831,7 @@ end
 return false
 end
 database:setex(bot_id.."Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_, 600, true) 
-send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء >> { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
+send(msg.chat_id_, msg.id_,"⋄︙ ارسل لي سواء ↫ { ملصق, متحركه, صوره, رساله }\n⋄︙ للخروج ارسل الغاء ") 
 return false
 end  
 
@@ -9021,7 +9021,7 @@ db = 'ملف 📁'
 elseif database:get(bot_id.."Add:Rd:Sudo:Audio"..v) then
 db = 'اغنيه 🎵'
 end
-text = text..""..k.." >> ("..v..") ↫ {"..db.."}\n"
+text = text..""..k.." ↫ ("..v..") ↫ {"..db.."}\n"
 end
 if #list == 0 then
 text = "⋄︙لا يوجد ردود للمطور"
@@ -9207,7 +9207,7 @@ db = 'ملف 📁'
 elseif database:get(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_) then
 db = 'اغنيه 🎵'
 end
-text = text..""..k..">> ("..v..") ↫ {"..db.."}\n"
+text = text..""..k.."↫ ("..v..") ↫ {"..db.."}\n"
 end
 if #list == 0 then
 text = "⋄︙لا يوجد ردود للمدير"
