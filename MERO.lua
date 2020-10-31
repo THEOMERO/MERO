@@ -7400,11 +7400,11 @@ return false
 end
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
 if link then                              
-send(msg.chat_id_,msg.id_,'*⋄︙ 𝙜𝙧𝙤𝙪𝙥 𝙡𝙞𝙣𝙠 ..↧ \n⋄︙✄╌╌╌╌╌╌╌╌╌╌╌/n ['..link..']')                          
+send(msg.chat_id_,msg.id_,'⋄︙ 𝙜𝙧𝙤𝙪𝙥 𝙡𝙞𝙣𝙠 ..↧ \n⋄︙✄╌╌╌╌╌╌╌╌╌╌╌\n ['..link..']')                          
 else                
 local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_))
 if linkgpp.ok == true then 
-linkgp = '- 𝙻𝙸𝙽𝙺  𝙶𝚁𝚄𝙿  : \n⋄︙ ['..linkgpp.result..']'
+linkgp = '⋄︙ 𝙜𝙧𝙤𝙪𝙥 𝙡𝙞𝙣𝙠 ..↧ \n⋄︙✄╌╌╌╌╌╌╌╌╌╌╌\n ['..linkgpp.result..']'
 else
 linkgp = '⋄︙لا يوجد رابط ارسل ضع رابط'
 end  
