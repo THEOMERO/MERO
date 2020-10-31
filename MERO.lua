@@ -5122,8 +5122,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم تنزيله من المميزين* '
+usertext = '\n*⋄︙ العضو *↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ الايدي *↫ `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المميزين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5144,7 +5144,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
 status  = '\n*⋄︙ تم تنزيله من المميزين*'
 texts = usertext..status
 else
@@ -7166,7 +7166,7 @@ lock_self = 'بالتقييد 🔏'
 elseif database:get(bot_id.."lock:Unsupported"..msg.chat_id_) == "ktm" then 
 lock_self = 'بالكتم 🔇'    
 elseif database:get(bot_id.."lock:Unsupported"..msg.chat_id_) == "kick" then 
-lock_self = 'بالطرد ??'    
+lock_self = 'بالطرد 🚷'    
 else
 lock_self = '✘'    
 end
