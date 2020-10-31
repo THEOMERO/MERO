@@ -6787,7 +6787,7 @@ return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم تنزيله من الاشراف* '
+status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم رفعه مشرف* '
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
 end,nil)
@@ -6807,8 +6807,8 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-usertext = '\n⋄︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n⋄︙ تم رفعه مشرف '
+usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم رفعه مشرف* '
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
@@ -6826,8 +6826,8 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n⋄︙ الايدي » `'..result.sender_user_id_..'`\n⋄︙ تم تنزيله ادمن من الكروب'
+usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم تنزيله من الاشراف* '
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 end,nil)
@@ -6847,8 +6847,8 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-usertext = '\n⋄︙ العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n⋄︙ تم تنزيله ادمن من الكروب'
+usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم تنزيله من الاشراف* '
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
