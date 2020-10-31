@@ -5038,8 +5038,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم ترقيته ↫ مميز* '
+usertext = '\n*⋄︙ العضو *↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+local  statuss  = '\n*⋄︙ الايدي *↫ `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ مميز* '
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5068,8 +5068,8 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n*⋄︙ تم ترقيته مميز *'
+usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+local  statuss  = '\n*⋄︙ تم ترقيته ↫ مميز* '
 texts = usertext..statuss
 else
 texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
@@ -7166,7 +7166,7 @@ lock_self = 'بالتقييد 🔏'
 elseif database:get(bot_id.."lock:Unsupported"..msg.chat_id_) == "ktm" then 
 lock_self = 'بالكتم 🔇'    
 elseif database:get(bot_id.."lock:Unsupported"..msg.chat_id_) == "kick" then 
-lock_self = 'بالطرد 🚷'    
+lock_self = 'بالطرد ??'    
 else
 lock_self = '✘'    
 end
