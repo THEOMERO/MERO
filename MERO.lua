@@ -5038,8 +5038,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ العضو *↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-local  statuss  = '\n*⋄︙ الايدي *↫ `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ مميز* '
+usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+local  statuss  = '\n⋄︙ تم ترقيته ↫ مميز\n⋄︙ الايدي » `'..result.sender_user_id_..'`')
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5068,8 +5068,8 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-local  statuss  = '\n*⋄︙ تم ترقيته ↫ مميز* '
+usertext = '\n ⋄︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+local  statuss  = '\n ⋄︙تم ترقيته مميز'
 texts = usertext..statuss
 else
 texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
@@ -5122,8 +5122,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ العضو *↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي *↫ `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المميزين*'
+usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n ⋄︙تم تنزيله من المميزين'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5144,8 +5144,8 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n*⋄︙ تم تنزيله من المميزين*'
+usertext = '\n ⋄︙العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+status  = '\n ⋄︙تم تنزيله من المميزين'
 texts = usertext..status
 else
 texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
@@ -6786,8 +6786,8 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم ترقيته ↫ مشرف* '
+usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم رفعه مشرف* '
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
 end,nil)
@@ -6807,8 +6807,8 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n*⋄︙ تم ترقيته مشرف *'
+usertext = '\n*⋄︙العضو ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+status  = '\n*⋄︙ تم رفعه مشرف *'
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
@@ -11101,7 +11101,7 @@ name = string.gsub(name,'✨','💫💫💫💫💫✨💫💫💫💫')
 name = string.gsub(name,'⛈','🌨🌨🌨🌨🌨⛈🌨🌨🌨🌨')
 name = string.gsub(name,'🌥','⛅️⛅️⛅️⛅️⛅️⛅️🌥⛅️⛅️⛅️⛅️')
 name = string.gsub(name,'⛄️','☃☃☃☃☃☃⛄️☃☃☃☃')
-name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍??👩‍??👩‍🔬??‍🔬')
+name = string.gsub(name,'👨‍🔬','👩‍🔬👩‍??👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👩‍🔬👨‍🔬👩‍🔬👩‍🔬??‍🔬')
 name = string.gsub(name,'??‍💻','👩‍💻👩‍💻👩‍‍💻👩‍‍💻👩‍💻👨‍💻👩‍💻👩‍💻👩‍💻')
 name = string.gsub(name,'👨‍🔧','👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👩‍🔧👨‍🔧👩‍🔧')
 name = string.gsub(name,'??‍🍳','👨‍🍳👨‍🍳👨‍🍳👨‍🍳👨‍🍳👩‍🍳👨‍🍳👨‍🍳👨‍🍳')
