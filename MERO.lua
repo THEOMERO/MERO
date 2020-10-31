@@ -2735,7 +2735,7 @@ end,nil)
 end
 if text == 'قفل المتحركه' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
 database:set(bot_id.."lock:Animation"..msg.chat_id_,'del')  
-tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
+usertext = '\n*⋄︙ العضو ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
 send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'MERO170')..') \n*⋄︙ تم قفـل ↫ المتحركه*\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 end,nil)   
 elseif text == 'قفل المتحركه بالتقييد' and Mod(msg) and msg.reply_to_message_id_ == 0 then 
@@ -6826,8 +6826,8 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n⋄︙ العضو ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n⋄︙ الايدي ↫ `'..result.sender_user_id_..'`\n⋄︙ تم تنزيله ادمن من الكروب'
+usertext = '\n*⋄︙ العضو ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n*⋄︙ تم تنزيله من الاشراف*\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 end,nil)
