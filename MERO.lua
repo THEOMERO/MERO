@@ -5145,7 +5145,7 @@ function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
 usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-local  statuss  = '\n*⋄︙ تم تنزيله من المميزين*'
+local  statuss  = '\n*⋄︙ تم تنزيله من المميزين* '
 texts = usertext..status
 else
 texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
@@ -5170,7 +5170,7 @@ database:srem(bot_id..'Special:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n ⋄︙لعضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n ⋄︙تم تنزيله من المميزين'
+status  = '\n *⋄︙تم تنزيله من المميزين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n ⋄︙العضو » '..userid..''
