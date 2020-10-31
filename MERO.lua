@@ -6808,7 +6808,7 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n*⋄︙  تم رفعه مشرف *'
+status  = '\n*⋄︙ تم رفعه مشرف *'
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
@@ -6848,7 +6848,7 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 usertext = '\n*⋄︙ العضو *↫ ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n*⋄︙  تم تنزيله من الاشراف *'
+status  = '\n*⋄︙ تم تنزيله من الاشراف *'
 texts = usertext..status
 send(msg.chat_id_, msg.id_, texts)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
