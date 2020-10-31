@@ -6826,8 +6826,8 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ العضو * ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
-status  = '\n*⋄︙ الايدي * ↫ '..result.sender_user_id_..'\n*⋄︙ تم تنزيله من الاشراف* '
+usertext = '\n⋄︙ العضو ↫ ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
+status  = '\n⋄︙ الايدي ↫ '..result.sender_user_id_..'\n⋄︙ تم تنزيله من الاشراف'
 send(msg.chat_id_, msg.id_, usertext..status)
 https.request("https://api.telegram.org/bot"..token.."/promoteChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 end,nil)
