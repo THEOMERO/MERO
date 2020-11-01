@@ -2106,7 +2106,7 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,chat)
 if database:sismember(bot_id..'Chek:Groups',msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'⋄︙ المجموعه تم تفعيلها من قبل')
 else
-sendText(msg.chat_id_,'\n⋄︙ بواسطه ← ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n⋄︙ تم تفعيل المجموعه {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
+sendText(msg.chat_id_,'\n*⋄︙ بواسطه ←* ['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..')\n*⋄︙ تم تفعيل المجموعه* {'..chat.title_..'}',msg.id_/2097152/0.5,'md')
 database:sadd(bot_id..'Chek:Groups',msg.chat_id_)
 local Name = '['..result.first_name_..'](tg://user?id='..result.id_..')'
 local NameChat = chat.title_
@@ -7252,7 +7252,7 @@ local text =
 '\n━───────•───────━'..
 '\n⋄︙ علامة ال {✓} تعني مفعل'..
 '\n⋄︙ علامة ال {✘} تعني معطل'..
-'\nء━───────•───────━'..
+'\n━───────•───────━'..
 ' }\n'..'- الروابط ↫ { '..lock_links..
 ' }\n'..'- المعرفات ↫ { '..lock_user..
 ' }\n'..'- التاك ↫ { '..lock_hash..
@@ -7263,7 +7263,7 @@ local text =
 ' }\n'..'- الماركدون ↫ { '..lock_mark..
 ' }\n'..'- التعديل ↫ { '..lock_edit..
 ' }\n'..'- تعديل الميديا ↫ { '..lock_edit_med..
-' }\n━───────•───────━'..
+'\n━───────•───────━'..
 ' }\n'..'- الكلايش ↫ { '..lock_spam..
 ' }\n'..'- الكيبورد ↫ { '..lock_inlin..
 ' }\n'..'- الاغاني ↫ { '..lock_vico..
@@ -7272,7 +7272,7 @@ local text =
 ' }\n'..'- الدردشه ↫ { '..lock_text..
 ' }\n'..'- الفيديو ↫ { '..lock_ved..
 ' }\n'..'- الصور ↫ { '..lock_photo..
-' }\n━───────•───────━'..
+'\n━───────•───────━'..
 ' }\n'..'- الصوت ↫ { '..lock_muse..
 ' }\n'..'- الملصقات ↫ { '..lock_ste..
 ' }\n'..'- الجهات ↫ { '..lock_phon..
@@ -7283,7 +7283,7 @@ local text =
 ' }\n'..'- التكرار ↫ { '..flood..
 ' }\n'..'- الترحيب ↫ { '..welcome..
 ' }\n'..'- عدد التكرار ↫ { '..NUM_MSG_MAX..
-' }\n━───────•───────━'..
+'\n━───────•───────━'..
 '\n⋄︙ علامة ال {✓} تعني مفعل'..
 '\n⋄︙ علامة ال {✘} تعني معطل'..
 '\n━───────•───────━'..
