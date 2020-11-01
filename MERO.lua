@@ -9165,8 +9165,8 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-if text == ("مسح ردود المدير") and Constructor(msg) then
-local list = database:smembers(bot_id..'List:Constructor'..msg.chat_id_..'')
+if text == ("مسح ردود المدير") and BasicConstructor(msg) then
+local list = database:smembers(bot_id..'ListBasicConstructor'..msg.chat_id_..'')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..v..msg.chat_id_)   
