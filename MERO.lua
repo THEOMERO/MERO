@@ -3411,11 +3411,11 @@ end
 ------------------------------------------------------------------------
 if text == ("مسح المطورين") and SudoBot(msg) then
 database:del(bot_id..'Sudo:User')
-send(msg.chat_id_, msg.id_, "\n⋄︙ تم مسح قائمة المطورين  ")
+send(msg.chat_id_, msg.id_, "\n*⋄︙ تم مسح قائمة المطورين*  ")
 end
 if text == ("المطورين") and SudoBot(msg) then
 local list = database:smembers(bot_id..'Sudo:User')
-t = "\n⋄︙ قائمة مطورين البوت \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n*⋄︙ قائمة مطورين البوت* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -3425,7 +3425,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد مطورين"
+t = "*⋄︙لا يوجد مطورين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -3608,8 +3608,8 @@ return false
 end
 database:sadd(bot_id..'Mamez:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..') '
-status  = '\n⋄︙ الايدي » '..result.sender_user_id_..' \n تم ترقيته مميز عام في البوت'
+usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..') '
+status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..' \n*⋄︙ تم ترقيته مميز عام في البوت*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -3634,8 +3634,8 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Mamez:User', result.id_)
-usertext = '\n⋄︙ العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n تم ترقيته مميز عام في البوت'
+usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+status  = '\n*⋄︙ تم ترقيته مميز عام في البوت*'
 texts = usertext..status
 else
 texts = '⋄︙لا يوجد حساب بهاذا المعرف'
@@ -3682,8 +3682,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mamez:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..') '
-status  = '\n⋄︙ الايدي » '..result.sender_user_id_..' \n تم تنزيله من المميز العام'
+usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..') '
+status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..' \n*⋄︙ تم تنزيله من المميز العام*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -3704,8 +3704,8 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Mamez:User', result.id_)
-usertext = '\n⋄︙ العضو » ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
-status  = '\n تم تنزيله من المميز العام'
+usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
+status  = '\n*⋄︙ تم تنزيله من المميز العام*'
 texts = usertext..status
 else
 texts = '⋄︙لا يوجد حساب بهاذا المعرف'
@@ -3889,13 +3889,13 @@ end
 ---------------------------
 if text == ("مسح النواب") and BasicConstructor(msg) then
 database:del(bot_id..'Biasic:Constructor'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, '\n⋄︙ تم مسح قائمه نائب المالك')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ تم مسح قائمه نائب المالك*')
 return false
 end
 
 if text == 'قائمه النواب' and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'Biasic:Constructor'..msg.chat_id_)
-t = "\n⋄︙ قائمة نواب المالك \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n*⋄︙ قائمة نواب المالك* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -3905,7 +3905,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد نواب المالك "
+t = "*⋄︙لا يوجد نواب المالك* "
 end
 send(msg.chat_id_, msg.id_, t)
 return false
@@ -4058,13 +4058,13 @@ end
 ---------------------------
 if text == ("مسح الاساسين") and Sudo(msg) then
 database:del(bot_id..'Basic:Constructor'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, '\n ⋄︙ تم مسح المنشئين الاساسين')
+send(msg.chat_id_, msg.id_, '\n *⋄︙ تم مسح المنشئين الاساسين*')
 return false
 end
 
 if text == 'المنشئين الاساسين' and Sudo(msg) then
 local list = database:smembers(bot_id..'Basic:Constructor'..msg.chat_id_)
-t = "\n ⋄︙ قائمة المنشئين الاساسين \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙ قائمة المنشئين الاساسين* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4074,7 +4074,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙ لا يوجد منشئين اساسين"
+t = " *⋄︙ لا يوجد منشئين اساسين*"
 end
 send(msg.chat_id_, msg.id_, t)
 return false
@@ -4082,7 +4082,7 @@ end
 
 if text == 'تاك للاساسين' or text == ("منشن الاساسين") and Sudo(msg) then
 local list = database:smembers(bot_id..'Basic:Constructor'..msg.chat_id_)
-t = "\n⋄︙ وينكم تعالو ينادوكم بالكروب \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n*⋄︙ وينكم تعالو ينادوكم بالكروب* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4092,7 +4092,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد منشئين اساسيين"
+t = "*⋄︙لا يوجد منشئين اساسيين*"
 end
 send(msg.chat_id_, msg.id_, t)
 return false
@@ -4245,12 +4245,12 @@ end
 ------------------------------------------------------------------------
 if text == 'مسح المنشئين' and BasicConstructor(msg) then
 database:del(bot_id..'Constructor'..msg.chat_id_)
-texts = '⋄︙تم مسح المنشئين '
+texts = '*⋄︙تم مسح المنشئين* '
 send(msg.chat_id_, msg.id_, texts)
 end
 if text == ("تاك للمنشئين") or text == ("منشن المنشئين") then
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n⋄︙ وينكم تعالو ينادوكم بالكروب \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n*⋄︙ وينكم تعالو ينادوكم بالكروب* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4260,13 +4260,13 @@ t = t..""..k.."- {"..v.."}\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد منشئين"
+t = "*⋄︙لا يوجد منشئين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("المنشئين") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n⋄︙ قائمة المنشئين \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n*⋄︙ قائمة المنشئين* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4276,7 +4276,7 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد منشئين"
+t = "*⋄︙لا يوجد منشئين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -4442,12 +4442,12 @@ end
 ------------------------------------------------------------------------
 if text == 'مسح المدراء' and Constructor(msg) then
 database:del(bot_id..'Manager'..msg.chat_id_)
-texts = ' ⋄︙تم مسح المدراء '
+texts = ' *⋄︙تم مسح المدراء *'
 send(msg.chat_id_, msg.id_, texts)
 end
 if text == ("المدراء") and Constructor(msg) then
 local list = database:smembers(bot_id..'Manager'..msg.chat_id_)
-t = "\n ⋄︙قائمة المدراء \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙قائمة المدراء* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4457,13 +4457,13 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد مدراء"
+t = " *⋄︙لا يوجد مدراء*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للمدراء") or text == ("صيح المدراء") then
 local list = database:smembers(bot_id..'Manager'..msg.chat_id_)
-t = "\n ⋄︙وينكم تعالو يريدوكم بكروب \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4473,7 +4473,7 @@ t = t..""..k.."- {"..v.."}\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد مدراء"
+t = " *⋄︙لا يوجد مدراء*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -4651,11 +4651,11 @@ end,nil)
 end
 if text == 'مسح الادمنيه' and Manager(msg) then
 database:del(bot_id..'Mod:User'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, ' ⋄︙تم مسح الادمنيه')
+send(msg.chat_id_, msg.id_, ' *⋄︙تم مسح الادمنيه*')
 end
 if text == ("الادمنيه") and Manager(msg) then
 local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
-t = "\n ⋄︙قائمة الادمنيه \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙قائمة الادمنيه* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4665,13 +4665,13 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد ادمنيه"
+t = " *⋄︙لا يوجد ادمنيه*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للادمنيه") or text == ("صيح الادمنيه") then
 local list = database:smembers(bot_id..'Mod:User'..msg.chat_id_)
-t = "\n ⋄︙وينكم تعالو يريدوكم بكروب \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4681,7 +4681,7 @@ t = t..""..k.."- {"..v.."}\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد ادمنيه"
+t = " *⋄︙لا يوجد ادمنيه*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -4987,11 +4987,11 @@ end
 ------------------------------------------------------------------------
 if text == 'مسح المميزين' and Mod(msg) then
 database:del(bot_id..'Special:User'..msg.chat_id_)
-send(msg.chat_id_, msg.id_, ' ⋄︙تم مسح المميزين')
+send(msg.chat_id_, msg.id_, ' *⋄︙تم مسح المميزين*')
 end
 if text == ("المميزين") and Mod(msg) then
 local list = database:smembers(bot_id..'Special:User'..msg.chat_id_)
-t = "\n ⋄︙قائمة مميزين الكروب \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙قائمة مميزين الكروب* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5001,13 +5001,13 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد مميزين"
+t = " *⋄︙لا يوجد مميزين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للمميزين") or text == ("صيح المميزين") then
 local list = database:smembers(bot_id..'Special:User'..msg.chat_id_)
-t = "\n ⋄︙وينكم تعالو يريدوكم بكروب \n≪━━━━━━━━━━━━━≫\n"
+t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5017,7 +5017,7 @@ t = t..""..k.."- {"..v.."}\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙لا يوجد مميزين"
+t = " *⋄︙لا يوجد مميزين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -9405,56 +9405,56 @@ return false
 end
 if text == 'تفعيل المغادره' and SudoBot(msg) then   
 if database:get(bot_id..'Left:Bot'..msg.chat_id_) then
-Text = '⋄︙تم تفعيل مغادرة البوت'
+Text = '*⋄︙تم تفعيل مغادرة البوت*'
 database:del(bot_id..'Left:Bot'..msg.chat_id_)  
 else
-Text = '⋄︙بالتاكيد تم تفعيل مغادرة البوت'
+Text = '*⋄︙بالتاكيد تم تفعيل مغادرة البوت*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل المغادره' and SudoBot(msg) then  
 if not database:get(bot_id..'Left:Bot'..msg.chat_id_) then
-Text = '⋄︙تم تعطيل مغادرة البوت'
+Text = '*⋄︙تم تعطيل مغادرة البوت*'
 database:set(bot_id..'Left:Bot'..msg.chat_id_,true)   
 else
-Text = '⋄︙بالتاكيد تم تعطيل مغادرة البوت'
+Text = '*⋄︙بالتاكيد تم تعطيل مغادرة البوت*'
 end
 send(msg.chat_id_, msg.id_, Text) 
 end
 
 if text == 'تفعيل ردود المدير' and Manager(msg) then   
 if database:get(bot_id..'Reply:Manager'..msg.chat_id_) then
-Text = '⋄︙تم تفعيل ردود المدير'
+Text = '*⋄︙تم تفعيل ردود المدير*'
 database:del(bot_id..'Reply:Manager'..msg.chat_id_)  
 else
-Text = '⋄︙تم تفعيل ردود المدير'
+Text = '*⋄︙تم تفعيل ردود المدير*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل ردود المدير' and Manager(msg) then  
 if not database:get(bot_id..'Reply:Manager'..msg.chat_id_) then
 database:set(bot_id..'Reply:Manager'..msg.chat_id_,true)  
-Text = '\n⋄︙ تم تعطيل ردود المدير' 
+Text = '\n*⋄︙ تم تعطيل ردود المدير*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل ردود المدير'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل ردود المدير*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل ردود المطور' and Manager(msg) then   
 if database:get(bot_id..'Reply:Sudo'..msg.chat_id_) then
 database:del(bot_id..'Reply:Sudo'..msg.chat_id_)  
-Text = '\n⋄︙ تم تفعيل ردود المطور' 
+Text = '\n*⋄︙ تم تفعيل ردود المطور*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل ردود المطور'
+Text = '\n*⋄︙ بالتاكيد تم تفعيل ردود المطور*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل ردود المطور' and Manager(msg) then  
 if not database:get(bot_id..'Reply:Sudo'..msg.chat_id_) then
 database:set(bot_id..'Reply:Sudo'..msg.chat_id_,true)   
-Text = '\n⋄︙ تم تعطيل ردود المطور' 
+Text = '\n*⋄︙ تم تعطيل ردود المطور*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل ردود المطور'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل ردود المطور*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -9462,72 +9462,72 @@ end
 if text == 'تفعيل الايدي' and Manager(msg) then   
 if database:get(bot_id..'Bot:Id'..msg.chat_id_)  then
 database:del(bot_id..'Bot:Id'..msg.chat_id_) 
-Text = '\n⋄︙ تم تفعيل الايدي' 
+Text = '\n*⋄︙ تم تفعيل الايدي*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل الايدي'
+Text = '\n*⋄︙ بالتاكيد تم تفعيل الايدي*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل الايدي' and Manager(msg) then  
 if not database:get(bot_id..'Bot:Id'..msg.chat_id_)  then
 database:set(bot_id..'Bot:Id'..msg.chat_id_,true) 
-Text = '\n⋄︙تم تعطيل الايدي' 
+Text = '\n*⋄︙تم تعطيل الايدي*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل الايدي'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل الايدي*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل الايدي بالصوره' and Manager(msg) then   
 if database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:del(bot_id..'Bot:Id:Photo'..msg.chat_id_) 
-Text = '\n⋄︙ تم تفعيل الايدي بالصور ' 
+Text = '\n*⋄︙ تم تفعيل الايدي بالصور* ' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل الايدي بالصوره '
+Text = '\n*⋄︙ بالتاكيد تم تفعيل الايدي بالصوره* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل الايدي بالصوره' and Manager(msg) then  
 if not database:get(bot_id..'Bot:Id:Photo'..msg.chat_id_)  then
 database:set(bot_id..'Bot:Id:Photo'..msg.chat_id_,true) 
-Text = '\n⋄︙ تم تعطيل الايدي بالصوره' 
+Text = '\n*⋄︙ تم تعطيل الايدي بالصوره*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل الايدي بالصوره'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل الايدي بالصوره*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل الحظر' and Constructor(msg) then   
 if database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:del(bot_id..'Lock:kick'..msg.chat_id_) 
-Text = '\n⋄︙ تم تفعيل الحظر ' 
+Text = '\n*⋄︙ تم تفعيل الحظر* ' 
 else
-Text = '\n⋄︙  بالتاكيد تم تفعيل الحظر '
+Text = '\n*⋄︙  بالتاكيد تم تفعيل الحظر* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل الحظر' and Constructor(msg) then  
 if not database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:set(bot_id..'Lock:kick'..msg.chat_id_,true) 
-Text = '\n⋄︙ تم تعطيل الحظر' 
+Text = '\n*⋄︙ تم تعطيل الحظر*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل الحظر'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل الحظر*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل الرفع' and Constructor(msg) then   
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:del(bot_id..'Lock:Add:Bot'..msg.chat_id_) 
-Text = '\n⋄︙ تم تفعيل الرفع ' 
+Text = '\n*⋄︙ تم تفعيل الرفع* ' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل الرفع '
+Text = '\n*⋄︙ بالتاكيد تم تفعيل الرفع* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل الرفع' and Constructor(msg) then  
 if not database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:set(bot_id..'Lock:Add:Bot'..msg.chat_id_,true) 
-Text = '\n⋄︙تم تعطيل الرفع' 
+Text = '\n*⋄︙تم تعطيل الرفع*' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل الرفع'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل الرفع*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -9691,7 +9691,7 @@ local List = {
 ]]}
 local Text_Rand = List[math.random(#List)]
 database:set(bot_id.."KLISH:ID"..msg.chat_id_,Text_Rand)
-send(msg.chat_id_, msg.id_,'⋄︙تم تغير الايدي ارسل ايدي لرؤيته')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تغير الايدي ارسل ايدي لرؤيته*')
 end
 if text == ("ايدي") and msg.reply_to_message_id_ == 0 and not database:get(bot_id..'Bot:Id'..msg.chat_id_) then     
 if AddChannel(msg.sender_user_id_) == false then
@@ -9966,7 +9966,7 @@ if text == 'منو ضافني' then
 if not database:get(bot_id..'Added:Me'..msg.chat_id_) then
 tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,da) 
 if da and da.status_.ID == "ChatMemberStatusCreator" then
-send(msg.chat_id_, msg.id_,'⋄︙ انت منشئ المجموعه ') 
+send(msg.chat_id_, msg.id_,'*⋄︙ انت منشئ المجموعه* ') 
 return false
 end
 local Added_Me = database:get(bot_id.."Who:Added:Me"..msg.chat_id_..':'..msg.sender_user_id_)
@@ -9987,55 +9987,55 @@ end
 
 if text == 'تفعيل ضافني' and Manager(msg) then   
 if database:get(bot_id..'Added:Me'..msg.chat_id_) then
-Text = '⋄︙تم تفعيل امر منو ضافني'
+Text = '*⋄︙تم تفعيل امر منو ضافني*'
 database:del(bot_id..'Added:Me'..msg.chat_id_)  
 else
-Text = '⋄︙بالتاكيد تم تفعيل امر منو ضافني'
+Text = '*⋄︙بالتاكيد تم تفعيل امر منو ضافني*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل ضافني' and Manager(msg) then  
 if not database:get(bot_id..'Added:Me'..msg.chat_id_) then
 database:set(bot_id..'Added:Me'..msg.chat_id_,true)  
-Text = '\n⋄︙ تم تعطيل امر منو ضافني'
+Text = '\n*⋄︙ تم تعطيل امر منو ضافني*'
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل امر منو ضافني'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل امر منو ضافني*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل صيح' and Manager(msg) then   
 if database:get(bot_id..'Seh:User'..msg.chat_id_) then
-Text = '⋄︙تم تفعيل امر صيح'
+Text = '*⋄︙تم تفعيل امر صيح*'
 database:del(bot_id..'Seh:User'..msg.chat_id_)  
 else
-Text = '⋄︙بالتاكيد تم تفعيل امر صيح'
+Text = '*⋄︙بالتاكيد تم تفعيل امر صيح*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل صيح' and Manager(msg) then  
 if not database:get(bot_id..'Seh:User'..msg.chat_id_) then
 database:set(bot_id..'Seh:User'..msg.chat_id_,true)  
-Text = '\n⋄︙ تم تعطيل امر صيح'
+Text = '\n*⋄︙ تم تعطيل امر صيح*'
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل امر صيح'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل امر صيح*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل اطردني' and Manager(msg) then   
 if database:get(bot_id..'Cick:Me'..msg.chat_id_) then
-Text = '⋄︙تم تفعيل امر اطردني'
+Text = '*⋄︙تم تفعيل امر اطردني*'
 database:del(bot_id..'Cick:Me'..msg.chat_id_)  
 else
-Text = '⋄︙بالتاكيد تم تفعيل امر اطردني'
+Text = '*⋄︙بالتاكيد تم تفعيل امر اطردني*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل اطردني' and Manager(msg) then  
 if not database:get(bot_id..'Cick:Me'..msg.chat_id_) then
 database:set(bot_id..'Cick:Me'..msg.chat_id_,true)  
-Text = '\n⋄︙ تم تعطيل امر اطردني'
+Text = '\n*⋄︙ تم تعطيل امر اطردني*'
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل امر اطردني'
+Text = '\n*⋄︙ بالتاكيد تم تعطيل امر اطردني*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -10163,11 +10163,11 @@ end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == "مسح سحكاتي" or text == "حذف سحكاتي" then  
-send(msg.chat_id_, msg.id_,'⋄︙تم مسح سحكاتك'  )  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح سحكاتك*'  )  
 database:del(bot_id..'edits'..msg.chat_id_..msg.sender_user_id_)
 end
 if text == "مسح جهاتي" or text == "حذف جهاتي" then  
-send(msg.chat_id_, msg.id_,'⋄︙تم مسح جهاتك'  )  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح جهاتك*'  )  
 database:del(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_)
 end
 if text == 'جهاتي' or text == 'شكد ضفت' then
@@ -10182,7 +10182,7 @@ return false
 end
 local Num = tonumber(database:get(bot_id..'Add:Contact'..msg.chat_id_..':'..msg.sender_user_id_) or 0) 
 if Num == 0 then 
-Text = '⋄︙لم تقم بأضافه احد'
+Text = '*⋄︙لم تقم بأضافه احد*'
 else
 Text = '⋄︙عدد جهاتك *» { '..Num..' } *'
 end
@@ -10659,7 +10659,7 @@ end
 end
 if text == ''..(database:get(bot_id..'Random:Sm'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Sma'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Sma'..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ سمايل , سمايلات }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ سمايل , سمايلات }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:Sma'..msg.chat_id_,true)
@@ -10727,7 +10727,7 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Klam:Speed'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Speed:Tr'..msg.chat_id_) then
 if not database:get(bot_id..'Speed:Tr'..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ الاسرع , ترتيب }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ الاسرع , ترتيب }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Speed:Tr'..msg.chat_id_,true)
@@ -10841,7 +10841,7 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Maany'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Maany'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Maany'..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ معاني }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ معاني }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:Maany'..msg.chat_id_,true)
@@ -10923,7 +10923,7 @@ end
 if text == ''..(database:get(bot_id..':Set:English'..msg.chat_id_) or '')..'' then 
 if not database:get(bot_id..'Set:English:Bot'..msg.chat_id_) then 
 database:del(bot_id..':Set:English'..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'⋄︙ الف مبروك لقد فزت \n⋄︙ للعب مره اخره ارسل »{ `انكليزي` }')
+send(msg.chat_id_, msg.id_,'*⋄︙ الف مبروك لقد فزت* \n*⋄︙ للعب مره اخره ارسل »{ `انكليزي` }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:English:Bot'..msg.chat_id_,true)
@@ -10976,7 +10976,7 @@ end
 ------------------------------------------------------------------------
 if text == ''..(database:get(bot_id..'Set:Aks:Game'..msg.chat_id_) or '')..'' and not database:get(bot_id..'Set:Aks'..msg.chat_id_) then
 if not database:get(bot_id..'Set:Aks'..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ العكس }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ العكس }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:Aks'..msg.chat_id_,true)
@@ -11029,16 +11029,16 @@ if database:get(bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 6 then
-send(msg.chat_id_, msg.id_,"📬┋ عذرا لا يوجد سواء { 6 } اختيارات فقط ارسل اختيارك مره اخرى\n")
+send(msg.chat_id_, msg.id_,"⋄︙ عذرا لا يوجد سواء { 6 } اختيارات فقط ارسل اختيارك مره اخرى\n")
 return false  end 
 local GETNUM = database:get(bot_id.."Games:Bat"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
 database:del(bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
-send(msg.chat_id_, msg.id_,'⋄︙مبروك فزت وطلعت المحيبس بل ايد رقم { '..NUM..' }\n🎊┋ لقد حصلت على { 3 }من نقاط يمكنك استبدالهن برسائل ')
+send(msg.chat_id_, msg.id_,'⋄︙مبروك فزت وطلعت المحيبس بل ايد رقم { '..NUM..' }\n⋄︙ لقد حصلت على { 3 }من نقاط يمكنك استبدالهن برسائل ')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_,3)  
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
 database:del(bot_id.."SET:GAME" .. msg.chat_id_ .. "" .. msg.sender_user_id_)   
-send(msg.chat_id_, msg.id_,'⋄︙للاسف لقد خسرت \n📬┋ المحيبس بل ايد رقم { '..GETNUM..' }\n💥┋ حاول مره اخرى للعثور على المحيبس')
+send(msg.chat_id_, msg.id_,'*⋄︙للاسف لقد خسرت* \n*⋄︙ المحيبس بل ايد رقم { '..GETNUM..' }\n*⋄︙ حاول مره اخرى للعثور على المحيبس*')
 end
 end
 end
@@ -11119,7 +11119,7 @@ end
 if text == ''..(database:get(bot_id..':Set:Moktlf'..msg.chat_id_) or '')..'' then 
 if not database:get(bot_id..'Set:Moktlf:Bot'..msg.chat_id_) then 
 database:del(bot_id..':Set:Moktlf'..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ المختلف }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ المختلف }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:Moktlf:Bot'..msg.chat_id_,true)
@@ -11168,7 +11168,7 @@ end
 if text == ''..(database:get(bot_id..'Set:Amth'..msg.chat_id_) or '')..'' then 
 if not database:get(bot_id..'Set:Amth:Bot'..msg.chat_id_) then 
 database:del(bot_id..'Set:Amth'..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'⋄︙الف مبروك لقد فزت \n⋄︙للعب مره اخره ارسل »{ امثله }')
+send(msg.chat_id_, msg.id_,'*⋄︙الف مبروك لقد فزت* \n*⋄︙للعب مره اخره ارسل »{ امثله }*')
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
 database:set(bot_id..'Set:Amth:Bot'..msg.chat_id_,true)
@@ -11176,38 +11176,38 @@ end
 if text == 'تعطيل الالعاب' and Manager(msg) then   
 if database:get(bot_id..'Lock:Games'..msg.chat_id_)  then
 database:del(bot_id..'Lock:Games'..msg.chat_id_) 
-Text = '\n⋄︙تم تعطيل الالعاب' 
+Text = '\n*⋄︙تم تعطيل الالعاب*' 
 else
-Text = '\n⋄︙بالتاكيد تم تعطيل الالعاب'
+Text = '\n*⋄︙بالتاكيد تم تعطيل الالعاب*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل الالعاب' and Manager(msg) then  
 if not database:get(bot_id..'Lock:Games'..msg.chat_id_)  then
 database:set(bot_id..'Lock:Games'..msg.chat_id_,true) 
-Text = '\n⋄︙تم تفعيل الالعاب' 
+Text = '\n*⋄︙تم تفعيل الالعاب*' 
 else
-Text = '\n⋄︙بالتاكيد تم تفعيل الالعاب'
+Text = '\n*⋄︙بالتاكيد تم تفعيل الالعاب*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'الالعاب' or text == 'اللعبه' and database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 Text_Games = [[
-۩- قائمه الالعاب لديك ↓
+*۩- قائمه الالعاب لديك ↓*
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ 
-۩- لعبة المختلف ← المختلف
-۩- لعبه الاسرع ← الاسرع
-۩- لعبة العكس ← العكس
-۩- لعبة حزوره ← حزوره
-۩- لعبه الارقام ← رياضيات
-۩- لعبه ترجمه ← انكليزي
-۩- لعبة سمايل ← سمايل
-۩- لعبة معاني ← معاني
-۩- لعبة امثله ← امثله
-۩- لعبة تخمين ← خمن
-۩- لعبة بات ← بات
+*۩- لعبة المختلف ← المختلف*
+*۩- لعبه الاسرع ← الاسرع*
+*۩- لعبة العكس ← العكس*
+*۩- لعبة حزوره ← حزوره*
+*۩- لعبه الارقام ← رياضيات*
+*۩- لعبه ترجمه ← انكليزي*
+*۩- لعبة سمايل ← سمايل*
+*۩- لعبة معاني ← معاني*
+*۩- لعبة امثله ← امثله*
+*۩- لعبة تخمين ← خمن*
+*۩- لعبة بات ← بات*
 ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
-𓅛│CH » @MERO170 ࿐
+𝙘𝙝↬ [𝙨𝙤𝙪𝙧𝙘𝙚](http://t.me/MERO170)
 ]]
 send(msg.chat_id_, msg.id_,Text_Games) 
 end
