@@ -9177,12 +9177,12 @@ database:del(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_)
 database:del(bot_id..'List:Manager'..msg.chat_id_)
 end
-send(msg.chat_id_, msg.id_," *⋄︙تم مسح ردود المدير*")
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح ردود المدير*')
 end
 
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
-text = " *⋄︙قائمه ردود المدير* \n*≪━━━━━━━━━━━━━≫*\n"
+text =  *⋄︙قائمه ردود المدير* \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_) then
 db = 'متحركه'
@@ -9204,7 +9204,7 @@ end
 text = text..""..k..">> ("..v..") » {"..db.."}\n"
 end
 if #list == 0 then
-text = " *⋄︙لا يوجد ردود للمدير*"
+text = '*⋄︙لا يوجد ردود للمدير*'
 end
 send(msg.chat_id_, msg.id_,'['..text..']')
 end
@@ -9252,13 +9252,13 @@ photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 database:set(bot_id.."Add:Rd:Manager:Photo"..test..msg.chat_id_, photo_in_group)  
 end
-send(msg.chat_id_, msg.id_,' ⋄︙تم حفظ الرد')
+send(msg.chat_id_, msg.id_,'*⋄︙تم حفظ الرد*')
 return false  
 end  
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_) == 'true' then
-send(msg.chat_id_, msg.id_,' ⋄︙ارسل الرد الذي تريد اضافته')
+send(msg.chat_id_, msg.id_,'*⋄︙ارسل الرد الذي تريد اضافته*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true1')
 database:set(bot_id..'Text:Manager'..msg.sender_user_id_..':'..msg.chat_id_, text)
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
@@ -9274,7 +9274,7 @@ return false end
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_..'') == 'true2' then
-send(msg.chat_id_, msg.id_,' ⋄︙تم ازالة الرد ')
+send(msg.chat_id_, msg.id_,'*⋄︙تم ازالة الرد*')
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_)     
@@ -9298,7 +9298,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-send(msg.chat_id_, msg.id_,' *⋄︙ارسل الكلمه التي تريد اضافتها*')
+send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد اضافتها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
@@ -9312,7 +9312,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-send(msg.chat_id_, msg.id_,' *⋄︙ارسل الكلمه التي تريد حذفها*')
+send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد حذفها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true2')
 return false 
 end
