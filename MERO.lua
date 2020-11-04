@@ -2301,18 +2301,17 @@ return false
 end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
-'☬┋Welcome To Source mero . 
-      -------------------------------------  
-⋄︙ | [𝐌𝐄𝐑𝐎 T𝐄Δ𝐌 ※](http://t.me/MERO170)
-      --------------------------------
-⋄︙ | [𝐋𝐍𝐅𝐎𝐑𝐌𝐀𝐓𝐈𝐎𝐍 𝐌𝐄𝐑𝐎](http://t.me/MERO_01)
-      --------------------------------
-⋄︙ | [D𝐄𝐕𝐄𝐋𝐎𝐏𝐄𝐑](http://t.me/MERO170)
-      --------------------------------
-⋄︙ | [T𝐖𝐒T𝐄𝐀𝐌.](http://t.me/OMER45Bot)
-     --------------------------------
-     --------------------------------
-     [THE BEST SOURCE ON TELEGRAM](http://t.me/MERO170)
+'┌─────── 𝐌𝐑 ───────┐
+⋄︙*𝘸𝘦𝘭𝘤𝘰𝘮𝘦 𝘵𝘰 𝘴𝘰𝘶𝘳𝘤𝘦 𝘮𝘦𝘳𝘰*
+    ┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+⋄︙[𝘮𝘦𝘳𝘰 𝘵𝘦𝘢𝘮](http://t.me/MERO170)
+    ┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+⋄︙[𝘪𝘯𝘧𝘰𝘳𝘮𝘢𝘵𝘪𝘰𝘯 𝘮𝘦𝘳𝘰](http://t.me/MERO_01)
+    ┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+⋄︙[𝘥𝘦𝘷𝘦𝘭𝘰𝘱𝘦𝘳](http://t.me/FEEEM)
+    ┈┈┈┈┈┈┈┈┈┈┈┈┈┈
+⋄︙[𝘵𝘸𝘴 𝘵𝘦𝘢𝘮](http://t.me/FEEEM)
+└─────── 𝐌𝐑 ───────┘
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -7382,20 +7381,20 @@ end
 if text == "تفعيل رابط" or text == 'تفعيل الرابط' then
 if Mod(msg) then  
 database:set(bot_id.."Link_Group:status"..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,"⋄︙تم تفعيل الرابط") 
+send(msg.chat_id_, msg.id_,"*⋄︙تم تفعيل الرابط*") 
 return false  
 end
 end
 if text == "تعطيل رابط" or text == 'تعطيل الرابط' then
 if Mod(msg) then  
 database:del(bot_id.."Link_Group:status"..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,"⋄︙تم تعطيل الرابط") 
+send(msg.chat_id_, msg.id_,"*⋄︙تم تعطيل الرابط*") 
 return false end
 end
 if text == "الرابط" then 
 local status_Link = database:get(bot_id.."Link_Group:status"..msg.chat_id_)
 if not status_Link then
-send(msg.chat_id_, msg.id_,"⋄︙ الرابط معطل") 
+send(msg.chat_id_, msg.id_,"*⋄︙ الرابط معطل*") 
 return false  
 end
 local link = database:get(bot_id.."Private:Group:Link"..msg.chat_id_)            
@@ -7406,7 +7405,7 @@ local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token.
 if linkgpp.ok == true then 
 linkgp = '⋄︙ 𝙜𝙧𝙤𝙪𝙥 𝙡𝙞𝙣𝙠 ..↧ \n✄╌╌╌╌╌╌╌╌╌╌╌\n ['..linkgpp.result..']'
 else
-linkgp = '⋄︙لا يوجد رابط ارسل ضع رابط'
+linkgp = '*⋄︙لا يوجد رابط ارسل ضع رابط*'
 end  
 send(msg.chat_id_, msg.id_,linkgp)              
 end            
@@ -7422,7 +7421,7 @@ send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت �
 end
 return false
 end
-send(msg.chat_id_,msg.id_,"⋄︙ تم مسح الرابط ")           
+send(msg.chat_id_,msg.id_,"*⋄︙ تم مسح الرابط* ")           
 database:del(bot_id.."Private:Group:Link"..msg.chat_id_) 
 return false      
 end
@@ -7469,7 +7468,7 @@ local GetWelcomeGroup = database:get(bot_id..'Get:Welcome:Group'..msg.chat_id_)
 if GetWelcomeGroup then 
 GetWelcome = GetWelcomeGroup
 else 
-GetWelcome = ' ⋄︙ لم يتم تعيين ترحيب للكروب'
+GetWelcome = ' *⋄︙ لم يتم تعيين ترحيب للكروب*'
 end 
 send(msg.chat_id_, msg.id_,'['..GetWelcome..']') 
 return false  
@@ -7485,7 +7484,7 @@ end
 return false
 end
 database:set(bot_id..'Chek:Welcome'..msg.chat_id_,true) 
-send(msg.chat_id_, msg.id_,' ⋄︙ تم تفعيل ترحيب الكروب') 
+send(msg.chat_id_, msg.id_,' *⋄︙ تم تفعيل ترحيب الكروب*') 
 return false  
 end
 if text == 'تعطيل الترحيب' and Mod(msg) then  
@@ -7499,13 +7498,13 @@ end
 return false
 end
 database:del(bot_id..'Chek:Welcome'..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,' ⋄︙ تم تعطيل ترحيب الكروب') 
+send(msg.chat_id_, msg.id_,' *⋄︙ تم تعطيل ترحيب الكروب*') 
 return false  
 end
 if text == 'مسح الترحيب' or text == 'حذف الترحيب' then 
 if Mod(msg) then
 database:del(bot_id..'Get:Welcome:Group'..msg.chat_id_) 
-send(msg.chat_id_, msg.id_,' ⋄︙ تم ازالة ترحيب الكروب') 
+send(msg.chat_id_, msg.id_,' *⋄︙ تم ازالة ترحيب الكروب*') 
 end
 end
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and Manager(msg)  then       
@@ -9178,12 +9177,12 @@ database:del(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_)
 database:del(bot_id..'List:Manager'..msg.chat_id_)
 end
-send(msg.chat_id_, msg.id_,"⋄︙تم مسح ردود المدير")
+send(msg.chat_id_, msg.id_,"*⋄︙تم مسح ردود المدير*")
 end
 
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
-text = "⋄︙قائمه ردود المدير \n━━━━━━━━━━━━━\n"
+text = "*⋄︙قائمه ردود المدير* \n*━━━━━━━━━━━━━*\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_) then
 db = 'متحركه 🎭'
@@ -9205,7 +9204,7 @@ end
 text = text..""..k.."↫ ("..v..") » {"..db.."}\n"
 end
 if #list == 0 then
-text = "⋄︙لا يوجد ردود للمدير"
+text = "*⋄︙لا يوجد ردود للمدير*"
 end
 send(msg.chat_id_, msg.id_,'['..text..']')
 end
@@ -9253,7 +9252,7 @@ photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 database:set(bot_id.."Add:Rd:Manager:Photo"..test..msg.chat_id_, photo_in_group)  
 end
-send(msg.chat_id_, msg.id_,'⋄︙تم حفظ الرد بنجاح')
+send(msg.chat_id_, msg.id_,'*⋄︙تم حفظ الرد بنجاح*')
 return false  
 end  
 end
@@ -9275,7 +9274,7 @@ return false end
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_..'') == 'true2' then
-send(msg.chat_id_, msg.id_,'⋄︙تم ازالة الرد ')
+send(msg.chat_id_, msg.id_,'*⋄︙تم ازالة الرد* ')
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_)     
@@ -9299,7 +9298,7 @@ send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت �
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'⋄︙ارسل الكلمه التي تريد اضافتها')
+send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد اضافتها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
@@ -9313,7 +9312,7 @@ send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت �
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'⋄︙ارسل الكلمه التي تريد حذفها')
+send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد حذفها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true2')
 return false 
 end
