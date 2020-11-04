@@ -2301,7 +2301,7 @@ return false
 end
 if text == 'السورس' or text == 'سورس' or text == 'يا سورس' then
 Text = [[
-'┌─────── 𝐌𝐑 ───────┐
+┌─────── 𝐌𝐑 ───────┐
 ⋄︙*𝘸𝘦𝘭𝘤𝘰𝘮𝘦 𝘵𝘰 𝘴𝘰𝘶𝘳𝘤𝘦 𝘮𝘦𝘳𝘰*
     ┈┈┈┈┈┈┈┈┈┈┈┈┈┈
 ⋄︙[𝘮𝘦𝘳𝘰 𝘵𝘦𝘢𝘮](http://t.me/MERO170)
@@ -5960,7 +5960,7 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'GLOBLA')..')'
+usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
 status  = '\n*⋄︙ تم حظره من المجموعه*'
 texts = usertext..status
 chat_kick(msg.chat_id_, result.id_)
@@ -6571,7 +6571,7 @@ end
 function start_function(extra, result, success)
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'BOBBW')..')'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
 status  = '\n *⋄︙تم الغاء تقيد*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
@@ -6594,7 +6594,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-usertext = '\n *⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'BOBBW')..')'
+usertext = '\n *⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'MERO170')..')'
 status  = '\n *⋄︙تم الغاء تقيد*'
 texts = usertext..status
 else
@@ -6620,7 +6620,7 @@ end
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..userid.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n » ︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'BOBBW')..')'
+usertext = '\n » ︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'MERO170')..')'
 status  = '\n » ︙تم الغاء تقيد'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
@@ -9164,8 +9164,8 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-if text == ("مسح ردود المدير") and BasicConstructor(msg) then
-local list = database:smembers(bot_id..'ListBasicConstructor'..msg.chat_id_..'')
+if text == ("مسح ردود المدير") and Manager(msg) then
+local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..v..msg.chat_id_)   
@@ -9177,34 +9177,34 @@ database:del(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_)
 database:del(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_)
 database:del(bot_id..'List:Manager'..msg.chat_id_)
 end
-send(msg.chat_id_, msg.id_,"*⋄︙تم مسح ردود المدير*")
+send(msg.chat_id_, msg.id_," *⋄︙تم مسح ردود المدير*")
 end
 
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
-text = "*⋄︙قائمه ردود المدير* \n*━━━━━━━━━━━━━*\n"
+text = " *⋄︙قائمه ردود المدير* \n*≪━━━━━━━━━━━━━≫*\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_) then
-db = 'متحركه 🎭'
+db = 'متحركه'
 elseif database:get(bot_id.."Add:Rd:Manager:Vico"..v..msg.chat_id_) then
-db = 'بصمه 📢'
+db = 'بصمه'
 elseif database:get(bot_id.."Add:Rd:Manager:Stekrs"..v..msg.chat_id_) then
-db = 'ملصق 🃏'
+db = 'ملصق'
 elseif database:get(bot_id.."Add:Rd:Manager:Text"..v..msg.chat_id_) then
-db = 'رساله ✉'
+db = 'رساله'
 elseif database:get(bot_id.."Add:Rd:Manager:Photo"..v..msg.chat_id_) then
-db = 'صوره 🎇'
+db = 'صوره'
 elseif database:get(bot_id.."Add:Rd:Manager:Video"..v..msg.chat_id_) then
-db = 'فيديو 📹'
+db = 'فيديو'
 elseif database:get(bot_id.."Add:Rd:Manager:File"..v..msg.chat_id_) then
-db = 'ملف 📁'
+db = 'ملف'
 elseif database:get(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_) then
-db = 'اغنيه 🎵'
+db = 'اغنيه'
 end
-text = text..""..k.."↫ ("..v..") » {"..db.."}\n"
+text = text..""..k..">> ("..v..") » {"..db.."}\n"
 end
 if #list == 0 then
-text = "*⋄︙لا يوجد ردود للمدير*"
+text = " *⋄︙لا يوجد ردود للمدير*"
 end
 send(msg.chat_id_, msg.id_,'['..text..']')
 end
@@ -9252,13 +9252,13 @@ photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 database:set(bot_id.."Add:Rd:Manager:Photo"..test..msg.chat_id_, photo_in_group)  
 end
-send(msg.chat_id_, msg.id_,'*⋄︙تم حفظ الرد بنجاح*')
+send(msg.chat_id_, msg.id_,' ⋄︙تم حفظ الرد')
 return false  
 end  
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_) == 'true' then
-send(msg.chat_id_, msg.id_,'⋄︙ ارسل الرد الذي تريده سواء كان {صوره,فيديو,متحركه,ملصق,بصمه,صوت}')
+send(msg.chat_id_, msg.id_,' ⋄︙ارسل الرد الذي تريد اضافته')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true1')
 database:set(bot_id..'Text:Manager'..msg.sender_user_id_..':'..msg.chat_id_, text)
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
@@ -9274,7 +9274,7 @@ return false end
 end
 if text and text:match("^(.*)$") then
 if database:get(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_..'') == 'true2' then
-send(msg.chat_id_, msg.id_,'*⋄︙تم ازالة الرد* ')
+send(msg.chat_id_, msg.id_,' ⋄︙تم ازالة الرد ')
 database:del(bot_id.."Add:Rd:Manager:Gif"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Vico"..text..msg.chat_id_)   
 database:del(bot_id.."Add:Rd:Manager:Stekrs"..text..msg.chat_id_)     
@@ -9294,11 +9294,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد اضافتها*')
+send(msg.chat_id_, msg.id_,' *⋄︙ارسل الكلمه التي تريد اضافتها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
@@ -9308,11 +9308,11 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'*⋄︙ارسل الكلمه التي تريد حذفها*')
+send(msg.chat_id_, msg.id_,' *⋄︙ارسل الكلمه التي تريد حذفها*')
 database:set(bot_id..'Set:Manager:rd'..msg.sender_user_id_..':'..msg.chat_id_,'true2')
 return false 
 end
@@ -11931,7 +11931,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,
 if data.username_ ~= false then
 send(msg.chat_id_,0,"⋄︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n⋄︙["..MEROAbot.."] \n") 
 else
-send(msg.chat_id_,0,"⋄︙العضو : {["..data.first_name_.."](T.ME/BOBBW)}\n⋄︙["..MEROAbot.."] \n") 
+send(msg.chat_id_,0,"⋄︙العضو : {["..data.first_name_.."](T.ME/MERO170)}\n⋄︙["..MEROAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
