@@ -9201,7 +9201,7 @@ db = 'ملف'
 elseif database:get(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_) then
 db = 'اغنيه'
 end
-text = text..""..k..">> ("..v..") » {"..db.."}\n"
+text = text..""..k.."↫ ("..v..") ↫ {"..db.."}\n"
 end
 if #list == 0 then
 text = " ⋄︙لا يوجد ردود للمدير"
@@ -10440,7 +10440,7 @@ end
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد منشئ الاساسي (.*)$") 
 database:set(bot_id.."BasicConstructor:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد المنشئ الاساسي الى » "..Teext)
+send(msg.chat_id_, msg.id_," ⋄︙تم تغير رد المنشئ الاساسي الى » "..Teext)
 end
 if text and text:match("^تغير رد المنشئ (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المنشئ (.*)$") 
