@@ -5995,7 +5995,7 @@ send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك حظر البوت*")
 return false 
 end
 if Can_or_NotCan(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك حظر ↫* '..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك حظر ↫* '..Rutba(userid,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6541,7 +6541,7 @@ send(msg.chat_id_, msg.id_, "⋄︙لا تسطيع تقييد البوت ")
 return false 
 end
 if Can_or_NotCan(userid, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, '\n⋄︙ عذرا لا تستطيع طرد او حظر او كتم او تقييد ( '..Rutba(userid,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك تقييد ↫* '..Rutba(userid,msg.chat_id_)..' ')
 else
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" ..userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
@@ -9540,7 +9540,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'* ۵︙ الايدي * ↫ `'..iduser..'`*\n ۵︙ المعرف * ↫ '..username..'*\n ۵︙ الرتبه * ↫ '..rtp..'*\n ۵︙ التعديلات * ↫ '..edit..'*\n ۵︙ النقاط * ↫ '..NUMPGAME..'*\n ۵︙ الجهات * ↫ '..Contact..'*\n ۵︙ الرسائل * ↫ '..Msguser..'')
+send(msg.chat_id_, msg.id_,'* ⋄︙ الايدي * ↫ `'..iduser..'`*\n ⋄︙ المعرف * ↫ '..username..'*\n ⋄︙ الرتبه * ↫ '..rtp..'*\n ⋄︙ التعديلات * ↫ '..edit..'*\n ⋄︙ النقاط * ↫ '..NUMPGAME..'*\n ⋄︙ الجهات * ↫ '..Contact..'*\n ⋄︙ الرسائل * ↫ '..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9566,7 +9566,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'* ۵︙ الايدي * ↫ `'..iduser..'`*\n ۵︙ المعرف * ↫ '..username..'*\n ۵︙ الرتبه * ↫ '..rtp..'*\n ۵︙ التعديلات * ↫ '..edit..'*\n ۵︙ النقاط * ↫ '..NUMPGAME..'*\n ۵︙ الجهات * ↫ '..Contact..'*\n ۵︙ الرسائل * ↫ '..Msguser..'')
+send(msg.chat_id_, msg.id_,'* ⋄︙ الايدي * ↫ `'..iduser..'`*\n ⋄︙ المعرف * ↫ '..username..'*\n ⋄︙ الرتبه * ↫ '..rtp..'*\n ⋄︙ التعديلات * ↫ '..edit..'*\n ⋄︙ النقاط * ↫ '..NUMPGAME..'*\n ⋄︙ الجهات * ↫ '..Contact..'*\n ⋄︙ الرسائل * ↫ '..Msguser..'')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,' ⋄︙ المعرف غير صحيح ')
@@ -9862,7 +9862,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extr
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,' * ۵︙المستخدم *↵ '..username..'*\n ۵︙ الايدي *↵ `'..iduser..'`*\n ۵︙ الرتبه *↵ '..rtp..' *\n ۵︙ نوع الكشف ↵ بالرد*')
+send(msg.chat_id_, msg.id_,' * ⋄︙المستخدم *↵ '..username..'*\n ⋄︙ الايدي *↵ `'..iduser..'`*\n ⋄︙ الرتبه *↵ '..rtp..' *\n ⋄︙ نوع الكشف ↵ بالرد*')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9876,7 +9876,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'*۵︙ الايدي * ↵ `'..iduser..'`*\n ۵︙ المعرف * ↵ '..username..'*\n ۵︙ الرتبه * ↵ '..rtp..'*\n ۵︙ نوع الكشف ↵ بالمعرف* ')
+send(msg.chat_id_, msg.id_,'*⋄︙ الايدي * ↵ `'..iduser..'`*\n ⋄︙ المعرف * ↵ '..username..'*\n ⋄︙ الرتبه * ↵ '..rtp..'*\n ⋄︙ نوع الكشف ↵ بالمعرف* ')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'⋄︙ المعرف غير صحيح ')
