@@ -9891,11 +9891,11 @@ return false
 end 
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(arg,data) 
-local taha = '⋄︙عدد الادمنيه : '..data.administrator_count_..
-'\n\n⋄︙عدد المطرودين : '..data.kicked_count_..
-'\n\n⋄︙ عدد الاعضاء : '..data.member_count_..
-'\n\n⋄︙ عدد رسائل الكروب : '..(msg.id_/2097152/0.5)..
-'\n\n⋄︙ اسم المجموعه : ['..ta.title_..']'
+local taha = '*⋄︙عدد الادمنيه :* '..data.administrator_count_..
+'\n\n*⋄︙عدد المطرودين :* '..data.kicked_count_..
+'\n\n*⋄︙ عدد الاعضاء :* '..data.member_count_..
+'\n\n*⋄︙ عدد رسائل الكروب :* '..(msg.id_/2097152/0.5)..
+'\n\n*⋄︙ اسم المجموعه :* ['..ta.title_..']'
 send(msg.chat_id_, msg.id_, taha) 
 end,nil)
 end,nil)
