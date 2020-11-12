@@ -9540,7 +9540,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي↫* `'..iduser..'`\n*⋄︙المعرف↫* '..username..'\n*⋄︙الرتبه↫* '..rtp..'\n⋄︙التعديلات↫* '..edit..'\n*⋄︙النقاط↫* '..NUMPGAME..'\n*⋄︙الجهات↫* '..Contact..'\n*⋄︙الرسائل↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي↫* '..iduser..'\n⋄︙المعرف↫* '..username..'\n*⋄︙الرتبه↫* '..rtp..'\n*⋄︙التعديلات↫*'..edit..'\n*⋄︙النقاط↫*'..NUMPGAME..'\n*⋄︙الجهات↫*'..Contact..'\n*⋄︙الرسائل↫*'..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9566,7 +9566,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.id_) or
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي↫* `'..iduser..'`\n*⋄︙المعرف↫* '..username..'\n*⋄︙الرتبه↫* '..rtp..'\n*⋄︙التعديلات↫* '..edit..'\n*⋄︙النقاط↫* '..NUMPGAME..'\n*⋄︙ الجهات↫* '..Contact..'\n*⋄︙الرسائل↫* '..Msguser..'')
+ send(msg.chat_id_, msg.id_,'*⋄︙الايدي↫*'..iduser..'\n⋄︙المعرف↫* '..username..'\n*⋄︙الرتبه↫*'..rtp..'\n*⋄︙التعديلات↫*'..edit..'\n*⋄︙النقاط↫*'..NUMPGAME..'\n*⋄︙الجهات↫*'..Contact..'\n*⋄︙الرسائل↫*'..Msguser..'')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,' ⋄︙ المعرف غير صحيح ')
