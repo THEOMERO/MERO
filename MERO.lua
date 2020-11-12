@@ -4857,11 +4857,11 @@ return false
 end
 function start_function(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكنك طرد البوت ")
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع طرد* '..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك طرد↫ * '..username..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
