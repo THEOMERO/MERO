@@ -9540,7 +9540,7 @@ local edit = tonumber(database:get(bot_id..'edits'..msg.chat_id_..result.sender_
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n ⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Contact..'*\n⋄︙الرسائل ↫* '..Msguser..'')
+send(msg.chat_id_, msg.id_,'*⋄︙الايدي ↫* `'..iduser..'`*\n⋄︙المعرف ↫* '..username..'*\n⋄︙الرتبه ↫* '..rtp..'*\n⋄︙التعديلات ↫* '..edit..'*\n⋄︙النقاط ↫* '..NUMPGAME..'*\n⋄︙الجهات ↫* '..Contact..'*\n⋄︙الرسائل ↫* '..Msguser..'')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9833,7 +9833,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(extr
 local rtp = Rutba(result.sender_user_id_,msg.chat_id_)
 local username = ' ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 local iduser = result.sender_user_id_
-send(msg.chat_id_, msg.id_,'*- العضو » (*'..username..'*)\n⋄︙ الرتبه » ('..rtp..')*\n')
+send(msg.chat_id_, msg.id_,'*⋄︙المستخدم ↫ *'..username..'*\n⋄︙الرتبه ↫ '..rtp..'*\n')
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
@@ -9847,7 +9847,7 @@ tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(extra,data)
 local rtp = Rutba(result.id_,msg.chat_id_)
 local username = ('[@'..data.username_..']' or 'لا يوجد')
 local iduser = result.id_
-send(msg.chat_id_, msg.id_,'*- العضو » (*'..username..'*)\n⋄︙ الرتبه » ('..rtp..')*\n')
+send(msg.chat_id_, msg.id_,'*⋄︙المستخدم ↫ *'..username..'*\n⋄︙الرتبه ↫ '..rtp..'*\n')
 end,nil)
 else
 send(msg.chat_id_, msg.id_,'⋄︙ المعرف غير صحيح ')
@@ -9891,11 +9891,11 @@ return false
 end 
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(arg,data) 
-local taha = '⋄︙عدد الادمنيه : '..data.administrator_count_..
-'\n\n⋄︙عدد المطرودين : '..data.kicked_count_..
-'\n\n⋄︙ عدد الاعضاء : '..data.member_count_..
-'\n\n⋄︙ عدد رسائل الكروب : '..(msg.id_/2097152/0.5)..
-'\n\n⋄︙ اسم المجموعه : ['..ta.title_..']'
+local taha = '*⋄︙عدد الادمنيه :* '..data.administrator_count_..
+'\n\n*⋄︙عدد المطرودين :* '..data.kicked_count_..
+'\n\n*⋄︙ عدد الاعضاء :* '..data.member_count_..
+'\n\n*⋄︙ عدد رسائل الكروب :* '..(msg.id_/2097152/0.5)..
+'\n\n*⋄︙ اسم المجموعه :* ['..ta.title_..']'
 send(msg.chat_id_, msg.id_, taha) 
 end,nil)
 end,nil)
