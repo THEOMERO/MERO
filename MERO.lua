@@ -4902,11 +4902,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if tonumber(result.id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, "⋄︙لا تسطيع طرد البوت ")
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت* ")
 return false 
 end
 if Can_or_NotCan(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع طرد* ( '..Rutba(result.id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك طرد ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -5906,11 +5906,11 @@ return false
 end
 function start_function(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, "⋄︙لا تسطيع حظر البوت ")
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك حظر البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع حظر* ( '..Rutba(result.sender_user_id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك حظر ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -5944,7 +5944,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if Can_or_NotCan(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع حظر* ( '..Rutba(result.id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك حظر ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -6143,11 +6143,11 @@ return false
 end
 function start_function(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, " ⋄︙لا تسطيع كتم البوت ")
+send(msg.chat_id_, msg.id_, " *⋄︙لا يمكنك كتم البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n *⋄︙عذرا لا تستطيع كتم* ( '..Rutba(result.sender_user_id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك كتم ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 if msg.can_be_deleted_ == false then 
 send(msg.chat_id_, msg.id_,' ⋄︙البوت ليس ادمن يرجى ترقيتي !') 
@@ -6171,7 +6171,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك كتم ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 end
 return false
 end
@@ -6396,11 +6396,11 @@ return false
 end
 function start_function(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, "⋄︙لا تسطيع تقييد البوت ")
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك تقييد البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع تقييد* ( '..Rutba(result.sender_user_id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك تقييد ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
@@ -6428,7 +6428,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if tonumber(result.id_) == tonumber(bot_id) then  
-send(msg.chat_id_, msg.id_, "⋄︙لا تسطيع تقييد البوت ")
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك تقييد البوت* ")
 return false 
 end
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -6436,7 +6436,7 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 if Can_or_NotCan(result.id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا تستطيع تقييد* ( '..Rutba(result.id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك تقييد ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 return false 
 end      
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_)
