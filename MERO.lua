@@ -6186,7 +6186,7 @@ send(msg.chat_id_, msg.id_, " ⋄︙لا تسطيع كتم البوت ")
 return false 
 end
 if Can_or_NotCan(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n *⋄︙عذرا لا تستطيع كتم* ( '..Rutba(result.id_,msg.chat_id_)..' )')
+send(msg.chat_id_, msg.id_, '\n *⋄︙عذرا لايمكنك كتم ↫*  '..Rutba(result.id_,msg.chat_id_)..' ')
 else
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
@@ -6400,7 +6400,7 @@ send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك تقييد البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك تقييد ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك تقييد ↫ *'..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 https.request("https://api.telegram.org/bot"..token.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
