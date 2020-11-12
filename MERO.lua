@@ -4861,7 +4861,7 @@ send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت* ")
 return false 
 end
 if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك طرد↫ *['..string.sub(result.first_name_,0, 70)..'](tg://user?id='..result.id_..') ')
+send(msg.chat_id_, msg.id_, '\n*⋄︙ عذرا لا يمكنك طرد ↫ * ( '..Rutba(result.id_,msg.chat_id_)..' )')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -9893,9 +9893,9 @@ tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta)
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub('-100','')},function(arg,data) 
 local taha = '*⋄︙عدد الادمنيه :* '..data.administrator_count_..
 '\n\n*⋄︙عدد المطرودين :* '..data.kicked_count_..
-'\n\n*⋄︙ عدد الاعضاء :* '..data.member_count_..
-'\n\n*⋄︙ عدد رسائل الكروب :* '..(msg.id_/2097152/0.5)..
-'\n\n*⋄︙ اسم المجموعه :* ['..ta.title_..']'
+'\n\n*⋄︙عدد الاعضاء :* '..data.member_count_..
+'\n\n*⋄︙عدد رسائل الكروب :* '..(msg.id_/2097152/0.5)..
+'\n\n*⋄︙اسم المجموعه :* ['..ta.title_..']'
 send(msg.chat_id_, msg.id_, taha) 
 end,nil)
 end,nil)
