@@ -9812,12 +9812,12 @@ end
 if text == "اسمي"  then 
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
 if result.first_name_  then
-first_name = '⋄︙اسمك الاول ← {`'..(result.first_name_)..'`}'
+first_name = '⋄︙اسمك الاول ↫ `'..(result.first_name_)..'`'
 else
 first_name = ''
 end   
 if result.last_name_ then 
-last_name = '⋄︙اسمك الثاني ← {`'..result.last_name_..'`}' 
+last_name = '⋄︙اسمك الثاني ↫ `'..result.last_name_..'`' 
 else
 last_name = ''
 end      
