@@ -11402,11 +11402,11 @@ end
 end
 
 if text == 'تفعيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '🗳¦ تم تفعيل الردود')
+send(msg.chat_id_, msg.id_, '*⋄︙ تم تفعيل الردود*')
 database:del(bot_id..'lock:add'..msg.chat_id_)
 end
 if text == 'تعطيل الردود' and Manager(msg) then  
-send(msg.chat_id_, msg.id_, '📮¦ تم تعطيل الردود')
+send(msg.chat_id_, msg.id_, '*⋄︙ تم تعطيل الردود*')
 database:set(bot_id..'lock:add'..msg.chat_id_, true)
 end
 
