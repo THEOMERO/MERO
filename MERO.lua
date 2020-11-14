@@ -11332,10 +11332,6 @@ if text == "تعطيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل حساب العمر')
 database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"close")
 end
-if text == "تعطيل حساب العمر" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل حساب العمر')
-database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"close")
-end
 if text == "تفعيل حساب العمر" and Manager(msg) then
 send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل حساب العمر')
 database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"open")
