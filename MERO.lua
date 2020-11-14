@@ -9512,6 +9512,24 @@ Text = '\n*⋄︙ بالتاكيد تم تعطيل الحظر*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
+if text == 'تفعيل كشف الاعدادات' and Constructor(msg) then   
+if database:get(msg.sender_user_id_, msg.chat_id_)  then
+database:del(bot:lock_Settings'..msg.chat_id_) 
+Text = '\n*⋄︙ تم تفعيل الكشف* ' 
+else
+Text = '\n*⋄︙ بالتاكيد تم تفعيل الكشف* '
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل كشف الاعدادات' and Constructor(msg) then  
+if not database:get(msg.sender_user_id_, msg.chat_id_)  then
+database:set(bot:lock_Settings'..msg.chat_id_,true) 
+Text = '\n*⋄︙تم تعطيل الكشف*' 
+else
+Text = '\n*⋄︙ بالتاكيد تم تعطيل الكشف*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text == 'تفعيل الرفع' and Constructor(msg) then   
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:del(bot_id..'Lock:Add:Bot'..msg.chat_id_) 
