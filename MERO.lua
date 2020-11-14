@@ -11351,6 +11351,11 @@ t = v.."\n"
 end
 send(msg.chat_id_, msg.id_, t)
 end
+if text == ''تفعيل كشف الاعدادات'' then if Mod(msg)then
+database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"open")
+send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل كشف الاعدادات')
+return false  
+end
 if text == "تعطيل الافلام" and Mod(msg) then
 send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل الافلام')
 database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
