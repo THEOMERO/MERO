@@ -9182,7 +9182,7 @@ end
 
 if text == ("ردود المدير") and Manager(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
-text = " ⋄︙قائمه ردود المدير \n≪━━━━━━━━━━━━━≫\n"
+text = " *⋄︙قائمه ردود المدير* \n≪━━━━━━━━━━━━━≫\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_) then
 db = 'متحركه'
@@ -9201,10 +9201,10 @@ db = 'ملف'
 elseif database:get(bot_id.."Add:Rd:Manager:Audio"..v..msg.chat_id_) then
 db = 'اغنيه'
 end
-text = text..""..k..">> ("..v..") » {"..db.."}\n"
+text = text..""..k.."↬ ("..v..") » {"..db.."}\n"
 end
 if #list == 0 then
-text = " *⋄︙لا يوجد ردود للمدير*"
+text = " *⋄︙لا يوجد ردود للمدير* "
 end
 send(msg.chat_id_, msg.id_,'['..text..']')
 end
