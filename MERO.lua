@@ -10032,10 +10032,10 @@ send(msg.chat_id_, msg.id_,Text)
 end
 if text == 'تفعيل اطردني' and Manager(msg) then   
 if database:get(bot_id..'Cick:Me'..msg.chat_id_) then
-Text = '*⋄︙تم تفعيل امر اطردني*'
+Text = *⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'\n*⋄︙تم تفعيل ↫ اطردني*' )
 database:del(bot_id..'Cick:Me'..msg.chat_id_)  
 else
-Text = '*⋄︙بالتاكيد تم تفعيل امر اطردني*'
+Text = '*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'\n*⋄︙امر اطردني مفعل بالفعل*' )
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
