@@ -3046,19 +3046,19 @@ end,nil)
 end
 if text == 'قفل التكرار بالطرد' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'kick')  
-send(msg.chat_id_, msg.id_,' ⋄︙تم قفل التكرار بالطرد')
+send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙ تم قفـل ↫ التكرار بالطرد*\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 elseif text == 'قفل التكرار' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'del')  
-send(msg.chat_id_, msg.id_,' ⋄︙تم قفل التكرار')
+send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙ تم قفـل ↫ التكرار *\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 elseif text == 'قفل التكرار بالتقييد' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'keed')  
-send(msg.chat_id_, msg.id_,' ⋄︙تم قفل التكرار بالتقييد')
+send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙ تم قفـل ↫ التكرار بالتقييد*\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 elseif text == 'قفل التكرار بالكتم' and Mod(msg) then 
 database:hset(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood",'mute')  
-send(msg.chat_id_, msg.id_,' ⋄︙تم قفل التكرار بالكتم')
+send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙ تم قفـل ↫ التكرار بالكتم*\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 elseif text == 'فتح التكرار' and Mod(msg) then 
 database:hdel(bot_id.."flooding:settings:"..msg.chat_id_ ,"flood")  
-send(msg.chat_id_, msg.id_,' ⋄︙تم فتح التكرار')
+send(msg.chat_id_, msg.id_,'*⋄︙ بواسطه ↫*['..Rutba(msg.sender_user_id_,msg.chat_id_)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙ تم فتـح ↫ التكرار*\n*⋄︙ الايدي ↫* `'..msg.sender_user_id_..'`')
 end
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
