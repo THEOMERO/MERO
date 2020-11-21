@@ -3418,7 +3418,7 @@ t = "\n*⋄︙ قائمة مطورين البوت* \n⊶─────≺⋆≻
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -3584,7 +3584,7 @@ t = "\n*⋄︙قائمة المميزين عام  \n⊶─────≺⋆≻�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t.."┇"..k.." ↬ [@"..username.."]\n"
+t = t.."┇"..k.." ↬𖣸 @"..username.."\n"
 else
 end
 end
@@ -3898,7 +3898,7 @@ t = "\n*⋄︙ قائمة نواب المالك* \n⊶─────≺⋆≻�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4067,7 +4067,7 @@ t = "\n *⋄︙ قائمة المنشئين الاساسين* \n*⊶────
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4085,7 +4085,7 @@ t = "\n*⋄︙ وينكم تعالو ينادوكم بالكروب* \n*┉ ┉ �
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4132,7 +4132,7 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_,"⚠¦ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"⋄︙عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, result.id_)
@@ -4253,7 +4253,7 @@ t = "\n*⋄︙ وينكم تعالو ينادوكم بالكروب* \n⊶──�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- {[@"..username.."]}\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- {"..v.."}\n"
 end
@@ -4269,7 +4269,7 @@ t = "\n*⋄︙ قائمة المنشئين* \n⊶─────≺⋆≻──�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4450,7 +4450,7 @@ t = "\n *⋄︙قائمة المدراء* \n*⊶─────≺⋆≻──�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4466,7 +4466,7 @@ t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*⊶───�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- {[@"..username.."]}\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- {"..v.."}\n"
 end
@@ -4658,7 +4658,7 @@ t = "\n *⋄︙قائمة الادمنيه* \n*⊶─────≺⋆≻──
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -4674,7 +4674,7 @@ t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*⊶───�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- {[@"..username.."]}\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- {"..v.."}\n"
 end
@@ -4994,7 +4994,7 @@ t = "\n *⋄︙قائمة مميزين الكروب* \n*⊶─────≺⋆
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -5010,7 +5010,7 @@ t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*⊶───�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- {[@"..username.."]}\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- {"..v.."}\n"
 end
@@ -8907,9 +8907,9 @@ local list = MERO.members_
 for k, v in pairs(list) do
 x = x + 1
 if database:get(bot_id..'user:Name'..v.user_id_) then
-t = t..""..x.." ↬𖣸[@"..database:get(bot_id..'user:Name'..v.user_id_).."]\n"
+t = t..""..x.." ↬𖣸 [@"..database:get(bot_id..'user:Name'..v.user_id_).."]\n"
 else
-t = t..""..x.." ↬𖣸"..v.user_id_.."\n"
+t = t..""..x.." ↬𖣸 "..v.user_id_.."\n"
 end
 end
 send(msg.chat_id_,msg.id_,t)
