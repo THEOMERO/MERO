@@ -6120,7 +6120,7 @@ t = "\n *⋄︙قائمة المكتومين* \n*⊶─────≺⋆≻─�
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."- ([@"..username.."])\n"
+t = t..""..k.."↬𖣸 [@"..username.."])\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
