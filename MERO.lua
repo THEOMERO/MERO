@@ -1497,7 +1497,7 @@ else
 t = '\n• نورت حبي \n•  name \n• user' 
 end 
 t = t:gsub('name',result.first_name_) 
-t = t:gsub('user',(result.username_ or 'لا يوجد')) 
+t = t:gsub('user',('@'..result.username_ or 'لا يوجد')) 
 send(msg.chat_id_, msg.id_,t)
 end,nil) 
 end 
