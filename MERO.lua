@@ -9960,7 +9960,7 @@ send(msg.chat_id_, msg.id_,'⋄︙لا اسطيع صيح معرفات الكرو
 return false  
 end
 if result.id_ then
-send(msg.chat_id_, msg.id_,'⋄︙تعال حبي يصيحونك بل كروب [@'..username..']') 
+send(msg.chat_id_, msg.id_,'⋄︙تعال حبي يصيحونك بل كروب ['..username..']') 
 return false
 end
 end
