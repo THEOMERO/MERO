@@ -7778,7 +7778,7 @@ return false
 end
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID,filter_ = {ID = "ChannelMembersBots"},offset_ = 0,limit_ = 100 },function(extra,result,success)
 local admins = result.members_  
-text = "\n⋄︙ قائمة البوتات الموجوده \n━━━━━━━━━━━━━\n"
+text = "\n⋄︙ قائمة البوتات الموجوده \n⊶─────≺⋆≻─────⊷\n"
 local n = 0
 local t = 0
 for i=0 , #admins do 
@@ -7797,7 +7797,7 @@ send(msg.chat_id_, msg.id_, "⋄︙لا توجد بوتات في المجموع�
 return false 
 end
 if #admins == i then 
-local a = '\n━━━━━━━━━━━━━\n⋄︙ عدد البوتات التي هنا ↫ {'..n..'} بوت\n'
+local a = '\n⊶─────≺⋆≻─────⊷\n⋄︙ عدد البوتات التي هنا ↫ {'..n..'} بوت\n'
 local f = '⋄︙عدد البوتات التي هي ادمن ↫ {'..t..'}\n⋄︙ ملاحضه علامة ال (✯) تعني ان البوت ادمن \n⋄︙'
 send(msg.chat_id_, msg.id_, text..a..f)
 end
@@ -7886,7 +7886,7 @@ if #list == 0 then
 send(msg.chat_id_, msg.id_,'⋄︙ لا توجد صلاحيات مضافه')
 return false
 end
-t = "\n⋄︙ قائمة الصلاحيات المضافه \n━━━━━━━━━━━━━\n"
+t = "\n⋄︙ قائمة الصلاحيات المضافه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 var = database:get(bot_id.."Comd:New:rt:bot:"..v..msg.chat_id_)
 if var then
