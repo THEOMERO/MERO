@@ -5185,7 +5185,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم مسح جميع الشيوخ في الم
 end
 if text == ("تاك للشيوخ") and Mod(msg) then
 local list = database:smembers(bot_id..'Mote:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة شيوخ المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة شيوخ المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5254,7 +5254,7 @@ send(msg.chat_id_, msg.id_, '⋄︙ تم تنزيل جميع التوج بالم
 end
 if text == ("تاك للتوج") and Mod(msg) then
 local list = database:smembers(bot_id..'Sakl:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة التوج المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة التوج المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5324,7 +5324,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم تنزيل جميع كلاب المجم�
 end
 if text == ("تاك للكلاب") and Mod(msg) then
 local list = database:smembers(bot_id..'Motte:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة كلاب المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة كلاب المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5393,7 +5393,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم تنزيل جميع القرود بال�
 end
 if text == ("تاك للقرود") and Mod(msg) then
 local list = database:smembers(bot_id..'Motee:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة قرود المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة قرود المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5462,7 +5462,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم تنزيل جميع الدجاج بال�
 end
 if text == ("تاك للدجاج") and Mod(msg) then
 local list = database:smembers(bot_id..'Hors:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة الدجاج المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة الدجاج المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5531,7 +5531,7 @@ send(msg.chat_id_, msg.id_, '⋄︙ تم تنزيل جميع العروسات ب
 end
 if text == ("تاك للعروسات") and Mod(msg) then
 local list = database:smembers(bot_id..'Tele:User'..msg.chat_id_)
-t = "\n⋄︙ قائمه عروسات المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمه عروسات المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5600,7 +5600,7 @@ send(msg.chat_id_, msg.id_, ' تم مسح جميع الحاتات')
 end
 if text == ("تاك للحاتات") and Mod(msg) then
 local list = database:smembers(bot_id..'Mode:User'..msg.chat_id_)
-t = "\n⋄︙ قائمه حاتات المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمه حاتات المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5669,7 +5669,7 @@ send(msg.chat_id_, msg.id_, 'تم مسح جميع الحاتين')
 end
 if text == ("تاك للحاتين") and Mod(msg) then
 local list = database:smembers(bot_id..'Modde:User'..msg.chat_id_)
-t = "\n⋄︙ قائمه حاتين المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمه حاتين المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5738,7 +5738,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم تنزيل جميع زاحف بالمج�
 end
 if text == ("تاك لزواحف") and Mod(msg) then
 local list = database:smembers(bot_id..'Zahf:User'..msg.chat_id_)
-t = "\n⋄︙ قائمة الزواحف المجموعه \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمة الزواحف المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5807,7 +5807,7 @@ send(msg.chat_id_, msg.id_, '⋄︙تم تنزيل جميع لبكلبك ')
 end
 if text == ("تاك لبكلبي") and Mod(msg) then
 local list = database:smembers(bot_id..'Jred:User'..msg.chat_id_)
-t = "\n⋄︙ قائمه لبكلبي في المجموعه فديتهم \nء┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"
+t = "\n⋄︙ قائمه لبكلبي في المجموعه \n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -5876,7 +5876,7 @@ send(msg.chat_id_, msg.id_, '\n⋄︙تم مسح المحظورين')
 end
 if text == ("المحظورين") then
 local list = database:smembers(bot_id..'Ban:User'..msg.chat_id_)
-t = "\n*⋄︙ قائمة محظورين المجموعه* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
+t = "\n*⋄︙ قائمة محظورين المجموعه* \n*⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
