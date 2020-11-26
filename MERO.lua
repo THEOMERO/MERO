@@ -9100,7 +9100,7 @@ send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت �
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'⋄︙ ارسل الكلمه تريد اضافتها')
+send(msg.chat_id_, msg.id_,'*⋄︙ ارسل الكلمه تريد اضافتها*')
 database:set(bot_id..'Set:Rd'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
@@ -9114,7 +9114,7 @@ send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت �
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'⋄︙ ارسل الكلمه تريد حذفها')
+send(msg.chat_id_, msg.id_,'*⋄︙ ارسل الكلمه تريد حذفها*')
 database:set(bot_id..'Set:On'..msg.sender_user_id_..':'..msg.chat_id_,true)
 return false 
 end
