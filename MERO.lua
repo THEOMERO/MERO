@@ -8253,7 +8253,7 @@ end
 end
 DeleteMessage(msg.chat_id_,msgm2)
 end,nil)  
-send(msg.chat_id_, msg.id_,"⋄︙ تم تنظيف جميع الميديا")
+send(msg.chat_id_, msg.id_,"*⋄︙تم تنظيف جميع الميديا*")
 end
 if text == "امسح" and Manager(msg) then
 Msgs = {[0]=msg.id_}
@@ -8273,7 +8273,7 @@ end
 end
 DeleteMessage(msg.chat_id_,Msgs2)
 end,nil)  
-send(msg.chat_id_, msg.id_,'⋄︙ تم تنظيف جميع الرسائل المعدله')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تنظيف جميع الرسائل المعدله*')
 end
 
 if text == ""..(database:get(bot_id..'Name:Bot') or 'ميرو').."" then  
