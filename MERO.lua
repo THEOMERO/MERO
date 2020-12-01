@@ -8204,42 +8204,36 @@ end
 if text == 'تعطيل التنظيف' and BasicConstructor(msg) then   
 if database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
 database:del(bot_id..'Lock:delmsg'..msg.chat_id_) 
-Text = '\n*⋄︙ تم تعطيل التنظيف*' 
+Text = '\n*⋄︙تم تعطيل التنظيف*' 
 else
-Text = '\n*⋄︙ بالتاكيد تم تعطيل التنظيف*'
+Text = '\n*⋄︙بالتاكيد تم تعطيل التنظيف*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل التنظيف' and BasicConstructor(msg) then  
 if not database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
 database:set(bot_id..'Lock:delmsg'..msg.chat_id_,true) 
-Text = '\n*⋄︙ تم تفعيل التنظيف*' 
+Text = '\n*⋄︙تم تفعيل التنظيف*' 
 else
-Text = '\n*⋄︙ بالتاكيد تم تفعيل التنظيف*'
+Text = '\n*⋄︙بالتاكيد تم تفعيل التنظيف*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
-local num = tonumber(text:match('^تنظيف (%d+)$')) 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-if num > 100 then 
-send(msg.chat_id_, msg.id_,' ⋄︙تستطيع التنظيف ل100 رساله كحد اقصى')
+if text and text:match('^تنظيف (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
+if not database:get(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
+local Number = tonumber(text:match('^تنظيف (%d+)$')) 
+if Number > 1000 then 
+send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع تنضيف اكثر من *~ 1000* رساله') 
 return false  
 end  
-local msgm = msg.id_
-for i=1,tonumber(num) do
-DeleteMessage(msg.chat_id_, {[0] = msgm})
-msgm = msgm - 1048576
+local Message = msg.id_
+for i=1,tonumber(Number) do
+DeleteMessage(msg.chat_id_,{[0]=Message})
+Message = Message - 1048576
 end
-send(msg.chat_id_,msg.id_,' ⋄︙تم حذف {'..num..'}')  
+send(msg.chat_id_, msg.id_,'• تم تنظيف *~ '..Number..'* رساله .')  
+database:setex(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+end
 end
 if text == "امسح" and Manager(msg) then
 msgm = {[0]=msg.id_}
@@ -11356,7 +11350,7 @@ database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^احسب (.*)$") and database:get(bot_id.." amir:age_Bots"..msg.chat_id_) == "open" then
 local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://rudi-dev.tk/Amir3/Boyka.php?age='..URL.escape(Textage)..'')
+ge = https.request('https://rudi-dev.tk/Amir3/BOYKA.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
 i = 0
 for k,v in pairs(ag.ok) do
