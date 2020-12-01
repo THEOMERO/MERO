@@ -8201,6 +8201,24 @@ Text = '\n⋄︙ بالتاكيد تم تعطيل البوت الخدمي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
+if text == 'تعطيل التنظيف' and BasicConstructor(msg) then   
+if database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
+database:del(bot_id..'Lock:delmsg'..msg.chat_id_) 
+Text = '\n*⋄︙ تم تعطيل التنظيف*' 
+else
+Text = '\n*⋄︙ بالتاكيد تم تعطيل التنظيف*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل التنظيف' and BasicConstructor(msg) then  
+if not database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
+database:set(bot_id..'Lock:delmsg'..msg.chat_id_,true) 
+Text = '\n*⋄︙ تم تفعيل التنظيف*' 
+else
+Text = '\n*⋄︙ بالتاكيد تم تفعيل التنظيف*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
 local num = tonumber(text:match('^تنظيف (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
@@ -8223,7 +8241,7 @@ msgm = msgm - 1048576
 end
 send(msg.chat_id_,msg.id_,' ⋄︙تم حذف {'..num..'}')  
 end
-if text == "تنظيف الميديا" and Manager(msg) then
+if text == "امسح" and Manager(msg) then
 msgm = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -8243,7 +8261,7 @@ DeleteMessage(msg.chat_id_,msgm2)
 end,nil)  
 send(msg.chat_id_, msg.id_,"⋄︙ تم تنظيف جميع الميديا")
 end
-if text == "تنظيف التعديل" and Manager(msg) then
+if text == "امسح" and Manager(msg) then
 Msgs = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -9494,17 +9512,7 @@ Text = '\n*⋄︙ بالتاكيد تم تعطيل الايدي بالصوره*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل كشف الاعدادات' and is_admin(msg.sender_user_id_, msg.chat_id_) and ChCheck(msg) then   
-local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تفعيل كشف الاعدادات'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 14, string.len(msg.sender_user_id_))
-DevAbs:del(DevProx..'bot:lock_Settings'..msg.chat_id_) 
-end
-if text == 'تعطيل كشف الاعدادات' and is_admin(msg.sender_user_id_, msg.chat_id_) and ChCheck(msg) then  
-local ABS_PROX = '⌁︙اهلا عزيزي ↫ '..abs_rank(msg)..' \n⌁︙تم تعطيل كشف الاعدادات'
-absmoned(msg.chat_id_, msg.sender_user_id_, msg.id_, ABS_PROX, 14, string.len(msg.sender_user_id_))
-DevAbs:set(DevProx..'bot:lock_Settings'..msg.chat_id_,true)  
-end
-if text == 'تفعيل الحظر' and Constructor(msg) then   
+if text == 'تفعيل الحظر' and BasicConstructor(msg) then   
 if database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:del(bot_id..'Lock:kick'..msg.chat_id_) 
 Text = '\n*⋄︙ تم تفعيل الحظر* ' 
@@ -9513,7 +9521,7 @@ Text = '\n*⋄︙  بالتاكيد تم تفعيل الحظر* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الحظر' and Constructor(msg) then  
+if text == 'تعطيل الحظر' and BasicConstructor(msg) then  
 if not database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:set(bot_id..'Lock:kick'..msg.chat_id_,true) 
 Text = '\n*⋄︙ تم تعطيل الحظر*' 
@@ -9522,7 +9530,7 @@ Text = '\n*⋄︙ بالتاكيد تم تعطيل الحظر*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل الرفع' and Constructor(msg) then   
+if text == 'تفعيل الرفع' and BasicConstructor(msg) then   
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:del(bot_id..'Lock:Add:Bot'..msg.chat_id_) 
 Text = '\n*⋄︙ تم تفعيل الرفع* ' 
@@ -9531,7 +9539,7 @@ Text = '\n*⋄︙ بالتاكيد تم تفعيل الرفع* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل الرفع' and Constructor(msg) then  
+if text == 'تعطيل الرفع' and BasicConstructor(msg) then  
 if not database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 database:set(bot_id..'Lock:Add:Bot'..msg.chat_id_,true) 
 Text = '\n*⋄︙تم تعطيل الرفع*' 
@@ -11329,7 +11337,7 @@ database:set(bot_id.." amir:brj_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^برج (.*)$") and database:get(bot_id.." amir:brj_Bots"..msg.chat_id_) == "open" then
 local Textbrj = text:match("^برج (.*)$")
-gk = https.request('https://rudi-dev.tk/Amir2/Boyka.php?br='..URL.escape(Textbrj)..'')
+gk = https.request('https://mode-dev.tk/Api2/Modbr.php?br='..URL.escape(Textbrj)..'')
 br = JSON.decode(gk)
 i = 0
 for k,v in pairs(br.ok) do
