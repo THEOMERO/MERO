@@ -11302,11 +11302,11 @@ database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..iduserr,numadded)
 send(msg.chat_id_, msg.id_,  1, "📥┋ تم اضافة لهہ‌‏ {"..numadded..'} من النقاط', 1, 'md')  
 end
 if text == "تعطيل الزخرفه" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل الزخرفه')
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الزخرفه*')
 database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"close")
 end
 if text == "تفعيل الزخرفه" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل الزخرفه')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تفعيل الزخرفه*')
 database:set(bot_id.." MERO:zhrf_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^زخرفه (.*)$") and database:get(bot_id.." MERO:zhrf_Bots"..msg.chat_id_) == "open" then
@@ -11322,11 +11322,11 @@ end
 send(msg.chat_id_, msg.id_, t..'ٴ⌯━━━━━𝐌𝐑━━━━━⌯ٴ\n⋄︙اضغط على الاسم ليتم نسخه')
 end
 if text == "تعطيل الابراج" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل الابراج')
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الابراج*')
 database:set(bot_id.." amir:brj_Bots"..msg.chat_id_,"close")
 end
 if text == "تفعيل الابراج" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل الابراج')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تفعيل الابراج*')
 database:set(bot_id.." amir:brj_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^برج (.*)$") and database:get(bot_id.." amir:brj_Bots"..msg.chat_id_) == "open" then
@@ -11341,16 +11341,16 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تعطيل حساب العمر" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل حساب العمر')
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل حساب العمر*')
 database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"close")
 end
 if text == "تفعيل حساب العمر" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل حساب العمر')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تفعيل حساب العمر*')
 database:set(bot_id.." amir:age_Bots"..msg.chat_id_,"open")
 end
 if text and text:match("^احسب (.*)$") and database:get(bot_id.." amir:age_Bots"..msg.chat_id_) == "open" then
 local Textage = text:match("^احسب (.*)$")
-ge = https.request('https://rudi-dev.tk/Amir3/BOYKA.php?age='..URL.escape(Textage)..'')
+ge = https.request('https://mode-dev.tk/Api1/niggaapi.php?age='..URL.escape(Textage)..'')
 ag = JSON.decode(ge)
 i = 0
 for k,v in pairs(ag.ok) do
@@ -11360,11 +11360,11 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == "تعطيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_, '⋄︙ تم تعطيل الافلام')
+send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الافلام*')
 database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"close")
 end
 if text == "تفعيل الافلام" and Mod(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تفعيل الافلام')
+send(msg.chat_id_, msg.id_,'*⋄︙تم تفعيل الافلام*')
 database:set(bot_id.."AMIR:movie_bot"..msg.chat_id_,"open")
 end
 if text and text:match("^فلم (.*)$") and database:get(bot_id.."AMIR:movie_bot"..msg.chat_id_) == "open" then
