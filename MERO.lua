@@ -8201,29 +8201,29 @@ Text = '\n⋄︙بالتاكيد تم تعطيل البوت الخدمي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل التنظيف' and BasicConstructor(msg) then   
+if text == 'تعطيل المسح' and BasicConstructor(msg) then   
 if database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
 database:del(bot_id..'Lock:delmsg'..msg.chat_id_) 
-Text = '\n*⋄︙تم تعطيل التنظيف*' 
+Text = '\n*⋄︙تم تعطيل المسح*' 
 else
-Text = '\n*⋄︙بالتاكيد تم تعطيل التنظيف*'
+Text = '\n*⋄︙بالتاكيد تم تعطيل المسح*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تفعيل التنظيف' and BasicConstructor(msg) then  
+if text == 'تفعيل المسح' and BasicConstructor(msg) then  
 if not database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
 database:set(bot_id..'Lock:delmsg'..msg.chat_id_,true) 
-Text = '\n*⋄︙تم تفعيل التنظيف*' 
+Text = '\n*⋄︙تم تفعيل المسح*' 
 else
-Text = '\n*⋄︙بالتاكيد تم تفعيل التنظيف*'
+Text = '\n*⋄︙بالتاكيد تم تفعيل المسح*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^تنظيف (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
+if text and text:match('^مسح (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
 if not database:get(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
-local Number = tonumber(text:match('^تنظيف (%d+)$')) 
+local Number = tonumber(text:match('^مسح (%d+)$')) 
 if Number > 1000 then 
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع تنضيف اكثر من *~ 1000* رساله') 
+send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع مسح اكثر من *~ 1000* رساله') 
 return false  
 end  
 local Message = msg.id_
@@ -8231,7 +8231,7 @@ for i=1,tonumber(Number) do
 DeleteMessage(msg.chat_id_,{[0]=Message})
 Message = Message - 1048576
 end
-send(msg.chat_id_, msg.id_,'• تم تنظيف *~ '..Number..'* رساله .')  
+send(msg.chat_id_, msg.id_,'• تم مسح *~ '..Number..'* رساله .')  
 database:setex(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
 end
@@ -8522,6 +8522,8 @@ Text = [[
 *⋄︙ تنزيل الكـل*
 *⋄︙ تـاك للكـل*
 *⋄︙ تنزيل جميع الرتب*
+*⋄︙ لتنظيف التعديل اكتب ↫ امسح *
+*⋄︙ لتنظيف الميديا اكتب ↫ امسح *
 *⋄︙ كشف ⇋ برد ⇋ بالمعرف*
 *⋄︙ كشف البوتات*
 *⋄︙ كشف القيود*
@@ -8547,8 +8549,6 @@ Text = [[
 *⋄︙ الصلاحيات*
 *⋄︙ الاعــدادت *
 *⋄︙ عـدد الكـروب*
-*⋄︙ تنظيف الميديا*
-*⋄︙ تنظيف التعديل*
 *⋄︙ ردود المدير*
 *⋄︙ اسـم بوت + الرتبه*
 *⋄︙ الاوامر المضافـه*
@@ -8663,6 +8663,7 @@ Text = [[
    ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙ اطردني*
 *⋄︙ صيح*
+*⋄︙ المسح *
 *⋄︙ ضافني*
 *⋄︙ الرابط *
 *⋄︙ الرفع*
