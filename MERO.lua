@@ -8132,36 +8132,36 @@ end
 if text == 'تفعيل الاذاعه' and SudoBot(msg) then  
 if database:get(bot_id..'Bc:Bots') then
 database:del(bot_id..'Bc:Bots') 
-Text = '\n⋄︙ تم تفعيل الاذاعه ' 
+Text = '\n⋄︙تم تفعيل الاذاعه ' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل الاذاعه '
+Text = '\n⋄︙بالتاكيد تم تفعيل الاذاعه '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل الاذاعه' and SudoBot(msg) then  
 if not database:get(bot_id..'Bc:Bots') then
 database:set(bot_id..'Bc:Bots',true) 
-Text = '\n⋄︙ تم تعطيل الاذاعه' 
+Text = '\n⋄︙تم تعطيل الاذاعه' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل الاذاعه'
+Text = '\n⋄︙بالتاكيد تم تعطيل الاذاعه'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تفعيل التواصل' and SudoBot(msg) then  
 if database:get(bot_id..'Tuasl:Bots') then
 database:del(bot_id..'Tuasl:Bots') 
-Text = '\n📞| تم تفعيل التواصل ' 
+Text = '\n⋄︙تم تفعيل التواصل ' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل التواصل '
+Text = '\n⋄︙بالتاكيد تم تفعيل التواصل '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text == 'تعطيل التواصل' and SudoBot(msg) then  
 if not database:get(bot_id..'Tuasl:Bots') then
 database:set(bot_id..'Tuasl:Bots',true) 
-Text = '\n📞| تم تعطيل التواصل' 
+Text = '\n⋄︙تم تعطيل التواصل' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل التواصل'
+Text = '\n⋄︙بالتاكيد تم تعطيل التواصل'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -8177,9 +8177,9 @@ return false
 end
 if database:get(bot_id..'Free:Bots') then
 database:del(bot_id..'Free:Bots') 
-Text = '\n⋄︙ تم تفعيل البوت الخدمي ' 
+Text = '\n⋄︙تم تفعيل البوت الخدمي ' 
 else
-Text = '\n⋄︙ بالتاكيد تم تفعيل البوت الخدمي '
+Text = '\n⋄︙بالتاكيد تم تفعيل البوت الخدمي '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -8195,9 +8195,9 @@ return false
 end
 if not database:get(bot_id..'Free:Bots') then
 database:set(bot_id..'Free:Bots',true) 
-Text = '\n⋄︙ تم تعطيل البوت الخدمي' 
+Text = '\n⋄︙تم تعطيل البوت الخدمي' 
 else
-Text = '\n⋄︙ بالتاكيد تم تعطيل البوت الخدمي'
+Text = '\n⋄︙بالتاكيد تم تعطيل البوت الخدمي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
