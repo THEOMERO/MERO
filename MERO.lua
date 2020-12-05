@@ -8235,7 +8235,7 @@ send(msg.chat_id_, msg.id_,'• تم مسح *~ '..Number..'* رساله .')
 database:setex(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
 end
-if text == "امسح" and Manager(msg) then
+if text == "امسح" and BasicConstructor(msg) then
 msgm = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -8255,7 +8255,7 @@ DeleteMessage(msg.chat_id_,msgm2)
 end,nil)  
 send(msg.chat_id_, msg.id_,"*⋄︙تم تنظيف جميع الميديا*")
 end
-if text == "امسح" and Manager(msg) then
+if text == "امسح" and BasicConstructor(msg) then
 Msgs = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -11582,7 +11582,7 @@ end
 
 if text == "طامسين" or text == "وينكم" or text == "كلها طامسه " then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {"لڪ موجود هنا🦦"," يمڪ بس الربع طامسين 🦦💕"," اني بنسبة الي مشغول حب شوفڪ بعدين 💘🏃‍♂"," دسرسح تجي تالي وڪت تصيح 🏌‍♀"," هااااا يمعود شبيڪ رحمة لدينڪ 🦦"} 
+local texting = {"لڪ موجود هنا??"," يمڪ بس الربع طامسين 🦦💕"," اني بنسبة الي مشغول حب شوفڪ بعدين 💘🏃‍♂"," دسرسح تجي تالي وڪت تصيح 🏌‍♀"," هااااا يمعود شبيڪ رحمة لدينڪ 🦦"} 
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
