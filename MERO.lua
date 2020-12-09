@@ -8411,28 +8411,40 @@ Text = '\n*⋄︙بالتاكيد تم تفعيل المسح*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text:match('^مسح (%d+)$') and Constructor(msg) and database:get(bot_id..'Lock:delmsg'..msg.chat_id_) then                
-if not database:get(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
-local Number = tonumber(text:match('^مسح (%d+)$')) 
-if Number > 1000 then 
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع مسح اكثر من *~ 1000* رساله') 
+if text and text:match('^مسح (%d+)$') and Manager(msg) then
+if not database:get(bot_id..'VVVZVV:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
+local num = tonumber(text:match('^مسح (%d+)$')) 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,' ⋄︙ لا تستطيع استخدام البوت \n  ⋄︙ يرجى الاشتراك بالقناه اولا \n  ⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+if num > 1000 then 
+send(msg.chat_id_, msg.id_,'⋄︙تستطيع التنظيف 1000 رساله كحد اقصى') 
 return false  
 end  
-local Message = msg.id_
-for i=1,tonumber(Number) do
-DeleteMessage(msg.chat_id_,{[0]=Message})
-Message = Message - 1048576
+local msgm = msg.id_
+for i=1,tonumber(num) do
+DeleteMessage(msg.chat_id_, {[0] = msgm})
+msgm = msgm - 1048576
 end
-send(msg.chat_id_, msg.id_,'• تم مسح *~ '..Number..'* رساله .')  
-database:setex(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+send(msg.chat_id_,msg.id_,'⋄︙تم حذف {'..num..'}')  
+database:setex(bot_id..'VVVZVV:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
+end
+if (msg.content_.animation_) or (msg.content_.photo_) or (msg.content_.video_) or (msg.content_.document) or (msg.content_.sticker_) or (msg.content_.voice_) or (msg.content_.audio_) and msg.reply_to_message_id_ == 0 then      
+database:sadd(bot_id.."VVVZVV:allM"..msg.chat_id_, msg.id_)
 end
 if text == ("امسح") and cleaner(msg) then  
 local list = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(list) do
 local Message = v
 if Message then
-t = "⋄︙ تم مسح "..k.." من الوسائط الموجوده"
+t = "⋄︙تم مسح "..k.." من الوسائط الموجوده"
 DeleteMessage(msg.chat_id_,{[0]=Message})
 database:del(bot_id.."VVVZVV:allM"..msg.chat_id_)
 end
