@@ -8490,7 +8490,7 @@ local num = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(num) do
 local numl = v
 if numl then
-l = "*⋄︙عدد الميديا الموجود هو* "..k
+l = "⋄︙عدد الميديا الموجود هو "..k
 end
 end
 if #num == 0 then
