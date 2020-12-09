@@ -4841,11 +4841,11 @@ end;end,nil)
 return false
 end
 if text == 'مسح المنظفين' and BasicConstructor(msg) then
-database:del(bot_id..'VvVsiV:MN:TF'..msg.chat_id_)
+database:del(bot_id..'VVVZVV:MN:TF'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, ' ⋄︙ تم مسح المنظفيه')
 end
 if text == ("المنظفين") and BasicConstructor(msg) then
-local list = database:smembers(bot_id..'VvVsiV:MN:TF'..msg.chat_id_)
+local list = database:smembers(bot_id..'VVVZVV:MN:TF'..msg.chat_id_)
 t = "\n *⋄︙قائمة المنظفين* \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
@@ -4861,7 +4861,7 @@ end
 send(msg.chat_id_, msg.id_, t)
 end
 if text == ("تاك للمنظفين") or text == ("صيح المنظفين") then
-local list = database:smembers(bot_id..'VvVsiV:MN:TF'..msg.chat_id_)
+local list = database:smembers(bot_id..'VVVZVV:MN:TF'..msg.chat_id_)
 t = "\n *⋄︙وينكم تعالو يريدوكم بكروب* \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
@@ -4891,7 +4891,7 @@ if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(m
 send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الرفع*') 
 return false
 end
-database:sadd(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ منظف*'
@@ -4922,7 +4922,7 @@ if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
 send(msg.chat_id_,msg.id_," ⋄︙ عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
-database:sadd(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, result.id_)
+database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.id_)
 usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n*⋄︙ تم ترقيته ↫ منظف*'
 texts = usertext..status
@@ -4949,7 +4949,7 @@ if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(m
 send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الرفع*') 
 return false
 end
-database:sadd(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, userid)
+database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
@@ -4973,7 +4973,7 @@ end
 return false
 end
 function start_function(extra, result, success)
-database:srem(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
 status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المنظفين*'
@@ -4996,7 +4996,7 @@ return false
 end
 function start_function(extra, result, success)
 if result.id_ then
-database:srem(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, result.id_)
+database:srem(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.id_)
 usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n*⋄︙ تم تنزيله من المنظفين*'
 texts = usertext..status
@@ -5019,7 +5019,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙ لا تستطيع استخدام البوت 
 end
 return false
 end
-database:srem(bot_id..'VvVsiV:MN:TF'..msg.chat_id_, userid)
+database:srem(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'pvv_v')..')'
