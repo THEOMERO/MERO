@@ -8393,27 +8393,9 @@ Text = '\n⋄︙بالتاكيد تم تعطيل البوت الخدمي'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text == 'تعطيل المسح' and BasicConstructor(msg) then   
-if database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
-database:del(bot_id..'Lock:delmsg'..msg.chat_id_) 
-Text = '\n*⋄︙تم تعطيل المسح*' 
-else
-Text = '\n*⋄︙بالتاكيد تم تعطيل المسح*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تفعيل المسح' and BasicConstructor(msg) then  
-if not database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
-database:set(bot_id..'Lock:delmsg'..msg.chat_id_,true) 
-Text = '\n*⋄︙تم تفعيل المسح*' 
-else
-Text = '\n*⋄︙بالتاكيد تم تفعيل المسح*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text and text:match('^مسح (%d+)$') and Manager(msg) then
+if text and text:match('^تنظيف (%d+)$') and Manager(msg) then
 if not database:get(bot_id..'VVVZVV:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then           
-local num = tonumber(text:match('^مسح (%d+)$')) 
+local num = tonumber(text:match('^تنظيف (%d+)$')) 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -8450,7 +8432,7 @@ database:del(bot_id.."VVVZVV:allM"..msg.chat_id_)
 end
 end
 if #list == 0 then
-t = "*⋄︙لا يوجد ميديا في المجموعه*"
+t = "⋄︙لا يوجد ميديا في المجموعه"
 end
 send(msg.chat_id_, msg.id_, t)
 end
@@ -8463,7 +8445,7 @@ l = "⋄︙عدد الميديا الموجود هو "..k
 end
 end
 if #num == 0 then
-l = "*⋄︙لا يوجد ميديا في المجموعه*"
+l = "⋄︙لا يوجد ميديا في المجموعه"
 end
 send(msg.chat_id_, msg.id_, l)
 end
