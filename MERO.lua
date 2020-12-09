@@ -8432,7 +8432,7 @@ local list = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(list) do
 local Message = v
 if Message then
-t = "*⋄︙ تم مسح* "..k.." *من الوسائط الموجوده*"
+t = "⋄︙ تم مسح "..k.." من الوسائط الموجوده"
 DeleteMessage(msg.chat_id_,{[0]=Message})
 database:del(bot_id.."VVVZVV:allM"..msg.chat_id_)
 end
@@ -8447,7 +8447,7 @@ local num = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(num) do
 local numl = v
 if numl then
-l = "*⋄︙عدد الميديا الموجود هو* "..k
+l = "⋄︙عدد الميديا الموجود هو "..k
 end
 end
 if #num == 0 then
