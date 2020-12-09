@@ -8427,27 +8427,35 @@ send(msg.chat_id_, msg.id_,'• تم مسح *~ '..Number..'* رساله .')
 database:setex(bot_id..'MERO:Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end
 end
-if text == "امسح" and BasicConstructor(msg) then
-msgm = {[0]=msg.id_}
-local Message = msg.id_
-for i=1,100 do
-Message = Message - 1048576
-msgm[i] = Message
-end
-tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ = msgm},function(arg,data)
-new = 0
-msgm2 = {}
-for i=0 ,data.total_count_ do
-if data.messages_[i] and data.messages_[i].content_ and data.messages_[i].content_.ID ~= "MessageText" then
-msgm2[new] = data.messages_[i].id_
-new = new + 1
+if text == ("امسح") and cleaner(msg) then  
+local list = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
+for k,v in pairs(list) do
+local Message = v
+if Message then
+t = "*⋄︙ تم مسح* "..k.." *من الوسائط الموجوده*"
+DeleteMessage(msg.chat_id_,{[0]=Message})
+database:del(bot_id.."VVVZVV:allM"..msg.chat_id_)
 end
 end
-DeleteMessage(msg.chat_id_,msgm2)
-end,nil)  
-send(msg.chat_id_, msg.id_,"*⋄︙تم تنظيف جميع الميديا*")
+if #list == 0 then
+t = "*⋄︙لا يوجد ميديا في المجموعه*"
 end
-if text == "امسح" and BasicConstructor(msg) then
+send(msg.chat_id_, msg.id_, t)
+end
+if text == ("عدد الميديا") and cleaner(msg) then  
+local num = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
+for k,v in pairs(num) do
+local numl = v
+if numl then
+l = "*⋄︙عدد الميديا الموجود هو* "..k
+end
+end
+if #num == 0 then
+l = "*⋄︙لا يوجد ميديا في المجموعه*"
+end
+send(msg.chat_id_, msg.id_, l)
+end
+if text == "تنظيف التعديل" and Manager(msg) then
 Msgs = {[0]=msg.id_}
 local Message = msg.id_
 for i=1,100 do
@@ -8714,7 +8722,6 @@ Text = [[
 *⋄︙ تنزيل الكـل*
 *⋄︙ تـاك للكـل*
 *⋄︙ تنزيل جميع الرتب*
-*⋄︙ لتنظيف التعديل اكتب ↫ امسح *
 *⋄︙ لتنظيف الميديا اكتب ↫ امسح *
 *⋄︙ كشف ⇋ برد ⇋ بالمعرف*
 *⋄︙ كشف البوتات*
@@ -8741,6 +8748,7 @@ Text = [[
 *⋄︙ الصلاحيات*
 *⋄︙ الاعــدادت *
 *⋄︙ عـدد الكـروب*
+*⋄︙ تنظيف التعديل*
 *⋄︙ ردود المدير*
 *⋄︙ اسـم بوت + الرتبه*
 *⋄︙ الاوامر المضافـه*
