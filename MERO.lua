@@ -9164,7 +9164,7 @@ end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 end
-if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) then
+if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
