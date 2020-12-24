@@ -12041,7 +12041,7 @@ sl = 'نسبه حب '..text..' هي : '..sendnum..'%'
 send(msg.chat_id_, msg.id_,sl) 
 database:del(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_)
 end
-if text == "نسبه رجوله" or text == "نسبه الرجوله" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+if text == "نسبه الرجوله" or text == "نسبه رجوله" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
 database:set(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_,"sendrjoe")
 Text = '*ارسل اسم الشخص الذي تريد قياس نسبه رجولته* \n *مثال عمر*'
 send(msg.chat_id_, msg.id_,Text) 
