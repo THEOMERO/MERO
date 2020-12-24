@@ -1024,7 +1024,7 @@ dofile('MERO.lua')
 end
 if text == 'قناه تحديثات البوت ⚙' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,' ❃∫ [تحديثات البوت](t.me/YYYKU) \n ❃∫ [قناه السورس](t.me/YYYDR)')
+send(msg.chat_id_, msg.id_,' ⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
 end
 if text == 'الاصدار 📟' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
@@ -7576,12 +7576,12 @@ end
 return false
 end
 if database:sismember(bot_id..'lock:pin',msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_,msg.id_,"⋄︙ التثبيت والغاء التثبيت تم قفله من قبل المنشئين")  
+send(msg.chat_id_,msg.id_,"*⋄︙ التثبيت والغاء التثبيت تم قفله من قبل المنشئين*")  
 return false  
 end
 tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.reply_to_message_id_,disable_notification_ = 1},function(arg,data) 
 if data.ID == "Ok" then
-send(msg.chat_id_, msg.id_,"⋄︙ تم تثبيت الرساله")   
+send(msg.chat_id_, msg.id_,"*⋄︙تم تثبيت الرساله*")   
 database:set(bot_id..'Pin:Id:Msg'..msg.chat_id_,msg.reply_to_message_id_)
 elseif data.code_ == 6 then
 send(msg.chat_id_,msg.id_,"⋄︙ انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
@@ -7603,17 +7603,17 @@ end
 return false
 end
 if database:sismember(bot_id..'lock:pin',msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_,msg.id_,"⋄︙ التثبيت والغاء التثبيت تم قفله من قبل المنشئين")  
+send(msg.chat_id_,msg.id_,"*⋄︙التثبيت والغاء التثبيت تم قفله من قبل المنشئين*")  
 return false  
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100','')},function(arg,data) 
 if data.ID == "Ok" then
-send(msg.chat_id_, msg.id_,"⋄︙ تم الغاء تثبيت الرساله")   
+send(msg.chat_id_, msg.id_,"*⋄︙تم الغاء تثبيت الرساله*")   
 database:del(bot_id..'Pin:Id:Msg'..msg.chat_id_)
 elseif data.code_ == 6 then
 send(msg.chat_id_,msg.id_,"⋄︙ انا لست ادمن هنا يرجى ترقيتي ادمن ثم اعد المحاوله")  
 elseif data.message_ == "CHAT_NOT_MODIFIED" then
-send(msg.chat_id_,msg.id_,"⋄︙ لا توجد رساله مثبته")  
+send(msg.chat_id_,msg.id_,"*⋄︙لا توجد رساله مثبته*")  
 elseif data.message_ == "CHAT_ADMIN_REQUIRED" then
 send(msg.chat_id_,msg.id_,"⋄︙ ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات")  
 end
@@ -12027,7 +12027,7 @@ data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..Name_Bot..
 end
 if text == "نسبه الحب" or text == "نسبه حب" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
 database:set(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_,"sendlove")
-Text = 'ارسل اسمك واسم الشخص الثاني،  \n مثال اسد و لبوى'
+Text = '*ارسل اسمك واسم الشخص الثاني،*  \n* مثال محمد و ايه*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text and text ~="نسبه الحب" and database:get(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_) == "sendlove" then
@@ -12039,7 +12039,7 @@ database:del(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_)
 end
 if text == "نسبه رجوله" or text == "نسبه الرجوله" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
 database:set(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_,"sendrjoe")
-Text = 'ارسل اسم الشخص الذي تريد قياس نسبه رجولته \n مثال امير'
+Text = '*ارسل اسم الشخص الذي تريد قياس نسبه رجولته* \n *مثال عمر*'
 send(msg.chat_id_, msg.id_,Text) 
 end
 if text and text ~="نسبه رجوله" and database:get(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_) == "sendrjoe" then
