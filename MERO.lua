@@ -1024,7 +1024,7 @@ dofile('MERO.lua')
 end
 if text == 'قناه تحديثات البوت ⚙' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,' ⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
+send(msg.chat_id_, msg.id_,'⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
 end
 if text == 'الاصدار 📟' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
@@ -3219,11 +3219,11 @@ end
 ------------------------------------------------------------------------
 if text == ("مسح المكتومين عام") and SudoBot(msg) then
 database:del(bot_id..'Gmute:User')
-send(msg.chat_id_, msg.id_, "\n⋄︙ تم مسح قائمة المكتومين عام  ")
+send(msg.chat_id_, msg.id_, "\n*⋄︙تم مسح قائمة المكتومين عام* ")
 end
 if text == ("قائمه الكتم العام") and SudoBot(msg) then
 local list = database:smembers(bot_id..'Gmute:User')
-t = "\n*⋄︙ قائمة المكتومين عام* \n*┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉*\n"
+t = "\n*⋄︙ قائمة المكتومين عام* \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
