@@ -12054,7 +12054,7 @@ xl = 'نسبه رجوله '..text..' هي : \n '..sendnuj..'%'
 send(msg.chat_id_, msg.id_,xl) 
 database:del(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_)
 end
-if text == "نسبه الانوثه" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+if text == "نسبه الانوثه" or text == "نسبه الانوثه" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
 database:set(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_,"sendreno")
 Text = '*ارسل اسم الشخص الذي تريد قياس نسبه انوثتها* \n *مثال تبارك*'
 send(msg.chat_id_, msg.id_,Text) 
