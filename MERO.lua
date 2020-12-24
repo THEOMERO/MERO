@@ -7919,15 +7919,15 @@ send(msg.chat_id_, msg.id_,t)
 end  
 if text == 'مسح قائمه منع المتحركات' and Manager(msg) then     
 database:del(bot_id.."filteranimation"..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'⋄︙ تم مسح قائمه منع المتحركات')  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح قائمه منع المتحركات*')  
 end
 if text == 'مسح قائمه منع الصور' and Manager(msg) then     
 database:del(bot_id.."filterphoto"..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'⋄︙ تم مسح قائمه منع الصور')  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح قائمه منع الصور*')  
 end
 if text == 'مسح قائمه منع الملصقات' and Manager(msg) then     
 database:del(bot_id.."filtersteckr"..msg.chat_id_)
-send(msg.chat_id_, msg.id_,'??| تم مسح قائمه منع الملصقات')  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح قائمه منع الملصقات')  
 end
 if text == "تفعيل صورتي" or text == 'تفعيل الصوره' then
 if Mod(msg) then  
