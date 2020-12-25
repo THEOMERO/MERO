@@ -3679,8 +3679,8 @@ return false
 end
 database:sadd(bot_id..'Mamez:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
-status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..' \n*⋄︙ تم ترقيته مميز عام في البوت*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
+status  = '\n*⋄︙الايدي ↫* '..result.sender_user_id_..' \n*⋄︙تم ترقيته مميز عام في البوت*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -3705,11 +3705,11 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Mamez:User', result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته مميز عام في البوت*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته مميز عام في البوت*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -3753,8 +3753,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mamez:User', result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
-status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..' \n*⋄︙ تم تنزيله من المميز العام*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..') '
+status  = '\n*⋄︙الايدي ↫* '..result.sender_user_id_..' \n*⋄︙تم تنزيله من المميز العام*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -3775,8 +3775,8 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Mamez:User', result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من المميز العام*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من المميز العام*'
 texts = usertext..status
 else
 texts = '⋄︙لا يوجد حساب بهاذا المعرف'
@@ -3995,8 +3995,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Biasic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..'\n*⋄︙ تم ترقيته نائب المالك*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* '..result.sender_user_id_..'\n*⋄︙تم ترقيته نائب المالك*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4021,11 +4021,11 @@ send(msg.chat_id_,msg.id_,"⋄︙ عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Biasic:Constructor'..msg.chat_id_, result.id_)
-usertext = '\n⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته نائب المالك*'
+usertext = '\n⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته نائب المالك*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4046,12 +4046,12 @@ end
 database:sadd(bot_id..'Biasic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n تم ترقيته نائب المالك'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته نائب المالك*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n تم ترقيته نائب المالك'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم ترقيته نائب المالك*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4069,8 +4069,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Biasic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* '..result.sender_user_id_..'\n*⋄︙تم تنزيله من النواب*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* '..result.sender_user_id_..'\n*⋄︙تم تنزيله من النواب*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4091,11 +4091,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Biasic:Constructor'..msg.chat_id_, result.id_)
-usertext = '\n⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n*⋄︙تم تنزيله من النواب*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4116,12 +4116,12 @@ end
 database:srem(bot_id..'Biasic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n تم تنزيله من النواب'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من النواب*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n تم تنزيله من النواب'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم تنزيله من النواب*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4182,8 +4182,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ منشئ اساسي*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم ترقيته ↫ منشئ اساسي*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4208,11 +4208,11 @@ send(msg.chat_id_,msg.id_,"⋄︙عذرا عزيزي المستخدم هاذا �
 return false 
 end      
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته ↫ منشئ اساسي*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ منشئ اساسي*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4233,12 +4233,12 @@ end
 database:sadd(bot_id..'Basic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n⋄︙ تم ترقيته منشئ اساسي'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته منشئ اساسي*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n⋄︙ تم ترقيته منشئ اساسي'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم ترقيته منشئ اساسي*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4256,8 +4256,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من الاساسيين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من الاساسيين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4278,11 +4278,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من الاساسيين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من الاساسيين*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4303,12 +4303,12 @@ end
 database:srem(bot_id..'Basic:Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n⋄︙ تم تنزيله من الاساسيين'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من الاساسيين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n⋄︙ تم تنزيله من الاساسيين'
+usertext = '\n⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم تنزيله من الاساسيين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4337,7 +4337,7 @@ send(msg.chat_id_, msg.id_, t)
 end
 if text == ("المنشئين") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n*⋄︙ قائمة المنشئين* \n⊶─────≺⋆≻─────⊷\n"
+t = "\n*⋄︙ قائمة المنشئين* \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -4359,7 +4359,7 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 owner_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = owner_id},function(arg,b) 
 if b.first_name_ == false then
-send(msg.chat_id_, msg.id_,"⋄︙ حساب المنشئ محذوف")
+send(msg.chat_id_, msg.id_,"*⋄︙ حساب المنشئ محذوف*")
 return false  
 end
 local UserName = (b.username_ or "TSHAKETEAM")
@@ -4382,8 +4382,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ منشئ*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم ترقيته ↫ منشئ*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4407,11 +4407,11 @@ send(msg.chat_id_,msg.id_,"⚠¦ عذرا عزيزي المستخدم هاذا �
 return false 
 end      
 database:sadd(bot_id..'Constructor'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته ↫ منشئ*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ منشئ*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4432,12 +4432,12 @@ end
 database:sadd(bot_id..'Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n⋄︙ تم ترقيته منشئ'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته منشئ*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n⋄︙ تم ترقيته منشئ'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم ترقيته منشئ*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
@@ -4454,8 +4454,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المنشئين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من المنشئين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4476,11 +4476,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Constructor'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من المنشئين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من المنشئين*'
 texts = usertext..status
 else
-texts = '⋄︙لا يوجد حساب بهاذا المعرف'
+texts = '*⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4501,12 +4501,12 @@ end
 database:srem(bot_id..'Constructor'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙ العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n⋄︙ تم تنزيله من المنشئين'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من المنشئين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n⋄︙ العضو » '..userid..''
-status  = '\n⋄︙ تم تنزيله من المنشئين'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم تنزيله من المنشئين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 end
@@ -4561,8 +4561,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ مدير*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم ترقيته ↫ مدير*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4587,11 +4587,11 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Manager'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته ↫ مدير*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ مدير*'
 texts = usertext..status
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4613,12 +4613,12 @@ end
 database:sadd(bot_id..'Manager'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n ⋄︙تم ترقيته مدير'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n *⋄︙تم ترقيته مدير*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-status  = '\n ⋄︙تم ترقيته مدير'
+usertext = '\n *⋄︙المستخدم ↫* '..userid..''
+status  = '\n *⋄︙تم ترقيته مدير*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4636,8 +4636,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المدراء*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من المدراء*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4658,11 +4658,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Manager'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من المدراء*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من المدراء*'
 texts = usertext..status
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4683,12 +4683,12 @@ end
 database:srem(bot_id..'Manager'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n ⋄︙تم تنزيله من المدراء'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n *⋄︙تم تنزيله من المدراء*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-status  = '\n ⋄︙تم تنزيله من المدراء'
+usertext = '\n *⋄︙المستخدم ↫* '..userid..''
+status  = '\n *⋄︙تم تنزيله من المدراء*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4714,7 +4714,7 @@ database:srem(bot_id.."Mod:User"..msg.chat_id_, admins[i].user_id_)
 end
 end
 if num2 == 0 then
-send(msg.chat_id_, msg.id_," ⋄︙لا يوجد ادمنيه ليتم رفعهم") 
+send(msg.chat_id_, msg.id_," *⋄︙لا يوجد ادمنيه ليتم رفعهم*") 
 else
 send(msg.chat_id_, msg.id_," ⋄︙تمت ترقيه { "..num2.." } من الادمنيه") 
 end
@@ -4773,8 +4773,8 @@ return false
 end
 database:sadd(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ ادمن*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم ترقيته ↫ ادمن*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4793,7 +4793,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
 function start_function(extra, result, success)
@@ -4803,11 +4803,11 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Mod:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم ترقيته ↫ ادمن*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ ادمن*'
 texts = usertext..status
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4832,12 +4832,12 @@ end
 database:sadd(bot_id..'Mod:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n ⋄︙تم ترقيته ادمن'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n *⋄︙تم ترقيته ادمن*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-status  = '\n ⋄︙تم ترقيته ادمن'
+usertext = '\n *⋄︙المستخدم ↫* '..userid..''
+status  = '\n *⋄︙تم ترقيته ادمن*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -4855,8 +4855,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من الادمنيه*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من الادمنيه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -4877,11 +4877,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من الادمنيه*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من الادمنيه*'
 texts = usertext..status
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -4902,12 +4902,12 @@ end
 database:srem(bot_id..'Mod:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n ⋄︙تم تنزيله من الادمنيه'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n *⋄︙تم تنزيله من الادمنيه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-status  = '\n ⋄︙تم تنزيله من الادمنيه'
+usertext = '\n *⋄︙المستخدم ↫* '..userid..''
+status  = '\n *⋄︙تم تنزيله من الادمنيه*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -5301,8 +5301,8 @@ end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-local  statuss  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم ترقيته ↫ مميز* '
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+local  statuss  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم ترقيته ↫ مميز* '
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end,nil)
 end
@@ -5321,7 +5321,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
 function start_function(extra, result, success)
@@ -5331,11 +5331,11 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-local  statuss  = '\n*⋄︙ تم ترقيته ↫ مميز*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+local  statuss  = '\n*⋄︙تم ترقيته ↫ مميز*'
 texts = usertext..statuss
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -5361,12 +5361,12 @@ end
 database:sadd(bot_id..'Special:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-local  statuss  = '\n ⋄︙تم ترقيته مميز'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+local  statuss  = '\n *⋄︙تم ترقيته مميز*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-local  statuss  = '\n ⋄︙تم ترقيته مميز'
+usertext = '\n *⋄︙العضو ↫* '..userid..''
+local  statuss  = '\n *⋄︙تم ترقيته مميز*'
 send(msg.chat_id_, msg.id_, usertext..statuss)
 end;end,nil)
 return false
@@ -5385,8 +5385,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من المميزين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من المميزين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -5407,11 +5407,11 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من المميزين*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من المميزين*'
 texts = usertext..status
 else
-texts = ' ⋄︙لا يوجد حساب بهاذا المعرف'
+texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
 end
 send(msg.chat_id_, msg.id_, texts)
 end
@@ -5432,12 +5432,12 @@ end
 database:srem(bot_id..'Special:User'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n ⋄︙لعضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n ⋄︙تم تنزيله من المميزين'
+usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n *⋄︙تم تنزيله من المميزين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n ⋄︙العضو » '..userid..''
-status  = '\n ⋄︙تم تنزيله من المميزين'
+usertext = '\n *⋄︙المستخدم ↫* '..userid..''
+status  = '\n *⋄︙تم تنزيله من المميزين*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
@@ -7142,14 +7142,14 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " ⋄︙ لا يوجد احد في قائمه المالك"
+t = " *⋄︙لا يوجد احد في قائمه المالك*"
 end
 send(msg.chat_id_, msg.id_, t)
 return false
 end
 if text == ("صيح للمالك") or text == ("تاك للمالك") then
 local list = database:smembers(bot_id..'CoSu'..msg.chat_id_)
-t = "\n ⋄︙ وينكم تعالو يريدوكم بكروب \n≪━━━━━━𝘽𝙆━━━━━━≫\n"
+t = "\n ⋄︙ وينكم تعالو يريدوكم بكروب \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
@@ -7178,7 +7178,7 @@ function start_function(extra, result, success)
 database:sadd(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم رفعه مشرف بكامل الصلاحيات*'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم رفعه مشرف بكامل الصلاحيات*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -7251,8 +7251,8 @@ end
 function start_function(extra, result, success)
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n*⋄︙ المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙ تم تنزيله من الاشراف بجميع الصلاحيات*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم تنزيله من الاشراف بجميع الصلاحيات*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
@@ -7273,8 +7273,8 @@ end
 function start_function(extra, result, success)
 if result.id_ then
 database:srem(bot_id..'CoSu'..msg.chat_id_, result.id_)
-usertext = '\n*⋄︙ المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n*⋄︙ تم تنزيله من الاشراف بجميع الصلاحيات*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم تنزيله من الاشراف بجميع الصلاحيات*'
 texts = usertext..status
 else
 texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
