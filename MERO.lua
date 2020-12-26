@@ -3982,7 +3982,7 @@ send(msg.chat_id_, msg.id_, t)
 return false
 end
 
-if text == ("رفع نائب المالك") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("رفع نائب المالك") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4003,7 +4003,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع نائب المالك @(.*)$") and BasicConstructor(msg) then
+if text and text:match("^رفع نائب المالك @(.*)$") and CoSu(msg) then
 local username = text:match("^رفع نائب المالك @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4032,7 +4032,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع نائب المالك (%d+)$") and BasicConstructor(msg) then
+if text and text:match("^رفع نائب المالك (%d+)$") and CoSu(msg) then
 local userid = text:match("^رفع نائب المالك (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4056,7 +4056,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل نائب المالك") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("تنزيل نائب المالك") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4077,7 +4077,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل نائب المالك @(.*)$") and BasicConstructor(msg) then
+if text and text:match("^تنزيل نائب المالك @(.*)$") and CoSu(msg) then
 local username = text:match("^تنزيل نائب المالك @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4102,7 +4102,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل نائب المالك (%d+)$") and BasicConstructor(msg) then
+if text and text:match("^تنزيل نائب المالك (%d+)$") and CoSu(msg) then
 local userid = text:match("^تنزيل نائب المالك (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
