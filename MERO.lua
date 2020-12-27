@@ -4562,6 +4562,10 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
+return false
+end
 function start_function(extra, result, success)
 database:sadd(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
@@ -4582,6 +4586,10 @@ send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
 send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
+return false
+end
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
 function start_function(extra, result, success)
@@ -4612,6 +4620,10 @@ send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
 send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
+return false
+end
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
 database:sadd(bot_id..'Manager'..msg.chat_id_, userid)
@@ -4771,7 +4783,7 @@ end
 return false
 end
 function start_function(extra, result, success)
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
 return false
 end
@@ -4796,7 +4808,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
@@ -4829,7 +4841,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
 return false
 end
@@ -5298,7 +5310,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
 return false
 end
@@ -5324,7 +5336,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
 return false
 end
@@ -5358,7 +5370,7 @@ send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \
 end
 return false
 end
-if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
+if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
 return false
 end
