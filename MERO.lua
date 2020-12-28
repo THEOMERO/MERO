@@ -10592,18 +10592,18 @@ send(msg.chat_id_, msg.id_,  1, "??| تم اضافة له {"..numadded..'} من 
 end
 ------------------------------------------------------------
 if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then    
-taha = text:match("^اضف رسائل (%d+)$")
-database:set(bot_id..'id:user'..msg.chat_id_,taha)  
+amir = text:match("^اضف رسائل (%d+)$")
+database:set(bot_id..'id:user'..msg.chat_id_,amir)  
 database:setex(bot_id.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
-send(msg.chat_id_, msg.id_, '✉¦ ارسل لي عدد الرسائل الان') 
+send(msg.chat_id_, msg.id_, '*⋄︙ارسل لي عدد الرسائل الان*') 
 return false
 end
 ------------------------------------------------------------------------
 if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then  
-taha = text:match("^اضف نقاط (%d+)$")
-database:set(bot_id..'idgem:user'..msg.chat_id_,taha)  
+amir = text:match("^اضف نقاط (%d+)$")
+database:set(bot_id..'idgem:user'..msg.chat_id_,amir)  
 database:setex(bot_id.."gemadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
-send(msg.chat_id_, msg.id_, '⋄︙ارسل لي عدد النقاط التي تريد اضافتها') 
+send(msg.chat_id_, msg.id_, '*⋄︙ارسل لي عدد النقاط التي تريد اضافتها*') 
 return false
 end
 ------------------------------------------------------------------------
@@ -10622,7 +10622,7 @@ local Num = text:match("^اضف رسائل (%d+)$")
 function reply(extra, result, success)
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) 
 database:incrby(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_,Num)  
-send(msg.chat_id_, msg.id_, "\n⋄︙ تم اضافة له {"..Num..'} من الرسائل')  
+send(msg.chat_id_, msg.id_, "\n ⋄︙تم اضافة له {"..Num..'} من الرسائل')  
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},reply, nil)
 return false
