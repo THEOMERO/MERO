@@ -3465,7 +3465,8 @@ end,nil)
 end
 end,nil)
 end
-if text == "all" or text == "@all" and cleaner(msg) then
+if text == "all" or text == "@all" and CoSu(msg) then
+if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
 if database:get(bot_id.."VVVZVV:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
 send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
@@ -3495,6 +3496,7 @@ end,nil)
 end
 end,nil)
 end,nil)
+end
 end
 
 if text == ("رفع مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
@@ -8494,7 +8496,7 @@ local list = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(list) do
 local Message = v
 if Message then
-t = "⋄︙تم مسح "..k.." من الوسائط الموجوده"
+t = "⋄︙ تم مسح "..k.." من الوسائط الموجوده"
 DeleteMessage(msg.chat_id_,{[0]=Message})
 database:del(bot_id.."VVVZVV:allM"..msg.chat_id_)
 end
@@ -8509,7 +8511,7 @@ local num = database:smembers(bot_id.."VVVZVV:allM"..msg.chat_id_)
 for k,v in pairs(num) do
 local numl = v
 if numl then
-l = "*⋄︙عدد الميديا الموجود هو* "..k
+l = "⋄︙عدد الميديا الموجود هو "..k
 end
 end
 if #num == 0 then
@@ -8893,6 +8895,7 @@ Text = [[
 *⋄︙ اوامـر تغير لـقب الـرتب ↯*
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙ تغير رد المطور + اسم*
+*⋄︙ تغير رد المالك + اسم*
 *⋄︙ تغير رد منشئ الاساسي + اسم*
 *⋄︙ تغير رد المنشئ + اسم*
 *⋄︙ تغير رد المدير + اسم*
@@ -8929,6 +8932,7 @@ Text = [[
    ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙ اطردني*
 *⋄︙ صيح*
+*⋄︙ all*
 *⋄︙ ضافني*
 *⋄︙ الرابط *
 *⋄︙ الرفع*
@@ -8941,7 +8945,7 @@ Text = [[
 *⋄︙ ردود المدير*
 *⋄︙ الردود*
 *⋄︙ صورتي*
-*⋄︙ التنزيل*
+*⋄︙ اليوتيوب*
 *⋄︙ الانستا*
 *⋄︙ التحويل*
 *⋄︙ التحقق*
@@ -8949,6 +8953,9 @@ Text = [[
 *⋄︙ الابراج*
 *⋄︙ الزخرفه*
 *⋄︙ حساب العمر*
+*⋄︙ نسبه الانوثه*
+*⋄︙ نسبه الرجوله*
+*⋄︙ نسبه الحب*
       ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 𝙘𝙝↬ [𝙨𝙤𝙪𝙧𝙘𝙚](http://t.me/YYYDR)
 ]]
@@ -9194,23 +9201,25 @@ end
 send(msg.chat_id_,msg.id_,t)
 end,nil)
 end
-if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,' ⋄︙ لا تستطيع استخدام البوت \n  ⋄︙ يرجى الاشتراك بالقناه اولا \n  ⋄︙ اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function start_function(extra, result, success)
 if tonumber(SUDO) == tonumber(result.sender_user_id_) then
-send(msg.chat_id_, msg.id_,"⋄︙ لا تستطيع تنزيل المطور الاساسي")
+send(msg.chat_id_, msg.id_,"*⋄︙لا تستطيع تنزيل المطور الاساسي*")
 return false 
 end
 if database:sismember(bot_id..'Sudo:User',result.sender_user_id_) then
 dev = 'المطور ،' else dev = '' end
+if database:sismember(bot_id..'CoSu'..msg.chat_id_, result.sender_user_id_) then
+cu = 'المالك ،' else cu = '' end
 if database:sismember(bot_id..'Basic:Constructor'..msg.chat_id_, result.sender_user_id_) then
 crr = 'منشئ اساسي ،' else crr = '' end
 if database:sismember(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_) then
@@ -9223,9 +9232,9 @@ if database:sismember(bot_id..'Special:User'..msg.chat_id_, result.sender_user_i
 vip = 'مميز ،' else vip = ''
 end
 if Can_or_NotCan(result.sender_user_id_,msg.chat_id_) ~= false then
-send(msg.chat_id_, msg.id_,"\n⋄︙تم تنزيل الشخص من الرتب التاليه \n⋄︙ { "..dev..''..crr..''..cr..''..own..''..mod..''..vip.." } \n")
+send(msg.chat_id_, msg.id_,"\n ⋄︙تم تنزيل الشخص من الرتب التاليه \n ⋄︙ { "..dev..''..cu..''..crr..''..cr..''..own..''..mod..''..vip.." } \n")
 else
-send(msg.chat_id_, msg.id_,"\n⋄︙ليس لديه رتب حتى استطيع تنزيله \n")
+send(msg.chat_id_, msg.id_,"\n ⋄︙ عذرا العضو لايملك رتبه \n")
 end
 if tonumber(SUDO) == tonumber(msg.sender_user_id_) then
 database:srem(bot_id..'Sudo:User', result.sender_user_id_)
@@ -9235,6 +9244,12 @@ database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 elseif database:sismember(bot_id..'Sudo:User',msg.sender_user_id_) then
+database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'Constructor'..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'Basic:Constructor'..msg.chat_id_,result.sender_user_id_)
+elseif database:sismember(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_) then
 database:srem(bot_id..'Mod:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Special:User'..msg.chat_id_, result.sender_user_id_)
 database:srem(bot_id..'Manager'..msg.chat_id_, result.sender_user_id_)
@@ -9788,6 +9803,78 @@ database:set(bot_id..'Lock:kick'..msg.chat_id_,true)
 Text = '\n*⋄︙ تم تعطيل الحظر*' 
 else
 Text = '\n*⋄︙ بالتاكيد تم تعطيل الحظر*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل نسبه الانوثه' and Manager(msg) then   
+if database:get(bot_id..'Cick:ano'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل نسبه الانوثه*'
+database:del(bot_id..'Cick:ano'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل الانوثه*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الانوثه' and Manager(msg) then  
+if not database:get(bot_id..'Cick:ano'..msg.chat_id_) then
+database:set(bot_id..'Cick:ano'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل نسبه الانوثه*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل نسبه الانوثه*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل نسبه الحب' and Manager(msg) then   
+if database:get(bot_id..'Cick:lov'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل نسبه الحب*'
+database:del(bot_id..'Cick:lov'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل نسبه الحب*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الحب' and Manager(msg) then  
+if not database:get(bot_id..'Cick:lov'..msg.chat_id_) then
+database:set(bot_id..'Cick:lov'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل نسبه الحب*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل نسبه الحب*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل نسبه الرجوله' and Manager(msg) then   
+if database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل نسبه الرجوله*'
+database:del(bot_id..'Cick:rjo'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل الرجوله*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الرجوله' and Manager(msg) then  
+if not database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
+database:set(bot_id..'Cick:rjo'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل نسبه الرجوله*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل نسبه الرجوله*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل all' and CoSu(msg) then   
+if database:get(bot_id..'Cick:all'..msg.chat_id_) then
+Text = '*⋄︙تم تفعيل امر @all*'
+database:del(bot_id..'Cick:all'..msg.chat_id_)  
+else
+Text = '*⋄︙بالتاكيد تم تفعيل امر @all*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل all' and CoSu(msg) then  
+if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
+database:set(bot_id..'Cick:all'..msg.chat_id_,true)  
+Text = '\n*⋄︙تم تعطيل امر @all*'
+else
+Text = '\n*⋄︙بالتاكيد تم تعطيل امر @all*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -10714,7 +10801,12 @@ end
 if text and text:match("^تغير رد المطور (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المطور (.*)$") 
 database:set(bot_id.."Sudo:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد المطور الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد المطور الى » "..Teext)
+end
+if text and text:match("^تغير رد المالك (.*)$") and Manager(msg) then
+local Teext = text:match("^تغير رد المالك (.*)$") 
+database:set(bot_id.."CoSu:Rd"..msg.chat_id_,Teext)
+send(msg.chat_id_, msg.id_," ⋄︙تم تغير رد المالك الى » "..Teext)
 end
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد منشئ الاساسي (.*)$") 
@@ -10724,27 +10816,27 @@ end
 if text and text:match("^تغير رد المنشئ (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المنشئ (.*)$") 
 database:set(bot_id.."Constructor:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد المنشئ الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد المنشئ الى » "..Teext)
 end
 if text and text:match("^تغير رد المدير (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المدير (.*)$") 
 database:set(bot_id.."Manager:Rd"..msg.chat_id_,Teext) 
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد المدير الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد المدير الى » "..Teext)
 end
 if text and text:match("^تغير رد الادمن (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد الادمن (.*)$") 
 database:set(bot_id.."Mod:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد الادمن الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد الادمن الى » "..Teext)
 end
 if text and text:match("^تغير رد المميز (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد المميز (.*)$") 
 database:set(bot_id.."Special:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد المميز الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد المميز الى » "..Teext)
 end
 if text and text:match("^تغير رد العضو (.*)$") and Manager(msg) then
 local Teext = text:match("^تغير رد العضو (.*)$") 
 database:set(bot_id.."Memp:Rd"..msg.chat_id_,Teext)
-send(msg.chat_id_, msg.id_,"⋄︙ تم تغير رد العضو الى » "..Teext)
+send(msg.chat_id_, msg.id_,"⋄︙تم تغير رد العضو الى » "..Teext)
 end
 
 if text and text:match("^(.*)$") then
@@ -11996,40 +12088,46 @@ if text and text:match('^'..Name_Bot..' ') then
 data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..Name_Bot..' ','')
 end
 if text == "نسبه الحب" or text == "نسبه حب" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+if not database:get(bot_id..'Cick:lov'..msg.chat_id_) then
 database:set(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_,"sendlove")
-Text = '*ارسل اسمك واسم الشخص الثاني،*  \n* مثال محمد و ايه*'
+Text = '*ارسل اسمك واسم الشخص الثاني،*  \n *مثال احمـد و تبـارك*'
 send(msg.chat_id_, msg.id_,Text) 
 end
+end
 if text and text ~="نسبه الحب" and database:get(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_) == "sendlove" then
-num = {"10","20","30","35","75","34","66","82","23","19","55","8","63","32","27","89","99","98","3","3","8","3","6","0",};
+num = {"10","20","30","35","75","34","66","82","23","19","55","8","63","32","27","89","99","98","3","80","49","100","6","0",};
 sendnum = num[math.random(#num)]
 sl = 'نسبه حب '..text..' هي : '..sendnum..'%'
 send(msg.chat_id_, msg.id_,sl) 
 database:del(bot_id..":"..msg.sender_user_id_..":lov_Bots"..msg.chat_id_)
 end
 if text == "نسبه رجوله" or text == "نسبه الرجوله" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+if not database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
 database:set(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_,"sendrjoe")
-Text = '*ارسل اسم الشخص الذي تريد قياس نسبه رجولته* \n *مثال عمر*'
+Text = '*ارسل اسم الشخص الذي تريد قياس نسبه رجولته* \n *مثال عـمࢪ*'
 send(msg.chat_id_, msg.id_,Text) 
 end
+end
 if text and text ~="نسبه رجوله" and database:get(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_) == "sendrjoe" then
-numj = {"10","20","30","35","75","34","66","82","23","19","55","8","63","32","27","89","99","98","3","3","8","3","6","0",};
+numj = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
 sendnuj = numj[math.random(#numj)]
 xl = 'نسبه رجوله '..text..' هي : \n '..sendnuj..'%'
 send(msg.chat_id_, msg.id_,xl) 
 database:del(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_)
 end
-if text == "نسبه الانوثه" or text == "نسبه الانوثة" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
-database:set(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_,"sendreno")
-Text = '*ارسل اسم الشخص الذي تريد قياس نسبه انوثتها* \n *مثال تبارك*'
+if text == "نسبه الانوثه" or text == "نسبه انوثه" and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then
+if not database:get(bot_id..'Cick:ano'..msg.chat_id_) then
+database:set(bot_id..":"..msg.sender_user_id_..":ano_Bots"..msg.chat_id_,"sendanoe")
+Text = '*ارسل اسم الشخص الذي تريد قياس نسبه انوثتها* \n*مثال ايـه*'
 send(msg.chat_id_, msg.id_,Text) 
 end
-if text and text ~="نسبه الانوثه" and database:get(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_) == "sendreno" then
-numj = {"10","20","30","35","75","34","66","82","23","19","55","8","63","32","27","89","99","98","3","3","8","3","6","0",};
+end
+if text and text ~="نسبه الانوثه" and database:get(bot_id..":"..msg.sender_user_id_..":ano_Bots"..msg.chat_id_) == "sendanoe" then
+numj = {"10","20","30","35","75","34","66","82","23","19","55","80","63","32","27","89","99","98","79","100","8","3","6","0",};
 sendnuj = numj[math.random(#numj)]
-xl = 'نسبه انوثة '..text..' هي : \n '..sendnuj..'%'
+xl = 'نسبه الانوثه '..text..' هي : \n '..sendnuj..'%'
 send(msg.chat_id_, msg.id_,xl) 
-database:del(bot_id..":"..msg.sender_user_id_..":rjo_Bots"..msg.chat_id_)
+database:del(bot_id..":"..msg.sender_user_id_..":ano_Bots"..msg.chat_id_)
 end
 --------------------------------------------------------------------------------------------------------------
 if msg.sender_user_id_ and Muted_User(msg.chat_id_,msg.sender_user_id_) then 
