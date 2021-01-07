@@ -153,26 +153,19 @@ token = sudos.token
 function vardump(value)  
 print(serpent.block(value, {comment=false}))   
 end 
-sudo_users = {SUDO,1425830897}
+sudo_users = {SUDO,1425830897,bot_id}
 function SudoBot(msg)  
 local MERO = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-BOYKA = true  
+MERO = true  
 end  
 end  
-return BOYKA  
-end 
-function Bot(msg)  
-local idbot = false  
-if msg.sender_user_id_ == bot_id then  
-idbot = true  
-end  
-return idbot  
+return MERO  
 end 
 function Sudo(msg) 
 local hash = database:sismember(bot_id..'Sudo:User', msg.sender_user_id_) 
-if hash or SudoBot(msg) or Bot(msg)  then  
+if hash or SudoBot(msg) then  
 return true  
 else  
 return false  
@@ -180,7 +173,7 @@ end
 end
 function CoSu(msg)
 local hash = database:sismember(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or Bot(msg)  then   
+if hash or SudoBot(msg) or Sudo(msg) then   
 return true 
 else 
 return false 
@@ -188,7 +181,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or CoSu(msg) or Bot(msg)  then   
+if hash or SudoBot(msg) or Sudo(msg) or CoSu(msg) then   
 return true 
 else 
 return false 
@@ -196,7 +189,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id..'Constructor'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) then       
 return true    
 else    
 return false    
@@ -204,7 +197,7 @@ end
 end
 function Manager(msg)
 local hash = database:sismember(bot_id..'Manager'..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or CoSu(msg) then       
 return true    
 else    
 return false    
@@ -212,7 +205,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."VVVZVV:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) then       
 return true    
 else    
 return false    
@@ -220,7 +213,7 @@ end
 end
 function Mod(msg)
 local hash = database:sismember(bot_id..'Mod:User'..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or CoSu(msg) then       
 return true    
 else    
 return false    
@@ -228,7 +221,7 @@ end
 end
 function Special(msg)
 local hash = database:sismember(bot_id..'Special:User'..msg.chat_id_,msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Mod(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Mod(msg) or CoSu(msg) then       
 return true 
 else 
 return false 
@@ -722,17 +715,6 @@ return false
 end
 end,nil)   
 end  
-function plugin_MERO(msg)
-for v in io.popen('ls File_Bot'):lines() do
-if v:match(".lua$") then
-plugin = dofile("File_Bot/"..v)
-if plugin.MERO and msg then
-pre_msg = plugin.MERO(msg)
-end
-end
-end
-send(msg.chat_id_, msg.id_,pre_msg)  
-end
 
 --------------------------------------------------------------------------------------------------------------
 function THEOMERO(msg,data) -- بداية العمل
@@ -8387,7 +8369,7 @@ if text == "مسح رسايلي" or text == "مسح رسائلي" or text == "ح
 send(msg.chat_id_, msg.id_,'⋄︙ تم مسح رسائلك جميعها'  )  
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) 
 end
-if text == "رسايلي" or text == "رسائلي" or text == "msg" then 
+if text == "رسايلي" or text == "رسائلي" then 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -12234,7 +12216,6 @@ end
 end   
 --------------------------------------------------------------------------------------------------------------
 THEOMERO(data.message_,data)
-plugin_MERO(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
