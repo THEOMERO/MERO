@@ -8114,6 +8114,78 @@ else
 send(msg.chat_id_, msg.id_,"⋄︙لا توجد قوانين هنا")   
 end    
 end
+f text == 'تفعيل نسبه الحب' and Manager(msg) then   
+if database:get(bot_id..'Cick:lov'..msg.chat_id_) then
+Text = ' *⋄︙تم تفعيل نسبه الحب*'
+database:del(bot_id..'Cick:lov'..msg.chat_id_)  
+else
+Text = ' *⋄︙بالتاكيد تم تفعيل نسبه الحب*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الحب' and Manager(msg) then  
+if not database:get(bot_id..'Cick:lov'..msg.chat_id_) then
+database:set(bot_id..'Cick:lov'..msg.chat_id_,true)  
+Text = '\n *⋄︙تم تعطيل نسبه الحب*'
+else
+Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه الحب*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل نسبه رجوله' and Manager(msg) then   
+if database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
+Text = ' *⋄︙تم تفعيل نسبه رجوله*'
+database:del(bot_id..'Cick:rjo'..msg.chat_id_)  
+else
+Text = ' *⋄︙بالتاكيد تم تفعيل نسبه رجوله*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الرجوله' and Manager(msg) then  
+if not database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
+database:set(bot_id..'Cick:rjo'..msg.chat_id_,true)  
+Text = '\n *⋄︙تم تعطيل نسبه رجوله*'
+else
+Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه رجوله*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل نسبه الانوثه' and Manager(msg) then   
+if database:get(bot_id..'Cick:ano'..msg.chat_id_) then
+Text = ' *⋄︙تم تفعيل نسبه الانوثه*'
+database:del(bot_id..'Cick:ano'..msg.chat_id_)  
+else
+Text = ' *⋄︙بالتاكيد تم تفعيل الانوثه*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل نسبه الانوثه' and Manager(msg) then  
+if not database:get(bot_id..'Cick:ano'..msg.chat_id_) then
+database:set(bot_id..'Cick:ano'..msg.chat_id_,true)  
+Text = '\n *⋄︙تم تعطيل نسبه الانوثه*'
+else
+Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه الانوثه*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تفعيل all' and CoSu(msg) then   
+if database:get(bot_id..'Cick:all'..msg.chat_id_) then
+Text = ' *⋄︙تم تفعيل امر @all*'
+database:del(bot_id..'Cick:all'..msg.chat_id_)  
+else
+Text = ' *⋄︙بالتاكيد تم تفعيل امر @all*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
+if text == 'تعطيل all' and CoSu(msg) then  
+if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
+database:set(bot_id..'Cick:all'..msg.chat_id_,true)  
+Text = '\n *⋄︙تم تعطيل امر @all*'
+else
+Text = '\n *⋄︙بالتاكيد تم تعطيل امر @all*'
+end
+send(msg.chat_id_, msg.id_,Text) 
+end
 if text == 'قفل التفليش' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagrvrbot'..msg.chat_id_,true)   
 list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
@@ -9790,78 +9862,6 @@ database:set(bot_id..'Bot:Id:Photo'..msg.chat_id_,true)
 Text = '\n*⋄︙تم تعطيل الايدي بالصوره*' 
 else
 Text = '\n*⋄︙بالتاكيد تم تعطيل الايدي بالصوره*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-f text == 'تفعيل نسبه الحب' and Manager(msg) then   
-if database:get(bot_id..'Cick:lov'..msg.chat_id_) then
-Text = ' *⋄︙تم تفعيل نسبه الحب*'
-database:del(bot_id..'Cick:lov'..msg.chat_id_)  
-else
-Text = ' *⋄︙بالتاكيد تم تفعيل نسبه الحب*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل نسبه الحب' and Manager(msg) then  
-if not database:get(bot_id..'Cick:lov'..msg.chat_id_) then
-database:set(bot_id..'Cick:lov'..msg.chat_id_,true)  
-Text = '\n *⋄︙تم تعطيل نسبه الحب*'
-else
-Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه الحب*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تفعيل نسبه رجوله' and Manager(msg) then   
-if database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
-Text = ' *⋄︙تم تفعيل نسبه رجوله*'
-database:del(bot_id..'Cick:rjo'..msg.chat_id_)  
-else
-Text = ' *⋄︙بالتاكيد تم تفعيل نسبه رجوله*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل نسبه الرجوله' and Manager(msg) then  
-if not database:get(bot_id..'Cick:rjo'..msg.chat_id_) then
-database:set(bot_id..'Cick:rjo'..msg.chat_id_,true)  
-Text = '\n *⋄︙تم تعطيل نسبه رجوله*'
-else
-Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه رجوله*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تفعيل نسبه الانوثه' and Manager(msg) then   
-if database:get(bot_id..'Cick:ano'..msg.chat_id_) then
-Text = ' *⋄︙تم تفعيل نسبه الانوثه*'
-database:del(bot_id..'Cick:ano'..msg.chat_id_)  
-else
-Text = ' *⋄︙بالتاكيد تم تفعيل الانوثه*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل نسبه الانوثه' and Manager(msg) then  
-if not database:get(bot_id..'Cick:ano'..msg.chat_id_) then
-database:set(bot_id..'Cick:ano'..msg.chat_id_,true)  
-Text = '\n *⋄︙تم تعطيل نسبه الانوثه*'
-else
-Text = '\n *⋄︙بالتاكيد تم تعطيل نسبه الانوثه*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تفعيل all' and CoSu(msg) then   
-if database:get(bot_id..'Cick:all'..msg.chat_id_) then
-Text = ' *⋄︙تم تفعيل امر @all*'
-database:del(bot_id..'Cick:all'..msg.chat_id_)  
-else
-Text = ' *⋄︙بالتاكيد تم تفعيل امر @all*'
-end
-send(msg.chat_id_, msg.id_,Text) 
-end
-if text == 'تعطيل all' and CoSu(msg) then  
-if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
-database:set(bot_id..'Cick:all'..msg.chat_id_,true)  
-Text = '\n *⋄︙تم تعطيل امر @all*'
-else
-Text = '\n *⋄︙بالتاكيد تم تعطيل امر @all*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
