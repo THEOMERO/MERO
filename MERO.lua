@@ -821,7 +821,7 @@ local keyboard = {
 {'تفعيل البوت الخدمي 📬','تعطيل البوت الخدمي 📭'},
 {'تنظيف الكروبات 🗑️','تنظيف المشتركين 🗑️'},
 {'جلب نسخه البوت 📡'},
-{'تحديث السورس','الاصدار 📟'},
+{'تحديث السورس✅','الاصدار 📟'},
 {'معلومات السيرفر 📊'},
 {'الغاء ✖'}
 }
@@ -997,30 +997,19 @@ echo '*———————————~*\n⏱|☆ { مـده تـشغيـل ا
 ]]):read('*all'))  
 end
 
-if text == 'شنو الوقت' or text == 'الوقت' or text == 'بيش الساعه' then 
-local htot = {'mathbf','mathit','mathfrak','mathrm'}
-local alwan = {'blue','green','yellow','magenta','Orange','DarkOrange','red'}
-local url1 = 'http://latex.codecogs.com/png.download?'..'\\dpi{600}%20\\huge%20\\'..htot[math.random(#htot)]..'{{\\color{'..alwan[math.random(#alwan)]..'}'..os.date("%H:%M")..'}}' 
-file = download_to_file(url1,'mero.webp')
-print('TIMESSSS')
-local MERO = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
-local curl = 'curl "' .. mero .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'mero.webp' .. '"'
-io.popen(curl)
-end
-
-if text == 'تحديث السورس' and SudoBot(msg) then 
+if text == 'تحديث السورس✅' and SudoBot(msg) then 
 os.execute('rm -rf MERO.lua')
-os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⋄︙ لديك اخر اصدار سورس ميرو\n⋄︙ الاصدار ← { 1.2v}')
+os.execute('wget https://raw.githubusercontent.com/MEROTEAM/MERO/master/MERO.lua')
+send(msg.chat_id_, msg.id_,' ⋄︙تم تحديث السورس \n ⋄︙لديك اخر اصدار لسورس ميرو\n ⋄︙الاصدار » { 1.3v}')
 dofile('MERO.lua')  
+end
+if text == 'الاصدار 📟' and SudoBot(msg) then 
+database:del(bot_id..'Srt:Bot') 
+send(msg.chat_id_, msg.id_,' ⋄︙اصدار سورس ميرو \n ⋄︙الاصدار »{ 1.3v}')
 end
 if text == 'قناه تحديثات البوت ⚙' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
 send(msg.chat_id_, msg.id_,'⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
-end
-if text == 'الاصدار 📟' and SudoBot(msg) then 
-database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'⋄︙ اصدار سورس ميرو \n📟| الاصدار ←{ 1.2v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2257,10 +2246,21 @@ end
 database:set(bot_id..'Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⋄︙ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ↫ {'..Num..'} عضو')
 end
-if text == 'تحديث السورس' and SudoBot(msg) then    
+if text == 'تحديث السورس' and SudoBot(msg) then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+os.execute('rm -rf MERO.lua')
+os.execute('wget https://raw.githubusercontent.com/MEROTEAM/MERO/master/MERO.lua')
+send(msg.chat_id_, msg.id_,' ⋄︙تم تحديث السورس \n ⋄︙لديك اخر اصدار لسورس ميرو\n ⋄︙الاصدار » { 1.3v}')
 dofile('MERO.lua')  
-send(msg.chat_id_, msg.id_,'⋄︙ تم تحديث البوت \n⋄︙ لديك اخر اصدار لسورس ميرو')
-end 
+end
 
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
