@@ -155,13 +155,13 @@ print(serpent.block(value, {comment=false}))
 end 
 sudo_users = {SUDO,1425830897}
 function SudoBot(msg)  
-local BOYKA = false  
+local MERO = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-BOYKA = true  
+MERO = true  
 end  
 end  
-return BOYKA  
+return MERO  
 end 
 function Bot(msg)  
 local idbot = false  
