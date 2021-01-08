@@ -2265,11 +2265,22 @@ end
 database:set(bot_id..'Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⋄︙تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ↫ {'..Num..'} عضو')
 end
-if text == 'تحديث السورس' and SudoBot(msg) then    
-dofile('MERO.lua')  
+if text == 'تحديث السورس' and SudoBot(msg) then 
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n - اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+os.execute('rm -rf MERO.lua')
+os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
 send(msg.chat_id_, msg.id_,'⋄︙تم تحديث البوت \n⋄︙لديك اخر اصدار لسورس ميرو')
-end 
-
+end
+dofile('MERO.lua')  
+end
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
 send(msg.chat_id_, msg.id_, '⋄︙حسنآ ارسل لي معرف القناة') 
