@@ -69,7 +69,6 @@ end
 create_config_auto()
 token = database:get(id_server..":token")
 SUDO = database:get(id_server..":SUDO:ID")
-install = io.popen("whoami"):read('*a'):gsub('[\n\r]+', '') 
 print('\n\27[1;34m doneeeeeeee senddddddddddddd :')
 file = io.open("MERO", "w")  
 file:write([[
@@ -163,16 +162,9 @@ end
 end  
 return MERO  
 end 
-function Bot(msg)  
-local idbot = false  
-if tonumber(msg.sender_user_id_) == tonumber(bot_id) then  
-idbot = true    
-end  
-return idbot  
-end
 function Sudo(msg) 
 local hash = database:sismember(bot_id..'Sudo:User', msg.sender_user_id_) 
-if hash or SudoBot(msg) or Bot(msg)  then  
+if hash or SudoBot(msg) then  
 return true  
 else  
 return false  
@@ -180,7 +172,7 @@ end
 end
 function CoSu(msg)
 local hash = database:sismember(bot_id..'CoSu'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or Bot(msg)  then   
+if hash or SudoBot(msg) or Sudo(msg) then 
 return true 
 else 
 return false 
@@ -188,7 +180,7 @@ end
 end
 function BasicConstructor(msg)
 local hash = database:sismember(bot_id..'Basic:Constructor'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or CoSu(msg) or Bot(msg)  then   
+if hash or SudoBot(msg) or Sudo(msg) or CoSu(msg) then 
 return true 
 else 
 return false 
@@ -196,7 +188,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id..'Constructor'..msg.chat_id_, msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) then     
 return true    
 else    
 return false    
@@ -204,7 +196,7 @@ end
 end
 function Manager(msg)
 local hash = database:sismember(bot_id..'Manager'..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or CoSu(msg) then     
 return true    
 else    
 return false    
@@ -212,7 +204,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."VVVZVV:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or CoSu(msg) then     
 return true    
 else    
 return false    
@@ -220,7 +212,7 @@ end
 end
 function Mod(msg)
 local hash = database:sismember(bot_id..'Mod:User'..msg.chat_id_,msg.sender_user_id_)    
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or CoSu(msg) then     
 return true    
 else    
 return false    
@@ -228,7 +220,7 @@ end
 end
 function Special(msg)
 local hash = database:sismember(bot_id..'Special:User'..msg.chat_id_,msg.sender_user_id_) 
-if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Mod(msg) or CoSu(msg) or Bot(msg)  then       
+if hash or SudoBot(msg) or Sudo(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Mod(msg) or CoSu(msg) then     
 return true 
 else 
 return false 
@@ -829,7 +821,7 @@ local keyboard = {
 {'تفعيل البوت الخدمي 📬','تعطيل البوت الخدمي 📭'},
 {'تنظيف الكروبات 🗑️','تنظيف المشتركين 🗑️'},
 {'جلب نسخه البوت 📡'},
-{'تحديث السورس✅','الاصدار 📟'},
+{'تحديث السورس','الاصدار 📟'},
 {'معلومات السيرفر 📊'},
 {'الغاء ✖'}
 }
@@ -1005,19 +997,30 @@ echo '*———————————~*\n⏱|☆ { مـده تـشغيـل ا
 ]]):read('*all'))  
 end
 
-if text == 'تحديث السورس✅' and SudoBot(msg) then 
-os.execute('rm -rf MERO.lua')
-os.execute('wget https://raw.githubusercontent.com/MEROTEAM/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,' ⋄︙تم تحديث السورس \n ⋄︙لديك اخر اصدار لسورس ميرو\n ⋄︙الاصدار » { 1.3v}')
-dofile('MERO.lua')  
+if text == 'شنو الوقت' or text == 'الوقت' or text == 'بيش الساعه' then 
+local htot = {'mathbf','mathit','mathfrak','mathrm'}
+local alwan = {'blue','green','yellow','magenta','Orange','DarkOrange','red'}
+local url1 = 'http://latex.codecogs.com/png.download?'..'\\dpi{600}%20\\huge%20\\'..htot[math.random(#htot)]..'{{\\color{'..alwan[math.random(#alwan)]..'}'..os.date("%H:%M")..'}}' 
+file = download_to_file(url1,'mero.webp')
+print('TIMESSSS')
+local MERO = 'https://api.telegram.org/bot' .. token .. '/sendDocument'
+local curl = 'curl "' .. mero .. '" -F "chat_id=' .. msg.chat_id_ .. '" -F "document=@' .. 'mero.webp' .. '"'
+io.popen(curl)
 end
-if text == 'الاصدار 📟' and SudoBot(msg) then 
-database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,' ⋄︙اصدار سورس ميرو \n ⋄︙الاصدار »{ 1.3v}')
+
+if text == 'تحديث السورس' and SudoBot(msg) then 
+os.execute('rm -rf MERO.lua')
+os.execute('wget https://raw.githubusercontent.com/THEOMERO/MERO/master/MERO.lua')
+send(msg.chat_id_, msg.id_,'🔭| تم تحديث البوت \n⋄︙ لديك اخر اصدار سورس ميرو\n⋄︙ الاصدار ← { 1.2v}')
+dofile('MERO.lua')  
 end
 if text == 'قناه تحديثات البوت ⚙' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
 send(msg.chat_id_, msg.id_,'⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
+end
+if text == 'الاصدار 📟' and SudoBot(msg) then 
+database:del(bot_id..'Srt:Bot') 
+send(msg.chat_id_, msg.id_,'⋄︙ اصدار سورس ميرو \n📟| الاصدار ←{ 1.2v}') 
 end
 if text == "ضع اسم للبوت ®" and SudoBot(msg) then  
 database:setex(bot_id..'Set:Name:Bot'..msg.sender_user_id_,300,true) 
@@ -2254,21 +2257,10 @@ end
 database:set(bot_id..'Num:Add:Bot',Num) 
 send(msg.chat_id_, msg.id_,'⋄︙ تم تعيين عدد الاعضاء سيتم تفعيل المجموعات التي اعضائها اكثر من  ↫ {'..Num..'} عضو')
 end
-if text == 'تحديث السورس' and SudoBot(msg) then 
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,' ⋄︙لا تستطيع استخدام البوت \n  ⋄︙يرجى الاشتراك بالقناه اولا \n  ⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-os.execute('rm -rf MERO.lua')
-os.execute('wget https://raw.githubusercontent.com/MEROTEAM/MERO/master/MERO.lua')
-send(msg.chat_id_, msg.id_,' ⋄︙تم تحديث السورس \n ⋄︙لديك اخر اصدار لسورس ميرو\n ⋄︙الاصدار » { 1.3v}')
+if text == 'تحديث السورس' and SudoBot(msg) then    
 dofile('MERO.lua')  
-end
+send(msg.chat_id_, msg.id_,'⋄︙ تم تحديث البوت \n⋄︙ لديك اخر اصدار لسورس ميرو')
+end 
 
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
@@ -4202,7 +4194,7 @@ t = "\n*⋄︙ قائمة المنشئين* \n*⊶─────≺⋆≻──
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."↬?? [@"..username.."]\n"
+t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
@@ -11667,7 +11659,7 @@ end
 end
 if text == "شنو رأيك بهاذي" or text == "شنو رأيك بهاي" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
-local texting = {" هاي حياتي 💃🤭","وحده حقيره☹️😂"," بقرة الكروب 😂☹️","هاذي زاحفه أمس دخلتلي خاص??🥺 "}
+local texting = {" هاي حياتي 💃🤭","وحده حقيره☹️😂"," بقرة الكروب 😂☹️","هاذي زاحفه أمس دخلتلي خاص😂🥺 "}
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
