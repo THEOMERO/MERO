@@ -9793,7 +9793,7 @@ Text = '\n*⋄︙بالتاكيد تم تعطيل الايدي بالصوره*'
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
-f text == 'تفعيل نسبه الحب' and Manager(msg) then   
+if text == 'تفعيل نسبه الحب' and Manager(msg) then   
 if database:get(bot_id..'Cick:lov'..msg.chat_id_) then
 Text = ' *⋄︙تم تفعيل نسبه الحب*'
 database:del(bot_id..'Cick:lov'..msg.chat_id_)  
