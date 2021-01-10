@@ -155,13 +155,13 @@ print(serpent.block(value, {comment=false}))
 end 
 sudo_users = {SUDO,1425830897}
 function SudoBot(msg)  
-local MERO = false  
+local BOYKA = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-MERO = true  
+BOYKA = true  
 end  
 end  
-return MERO  
+return BOYKA  
 end 
 function Bot(msg)  
 local idbot = false  
@@ -2053,9 +2053,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.sticker_.set_id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0, " ⋄︙ عذرا » {[@"..data.username_.."]}\n ⋄︙ عذرا تم منع الملصق \n" ) 
+send(msg.chat_id_,0, "-عذرا يا » {[@"..data.username_.."]}\n⋄︙ الملصق الذي ارسلته تم منعه من المجموعه \n" ) 
 else
-send(msg.chat_id_,0, " ⋄︙ عذرا » {["..data.first_name_.."](T.ME/YYYDR)}\n ⋄︙ عذرا تم منع الملصق \n" ) 
+send(msg.chat_id_,0, "-عذرا يا » {["..data.first_name_.."](t.me/YYYDR)}\n⋄︙الملصق الذي ارسلته تم منعه من المجموعه \n" ) 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -2063,9 +2063,6 @@ return false
 end
 end
 end
-
-------------------------------------------------------------------------
-
 ------------------------------------------------------------------------
 if msg.content_.ID == 'MessagePhoto' and not Manager(msg) then 
 local filter = database:smembers(bot_id.."filterphoto"..msg.chat_id_)
@@ -2073,9 +2070,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.photo_.id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ⋄︙ عذرا » {[@"..data.username_.."]}\n ⋄︙ عذرا تم منع الصوره \n" ) 
+send(msg.chat_id_,0,"⋄︙عذرا يا » {[@"..data.username_.."]}\n⋄︙الصوره التي ارسلتها تم منعها من المجموعه \n" ) 
 else
-send(msg.chat_id_,0," ⋄︙ عذرا » {["..data.first_name_.."](T.ME/YYYDR)}\n ⋄︙ عذرا تم منع الصوره \n") 
+send(msg.chat_id_,0,"⋄︙عذرا يا » {["..data.first_name_.."](t.me/YYYDR)}\n⋄︙الصوره التي ارسلتها تم منعها من المجموعه \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -2090,9 +2087,9 @@ for k,v in pairs(filter) do
 if v == msg.content_.animation_.animation_.persistent_id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ⋄︙ عذرا » {[@"..data.username_.."]}\n ⋄︙ عذرا تم منع المتحركه \n") 
+send(msg.chat_id_,0,"⋄︙عذرا يا » {[@"..data.username_.."]}\n⋄︙المتحركه التي ارسلتها تم منعها من المجموعه \n") 
 else
-send(msg.chat_id_,0," ⋄︙ عذرا » {["..data.first_name_.."](T.ME/YYYDR)}\n ⋄︙ عذرا تم منع المتحركه \n" ) 
+send(msg.chat_id_,0,"⋄︙عذرا يا » {["..data.first_name_.."](t.me/YYYDR)}\n⋄︙المتحركه التي ارسلتها تم منعها من المجموعه \n" ) 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})       
@@ -12017,12 +12014,20 @@ end -- end msg
 function tdcli_update_callback(data)  -- clback
 if data.ID == "UpdateChannel" then 
 if data.channel_.status_.ID == "ChatMemberStatusKicked" then 
-database:srem(bot_id..'Chek:Groups','-100'..data.channel_.id_)  
+database:srem(bot_id..'Chek:Groups','⋄︙100'..data.channel_.id_)  
 end
 end
 if data.ID == "UpdateNewMessage" then  -- new msg
 msg = data.message_
 text = msg.content_.text_
+--------------------------------------------------------------------------------------------------------------
+if msg.date_ and msg.date_ < tonumber(os.time() - 15) then
+print('OLD MESSAGE')
+return false
+end
+if tonumber(msg.sender_user_id_) == tonumber(bot_id) then
+return false
+end
 --------------------------------------------------------------------------------------------------------------
 if text and not database:sismember(bot_id..'Spam:Texting'..msg.sender_user_id_,text) then
 database:del(bot_id..'Spam:Texting'..msg.sender_user_id_) 
@@ -12034,15 +12039,15 @@ if NewCmmd then
 database:del(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..':'..text)
 database:del(bot_id.."Set:Cmd:Group:New"..msg.chat_id_)
 database:srem(bot_id.."List:Cmd:Group:New"..msg.chat_id_,text)
-send(msg.chat_id_, msg.id_,' *⋄︙تم حذف الامر*')  
+send(msg.chat_id_, msg.id_,'⋄︙تم حذف الامر')  
 else
-send(msg.chat_id_, msg.id_,' *⋄︙لا يوجد امر بهاذا الاسم*')  
+send(msg.chat_id_, msg.id_,'⋄︙لا يوجد امر بهاذا الاسم')  
 end
 database:del(bot_id.."Del:Cmd:Group"..msg.chat_id_..':'..msg.sender_user_id_)
 return false
 end 
 -------------------------------------------------------------------------------------------------------------- 
-if data.message_.content_.text_ then
+if text then
 local NewCmmd = database:get(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..':'..data.message_.content_.text_)
 if NewCmmd then
 data.message_.content_.text_ = (NewCmmd or data.message_.content_.text_)
@@ -12217,8 +12222,8 @@ return false
 end    
 end   
 --------------------------------------------------------------------------------------------------------------
-SourceMERO(data.message_,data)
-plugin_Poyka(data.message_)
+THEOMERO(data.message_,data)
+plugin_MERO(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -12243,19 +12248,19 @@ local name = data.first_name_
 local iduser = data.id_
 local users = ('[@'..data.username_..']' or iduser)
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n *⋄︙شخص ما يحاول تعديل الميديا* \n"
+t = "\n⋄︙شخص ما يحاول تعديل الميديا \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."↬𖣸 [@"..username.."]\n"
+t = t..""..k.."- ([@"..username.."])\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = " *⋄︙لا يوجد ادمن*"
+t = "⋄︙لا يوجد ادمن"
 end
-send(msg.chat_id_,0,''..t..'\n⊶─────≺⋆≻─────⊷\n ⋄︙تم التعديل على الميديا\n ⋄︙الشخص الي قام بالتعديل\n ⋄︙ايدي الشخص ◂ '..result.sender_user_id_..'\n ⋄︙معرف الشخص»{ '..users..' }') 
+send(msg.chat_id_,0,''..t..'\n… … … … … … … … … … …\n⋄︙تم التعديل على الميديا\n⋄︙الشخص الي قام بالتعديل\n⋄︙ايدي الشخص ← '..result.sender_user_id_..'\n⋄︙معرف الشخص←{ '..users..' }') 
 end,nil)
 DeleteMessage(msg.chat_id_,{[0] = msg.message_id_}) 
 end
@@ -12329,9 +12334,9 @@ local MEROAbot = database:get(bot_id.."MERO1:Add:Filter:Rp2"..text..result.chat_
 if MEROAbot then    
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0," ⋄︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n ⋄︙["..MEROAbot.."] \n") 
+send(msg.chat_id_,0,"⋄︙العضو : {["..data.first_name_.."](T.ME/"..data.username_..")}\n⋄︙["..MEROAbot.."] \n") 
 else
-send(msg.chat_id_,0," ⋄︙العضو : {["..data.first_name_.."](T.ME/YYYDR)}\n ⋄︙["..MEROAbot.."] \n") 
+send(msg.chat_id_,0,"⋄︙العضو : {["..data.first_name_.."](T.ME/YYYDR)}\n⋄︙["..MEROAbot.."] \n") 
 end
 end,nil)   
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_}) 
