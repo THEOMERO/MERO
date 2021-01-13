@@ -155,13 +155,13 @@ print(serpent.block(value, {comment=false}))
 end 
 sudo_users = {SUDO,1425830897}
 function SudoBot(msg)  
-local MERO = false  
+local BOYKA = false  
 for k,v in pairs(sudo_users) do  
 if tonumber(msg.sender_user_id_) == tonumber(v) then  
-MERO = true  
+BOYKA = true  
 end  
 end  
-return MERO  
+return BOYKA  
 end 
 function Bot(msg)  
 local idbot = false  
@@ -6695,7 +6695,7 @@ end
 return false
 end
 ------------------------------------------------------------------------
-if text == ("الغاء تقيد") and msg.reply_to_message_id_ and Constructor(msg) then
+if text == ("الغاء تقيد") and msg.reply_to_message_id_ and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -6717,7 +6717,7 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^الغاء تقيد @(.*)$") and Constructor(msg) then
+if text and text:match("^الغاء تقيد @(.*)$") and Mod(msg) then
 local username = text:match("^الغاء تقيد @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -6743,7 +6743,7 @@ tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, 
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^الغاء تقيد (%d+)$") and Constructor(msg) then
+if text and text:match("^الغاء تقيد (%d+)$") and Mod(msg) then
 local userid = text:match("^الغاء تقيد (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -7413,7 +7413,7 @@ end
 if database:get(bot_id.."lock:Bot:kick"..msg.chat_id_) == 'del' then
 lock_bots = '✓'
 elseif database:get(bot_id.."lock:Bot:kick"..msg.chat_id_) == 'ked' then
-lock_bots = 'بالتقييد ??'   
+lock_bots = 'بالتقييد 🔏'   
 elseif database:get(bot_id.."lock:Bot:kick"..msg.chat_id_) == 'kick' then
 lock_bots = 'بالطرد 🚷'    
 else
@@ -12122,11 +12122,6 @@ send(msg.chat_id_, msg.id_,xl)
 database:del(bot_id..":"..msg.sender_user_id_..":ano_Bots"..msg.chat_id_)
 end
 --------------------------------------------------------------------------------------------------------------
-if msg.sender_user_id_ and Muted_User(msg.chat_id_,msg.sender_user_id_) then 
-DeleteMessage(msg.chat_id_, {[0] = msg.id_})  
-return false  
-end
---------------------------------------------------------------------------------------------------------------
 if msg.sender_user_id_ and Ban_User(msg.chat_id_,msg.sender_user_id_) then 
 chat_kick(msg.chat_id_,msg.sender_user_id_) 
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
@@ -12218,8 +12213,8 @@ return false
 end    
 end   
 --------------------------------------------------------------------------------------------------------------
-SourceMERO(data.message_,data)
-plugin_mero(data.message_)
+THEOMERO(data.message_,data)
+plugin_MERO(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
@@ -12244,17 +12239,17 @@ local name = data.first_name_
 local iduser = data.id_
 local users = ('[@'..data.username_..']' or iduser)
 local list = database:smembers(bot_id..'Constructor'..msg.chat_id_)
-t = "\n*⋄︙شخص ما يحاول تعديل الميديا *\n"
+t = "\n⋄︙شخص ما يحاول تعديل الميديا \n"
 for k,v in pairs(list) do
 local username = database:get(bot_id.."user:Name" .. v)
 if username then
-t = t..""..k.."↬𖣸 [@"..username.."]\n"
+t = t..""..k.."- ([@"..username.."])\n"
 else
 t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "*⋄︙لا يوجد ادمن*"
+t = "⋄︙لا يوجد ادمن"
 end
 send(msg.chat_id_,0,''..t..'\n… … … … … … … … … … …\n⋄︙تم التعديل على الميديا\n⋄︙الشخص الي قام بالتعديل\n⋄︙ايدي الشخص ← '..result.sender_user_id_..'\n⋄︙معرف الشخص←{ '..users..' }') 
 end,nil)
