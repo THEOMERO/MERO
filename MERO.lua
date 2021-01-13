@@ -12219,7 +12219,7 @@ end
 end   
 --------------------------------------------------------------------------------------------------------------
 SourceMERO(data.message_,data)
-plugin_Poyka(data.message_)
+plugin_mero(data.message_)
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' and ChekAdd(msg.chat_id_) == true then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
