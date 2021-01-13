@@ -8371,7 +8371,7 @@ tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},py_username,nil)
 end  
 end
 if text == "مسح رسايلي" or text == "مسح رسائلي" or text == "حذف رسايلي" or text == "حذف رسائلي" then  
-send(msg.chat_id_, msg.id_,'*⋄︙تم مسح رسائلك جميعها'*)  
+send(msg.chat_id_, msg.id_,'*⋄︙تم مسح رسائلك جميعها*')  
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_) 
 end
 if text == "رسايلي" or text == "رسائلي" or text == "msg" then 
