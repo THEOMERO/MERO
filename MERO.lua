@@ -3069,7 +3069,7 @@ end
 --------------------------------------------------------------------------------------------------------------
 if text == 'تحديث' and SudoBot(msg) then    
 dofile('MERO.lua')  
-send(msg.chat_id_, msg.id_, '⋄︙تم تحديث جميع ملفات البوت') 
+send(msg.chat_id_, msg.id_, '*⋄︙تم تحديث جميع ملفات البوت*') 
 end 
 if text == ("مسح قائمه العام") and SudoBot(msg) then
 database:del(bot_id..'GBan:User')
@@ -3195,8 +3195,8 @@ end
 database:sadd(bot_id..'GBan:User', userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n⋄︙تم حظره عام من المجموعات'
+usertext = '\n*⋄︙العضو »* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم حظره عام من المجموعات*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
 usertext = '\n⋄︙العضو » '..userid..''
