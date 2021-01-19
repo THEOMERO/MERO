@@ -2053,7 +2053,7 @@ for k,v in pairs(filter) do
 if v == msg.content_.sticker_.set_id_ then
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-send(msg.chat_id_,0, "-عذرا يا » {[@"..data.username_.."]}\n⋄︙ الملصق الذي ارسلته تم منعه من المجموعه \n" ) 
+send(msg.chat_id_,0, "-عذرا يا » {[@"..data.username_.."]}\n⋄︙الملصق الذي ارسلته تم منعه من المجموعه \n" ) 
 else
 send(msg.chat_id_,0, "-عذرا يا » {["..data.first_name_.."](t.me/YYYDR)}\n⋄︙الملصق الذي ارسلته تم منعه من المجموعه \n" ) 
 end
@@ -5487,7 +5487,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعطيل الرفع من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الرفع من قبل المنشئين') 
 return false
 end
 function start_function(extra, result, success)
@@ -5556,7 +5556,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعطيل الرفع من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الرفع من قبل المنشئين') 
 return false
 end
 function start_function(extra, result, success)
@@ -5625,7 +5625,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعطيل الرفع من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الرفع من قبل المنشئين') 
 return false
 end
 function start_function(extra, result, success)
@@ -5694,7 +5694,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعطيل الرفع من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الرفع من قبل المنشئين') 
 return false
 end
 function start_function(extra, result, success)
@@ -5901,7 +5901,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙ تم تعطيل الرفع من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الرفع من قبل المنشئين') 
 return false
 end
 function start_function(extra, result, success)
@@ -6810,7 +6810,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙ لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -6821,7 +6821,7 @@ database:srem(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n*⋄︙ الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙رفع عنه الحظر ، الكتم ، التقييد*'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙رفع عنه الحظر ، الكتم ، التقييد*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 else
@@ -7875,7 +7875,7 @@ database:del(bot_id.."Add:Filter:Rp1"..msg.sender_user_id_..msg.chat_id_)
 database:del(bot_id.."Add:Filter:Rp2"..v..msg.chat_id_)  
 database:srem(bot_id.."List:Filter"..msg.chat_id_,v)  
 end  
-send(msg.chat_id_, msg.id_,"⋄︙ تم مسح قائمه المنع")  
+send(msg.chat_id_, msg.id_,"⋄︙تم مسح قائمه المنع")  
 end
 
 if text == "قائمه المنع" and Manager(msg) then   
@@ -8395,7 +8395,7 @@ send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت ي
 end
 return false
 end
-send(msg.chat_id_, msg.id_,'⋄︙ عدد رسائلك هنا » { '..database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'}' ) 
+send(msg.chat_id_, msg.id_,'⋄︙عدد رسائلك هنا » { '..database:get(bot_id..'Msg_User'..msg.chat_id_..':'..msg.sender_user_id_)..'}' ) 
 end 
 if text == 'تفعيل الاذاعه' and SudoBot(msg) then  
 if database:get(bot_id..'Bc:Bots') then
@@ -9870,7 +9870,7 @@ if database:get(bot_id..'Lock:kick'..msg.chat_id_)  then
 database:del(bot_id..'Lock:kick'..msg.chat_id_) 
 Text = '\n*⋄︙تم تفعيل الحظر* ' 
 else
-Text = '\n*⋄︙ بالتاكيد تم تفعيل الحظر* '
+Text = '\n*⋄︙بالتاكيد تم تفعيل الحظر* '
 end
 send(msg.chat_id_, msg.id_,Text) 
 end
@@ -10784,7 +10784,7 @@ if Json_Info.result.can_restrict_members == true then
 restrict = 'ꪜ' else restrict = '✘' end
 if Json_Info.result.can_promote_members == true then
 promote = 'ꪜ' else promote = '✘' end 
-send(msg.chat_id_,msg.id_,'\n⋄︙اهلا عزيزي البوت هنا ادمن'..'\n⋄︙ وصلاحياته هي ↓ \nٴ━━━━━━━━━━'..'\n⋄︙تغير معلومات المجموعه ↞ ❴ '..info..' ❵'..'\n⋄︙ حذف الرسائل ↞ ❴ '..delete..' ❵'..'\n⋄︙ حظر المستخدمين ↞ ❴ '..restrict..' ❵'..'\n⋄︙ دعوة مستخدمين ↞ ❴ '..invite..' ❵'..'\n⋄︙ تثبيت الرسائل ↞ ❴ '..pin..' ❵'..'\n⋄︙ اضافة مشرفين جدد ↞ ❴ '..promote..' ❵')   
+send(msg.chat_id_,msg.id_,'\n⋄︙اهلا عزيزي البوت هنا ادمن'..'\n⋄︙وصلاحياته هي ↓ \nٴ━━━━━━━━━━'..'\n⋄︙تغير معلومات المجموعه ↞ ❴ '..info..' ❵'..'\n⋄︙حذف الرسائل ↞ ❴ '..delete..' ❵'..'\n⋄︙حظر المستخدمين ↞ ❴ '..restrict..' ❵'..'\n⋄︙دعوة مستخدمين ↞ ❴ '..invite..' ❵'..'\n⋄︙تثبيت الرسائل ↞ ❴ '..pin..' ❵'..'\n⋄︙اضافة مشرفين جدد ↞ ❴ '..promote..' ❵')   
 end
 end
 end
