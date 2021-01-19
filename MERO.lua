@@ -304,12 +304,6 @@ var = false
 end
 return var
 end
-function Muted_User(Chat_id,User_id) 
-if database:sismember(bot_id..'Muted:User'..Chat_id,User_id) then
-Var = true
-else
-Var = false
-end
 return Var
 end
 function Ban_User(Chat_id,User_id) 
