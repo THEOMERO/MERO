@@ -10688,7 +10688,7 @@ database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..iduserr,numadded)
 send(msg.chat_id_, msg.id_,  1, "??| تم اضافة له {"..numadded..'} من النقاط', 1 , 'md')  
 end
 ------------------------------------------------------------
-if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then    
+if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and CoSu(msg) then    
 amir = text:match("^اضف رسائل (%d+)$")
 database:set(bot_id..'id:user'..msg.chat_id_,amir)  
 database:setex(bot_id.."numadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
@@ -10696,7 +10696,7 @@ send(msg.chat_id_, msg.id_, '*⋄︙ارسل لي عدد الرسائل الان
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ == 0 and Constructor(msg) then  
+if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ == 0 and CoSu(msg) then  
 amir = text:match("^اضف نقاط (%d+)$")
 database:set(bot_id..'idgem:user'..msg.chat_id_,amir)  
 database:setex(bot_id.."gemadd:user" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
@@ -10704,7 +10704,7 @@ send(msg.chat_id_, msg.id_, '*⋄︙ارسل لي عدد النقاط التي �
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and CoSu(msg) then
 local Num = text:match("^اضف نقاط (%d+)$")
 function reply(extra, result, success)
 database:incrby(bot_id..'NUM:GAMES'..msg.chat_id_..result.sender_user_id_,Num)  
@@ -10714,7 +10714,7 @@ tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(ms
 return false
 end
 ------------------------------------------------------------------------
-if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
+if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and CoSu(msg) then
 local Num = text:match("^اضف رسائل (%d+)$")
 function reply(extra, result, success)
 database:del(bot_id..'Msg_User'..msg.chat_id_..':'..result.sender_user_id_) 
