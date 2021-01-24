@@ -4792,11 +4792,11 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == 'مسح المنظفين' and BasicConstructor(msg) then
+if text == 'مسح المنظفين' and CoSu(msg) then
 database:del(bot_id..'VVVZVV:MN:TF'..msg.chat_id_)
 send(msg.chat_id_, msg.id_, ' *⋄︙تم مسح المنظفين*')
 end
-if text == ("المنظفين") and BasicConstructor(msg) then
+if text == ("المنظفين") and CoSu(msg) then
 local list = database:smembers(bot_id..'VVVZVV:MN:TF'..msg.chat_id_)
 t = "\n *⋄︙قائمة المنظفين* \n*⊶─────≺⋆≻─────⊷*\n"
 for k,v in pairs(list) do
@@ -4828,7 +4828,7 @@ t = " *⋄︙لا يوجد منظفين*"
 end
 send(msg.chat_id_, msg.id_, t)
 end
-if text == ("رفع منظف") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("رفع منظف") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4840,20 +4840,20 @@ return false
 end
 function start_function(extra, result, success)
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
-send(msg.chat_id_, msg.id_,' ⋄︙تم تعطيل الرفع') 
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الرفع من قبل المنشئين*') 
 return false
 end
 database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n *⋄︙تم ترقيته ↫ منظف*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ منظف*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^رفع منظف @(.*)$") and BasicConstructor(msg) then
+if text and text:match("^رفع منظف @(.*)$") and CoSu(msg) then
 local username = text:match("^رفع منظف @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4865,7 +4865,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_) and not BasicConstructor(msg) then
-send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع*') 
+send(msg.chat_id_, msg.id_,' *⋄︙تم تعطيل الرفع من قبل المنشئين*') 
 return false
 end
 function start_function(extra, result, success)
@@ -4875,8 +4875,8 @@ send(msg.chat_id_,msg.id_," ⋄︙عذرا عزيزي المستخدم هاذا 
 return false 
 end      
 database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, result.id_)
-usertext = '\n *⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
-status  = '\n *⋄︙تم ترقيته ↫ منظف*'
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ منظف*'
 texts = usertext..status
 else
 texts = ' *⋄︙لا يوجد حساب بهاذا المعرف*'
@@ -4886,7 +4886,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^رفع منظف (%d+)$") and BasicConstructor(msg) then
+if text and text:match("^رفع منظف (%d+)$") and CoSu(msg) then
 local userid = text:match("^رفع منظف (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4904,17 +4904,17 @@ end
 database:sadd(bot_id..'VVVZVV:MN:TF'..msg.chat_id_, userid)
 tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
 if data.first_name_ then
-usertext = '\n *⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
-status  = '\n *⋄︙تم ترقيته ↫ منظف*'
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙تم ترقيته ↫ منظف*'
 send(msg.chat_id_, msg.id_, usertext..status)
 else
-usertext = '\n *⋄︙المستخدم ↫* '..userid..''
-status  = '\n *⋄︙تم ترقيته ↫ منظف*'
+usertext = '\n*⋄︙المستخدم ↫* '..userid..''
+status  = '\n*⋄︙تم ترقيته ↫ منظف*'
 send(msg.chat_id_, msg.id_, usertext..status)
 end;end,nil)
 return false
 end
-if text == ("تنزيل منظف") and msg.reply_to_message_id_ and BasicConstructor(msg) then
+if text == ("تنزيل منظف") and msg.reply_to_message_id_ and CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -4935,7 +4935,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل منظف @(.*)$") and BasicConstructor(msg) then
+if text and text:match("^تنزيل منظف @(.*)$") and CoSu(msg) then
 local username = text:match("^تنزيل منظف @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -4960,7 +4960,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
-if text and text:match("^تنزيل منظف (%d+)$") and BasicConstructor(msg) then
+if text and text:match("^تنزيل منظف (%d+)$") and CoSu(msg) then
 local userid = text:match("^تنزيل منظف (%d+)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
@@ -11017,7 +11017,7 @@ return false
 end
 if database:get(bot_id..'Lock:Games'..msg.chat_id_) then
 database:del(bot_id..'Set:Sma'..msg.chat_id_)
-Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','??','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','🎗','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
+Random = {'🍏','🍎','🍐','🍊','🍋','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🥖','🥐','🍞','🥨','🍟','🧀','🥚','🍳','🥓','🥩','🍗','🍖','??','🍔','🍠','🍕','🥪','🥙','☕️','🍵','🥤','🍶','🍺','??','??','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','??','🎮','🎳','??','🎲','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🎟','🎫','??','🏵','🎖','🏆','🥌','🛷','🚗','🚌','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔','🛡','🔮','🌡','💣','📌','📍','📓','📗','📂','📅','📪','☑','📬','📭','⏰','📺','🎚','☎️','📡'}
 SM = Random[math.random(#Random)]
 database:set(bot_id..'Random:Sm'..msg.chat_id_,SM)
 send(msg.chat_id_, msg.id_,'⋄︙اسرع واحد يدز هذا السمايل ? » {`'..SM..'`}')
