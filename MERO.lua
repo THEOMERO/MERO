@@ -3475,7 +3475,7 @@ end,nil)
 end
 end,nil)
 end
-if text == "all" or text == "@all" and CoSu(msg) then
+if text == "all" or text == "@all" and BasicConstructor(msg) then
 if database:get(bot_id.."VVVZVV:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
 send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
@@ -9951,7 +9951,7 @@ end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 end
-if text == 'تنزيل جميع الرتب' and BasicConstructor(msg) then  
+if text == 'تنزيل جميع الرتب' and CoSu(msg) then  
 database:del(bot_id..'Constructor'..msg.chat_id_)
 database:del(bot_id..'Manager'..msg.chat_id_)
 database:del(bot_id..'Mod:User'..msg.chat_id_)
@@ -10058,7 +10058,7 @@ local List = {
 ]],
 [[
 .𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 , #username  
-.𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
+.𖣂 𝙨𝙩𝙖??𝙩 , #stast  
 .𖣂 𝙡𝘿 , #id  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
 .𖣂 𝙖𝙪𝙩𝙤 , #auto
