@@ -857,7 +857,7 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,ta)
 vardump(data)
 if data and data.messages_[0].content_.sticker_ then
 local Name = '['..string.sub(ta.first_name_,0, 40)..'](tg://user?id='..ta.id_..')'
-local Text = '⋄︙تم ارسال الملصق من ↓\n ⋄︙'..Name
+local Text = '⋄︙تم ارسال الملصق من ↓\n⋄︙'..Name
 sendText(SUDO,Text,0,'md')
 end 
 end,nil) 
@@ -4996,7 +4996,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الطرد من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
 function start_function(extra, result, success)
@@ -5040,7 +5040,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الطرد من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
 function start_function(extra, result, success)
@@ -5092,7 +5092,7 @@ end
 return false
 end
 if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
-send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الطرد من قبل المنشئين') 
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
 if tonumber(userid) == tonumber(bot_id) then  
@@ -7700,13 +7700,13 @@ database:del(bot_id.."Private:Group:Link"..msg.chat_id_)
 return false      
 end
 end
-if text and text:match("^ضع صوره") and Mod(msg) and msg.reply_to_message_id_ == 0 then  
+if text and text:match("^ضع صوره") and CoSu(msg) and msg.reply_to_message_id_ == 0 then  
 database:set(bot_id..'Change:Chat:Photo'..msg.chat_id_..':'..msg.sender_user_id_,true) 
 send(msg.chat_id_, msg.id_,'*⋄︙ارسل لي الصوره*') 
 return false
 end
 if text == "حذف الصوره" or text == "مسح الصوره" then 
-if BasicConstructor(msg) then
+if CoSu(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -7722,7 +7722,7 @@ end
 return false  
 end
 if text == 'ضع وصف' or text == 'وضع وصف' then  
-if BasicConstructor(msg) then
+if CoSu(msg) then
 database:setex(bot_id.."Set:Description" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 120, true)  
 send(msg.chat_id_, msg.id_,'*⋄︙ارسل الان الوصف*')
 end
@@ -10062,8 +10062,8 @@ local List = {
 .𖣂 𝙡𝘿 , #id  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
 .𖣂 𝙖𝙪𝙩𝙤 , #auto
-.𖣂 𝙢𝙨𝙂𝙨 , #msgs
-.𖣂 𝙚𝙙𝙞𝙩  , #edit
+.?? 𝙢𝙨𝙂𝙨 , #msgs
+.𖣂 ??𝙙𝙞𝙩  , #edit
 ]]}
 local Text_Rand = List[math.random(#List)]
 database:set(bot_id.."KLISH:ID"..msg.chat_id_,Text_Rand)
@@ -11879,7 +11879,7 @@ send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
 end
 end
 
-if text == "😂" or text == "😂😂" or text == "😂😂😂😂" or text == "😂😂😂" or text == "😹😹" or text == "😹😹😹" or text == "😹" or text == "😹😹😹😹" then
+if text == "😂" or text == "😂😂" or text == "😂😂😂😂" or text == "😂😂😂" or text == "😹??" or text == "😹😹😹" or text == "😹" or text == "😹😹😹😹" then
 if not database:get(bot_id..'lock:add'..msg.chat_id_) then
 local texting = {"فدوةة عساا تدوم 💘🍃 ","عمغي ضحڪتڪ عافيةة قسم 🍂💕"," دايمةة يا ڪمر عساها","ابتسامة هوليوود والرب 🤸‍♀🤍 "} 
 send(msg.chat_id_, msg.id_, ''..texting[math.random(#texting)]..'')
