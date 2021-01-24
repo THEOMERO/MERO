@@ -816,7 +816,7 @@ end
 return false
 end
 if SudoBot(msg) then
-local bl = '⋄︙اهلا عزيزي آلمـطـور\n⋄︙آنت آلمـطـور آلآسـآسـي للبوت\n⊶─────≺⋆≻─────⊷\n⋄︙تسـتطـيع‌‏ آلتحگم باوامر البوت\n⋄︙من خلاال الكيبورت خاص بك\n⋄︙قناة سورس البوت [اضغط هنا](t.me/YYYDR)'
+local bl = '⋄︙اهلا عزيزي آلمـطـور\n⋄︙آنت آلمـطـور آلآسـآسـي للبوت\n┉  ┉  ┉  ┉  ┉  ┉  ┉  ┉ء\n⋄︙تسـتطـيع‌‏ آلتحگم باوامر البوت\n⋄︙من خلاال الكيبورت خاص بك\n⋄︙قناة سورس البوت [اضغط هنا](t.me/YYYDR)'
 local keyboard = {
 {'الاحصائيات ⋄','قناه تحديثات البوت ⋄'},
 {'تعطيل التواصل ⋄','تفعيل التواصل ⋄'},
@@ -1015,7 +1015,7 @@ dofile('MERO.lua')
 end
 if text == 'قناه تحديثات البوت ⋄' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
-send(msg.chat_id_, msg.id_,'⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n ⋄︙[قناه السورس](t.me/YYYDR)')
+send(msg.chat_id_, msg.id_,'⋄︙[قناه تحديثات البوت](t.me/YYYKU) \n⋄︙[قناه السورس](t.me/YYYDR)')
 end
 if text == 'الاصدار ⋄' and SudoBot(msg) then 
 database:del(bot_id..'Srt:Bot') 
@@ -3475,7 +3475,7 @@ end,nil)
 end
 end,nil)
 end
-if text == "all" or text == "@all" and cleaner(msg) then
+if text == "all" or text == "@all" and CoSu(msg) then
 if database:get(bot_id.."VVVZVV:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
 send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
