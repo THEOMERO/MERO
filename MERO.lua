@@ -3476,6 +3476,7 @@ end
 end,nil)
 end
 if text == "all" or text == "@all" and BasicConstructor(msg) then
+if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
 if database:get(bot_id.."VVVZVV:all:Time"..msg.chat_id_..':'..msg.sender_user_id_) then  
 return 
 send(msg.chat_id_, msg.id_,"انتظر دقيقه من فضلك")
@@ -3505,6 +3506,7 @@ end,nil)
 end
 end,nil)
 end,nil)
+end
 end
 
 if text == ("رفع مطور") and msg.reply_to_message_id_ and SudoBot(msg) then
