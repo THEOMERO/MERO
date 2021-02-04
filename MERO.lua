@@ -2405,7 +2405,7 @@ end
 send(msg.chat_id_, msg.id_,'*⋄︙تم ازالة جميع الاوامر المضافه*')  
 end
 end
-if text == 'اضف امر' and BasicConstructor(msg) then
+if text == 'اضف امر' and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2420,7 +2420,7 @@ send(msg.chat_id_, msg.id_,'*⋄︙ارسل الامر القديم*')
 return false
 end
 if text == 'حذف امر' or text == 'مسح امر' then 
-if BasicConstructor(msg) then
+if Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -10062,7 +10062,7 @@ local List = {
 .𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 , #username  
 .𖣂 𝙨𝙩𝙖??𝙩 , #stast  
 .𖣂 𝙡𝘿 , #id  
-.𖣂 𝙂𝙖𝙢𝙨 , #game 
+.𖣂 𝙂𝙖??𝙨 , #game 
 .𖣂 𝙖𝙪𝙩𝙤 , #auto
 .?? 𝙢𝙨𝙂𝙨 , #msgs
 .𖣂 ??𝙙𝙞𝙩  , #edit
