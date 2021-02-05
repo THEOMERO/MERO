@@ -2279,18 +2279,10 @@ if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
 local done = download_to_file(audios.info,msg.sender_user_id_..'.mp3')
-sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','@YYYDR','⋄︙غنيلي = اغاني عشوائيه اهداء من البوت⋄︙','end')
+sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','@YYYDR','غنيلي = اغاني عشوائيه اهداء من البوت','end')
 os.execute('rm -rf ./'..msg.sender_user_id_..'.mp3') 
 end
 end
-end
-if text == "تعطيل الانستا" and Manager(msg) then
-send(msg.chat_id_, msg.id_, '*⋄︙تم تعطيل الانستا*')
-database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"close")
-end
-if text == "تفعيل الانستا" and Manager(msg) then
-send(msg.chat_id_, msg.id_,'*⋄︙تم تفعيل الانستا*')
-database:set(bot_id.."BLACKBOTSS:insta_bot"..msg.chat_id_,"open")
 end
 if text and text:match("^تغير الاشتراك$") and SudoBot(msg) then  
 database:setex(bot_id.."add:ch:jm" .. msg.chat_id_ .. "" .. msg.sender_user_id_, 360, true)  
@@ -2425,7 +2417,7 @@ end
 if text == "التوحيد" then
 local s1 = database:get(bot_id.."MERO:teh"..msg.chat_id_) or "لا يوجد توحيد"
 local s2 = database:get(bot_id.."MERO:nump"..msg.chat_id_) or 5
-send(msg.chat_id_, msg.id_,'⋄︙التوحيد هو '..s1..'\n • عدد الكتم هو : '..s2)
+send(msg.chat_id_, msg.id_,'⋄︙التوحيد هو '..s1..'\n⋄︙عدد الكتم هو : '..s2)
 end
 end
 if text == "تفعيل التوحيد" and Constructor(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
@@ -2459,7 +2451,7 @@ bnnaGet(id, keko_tsahke_new)
 end
 end
 if text == "تفعيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
-send(msg.chat_id_, msg.id_, '•تم تفعيل تنبيه الاسماء')
+send(msg.chat_id_, msg.id_, '*⋄︙تم تفعيل تنبيه الاسماء*')
 database:set(bot_id.."Ttn:BBE:stats"..msg.chat_id_,"open")
 end
 if text == "تعطيل تنبيه الاسماء" and Manager(msg) and database:get(bot_id.."AL:Sre:stats") == "✔" then
@@ -8372,7 +8364,7 @@ else
 send(msg.chat_id_, msg.id_,"*⋄︙لا توجد قوانين هنا*")   
 end    
 end
-if text == 'قفل التفليش' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+if text == 'تفعيل الحمايه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:set(bot_id..'lock:tagrvrbot'..msg.chat_id_,true)   
 list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
 for i,lock in pairs(list) do 
@@ -8382,7 +8374,7 @@ tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,dat
 send(msg.chat_id_, msg.id_,'*⋄︙بواسطه ↫* ['..utf8.sub(data.first_name_,0,60)..'](T.ME/'..(data.username_ or 'YYYDR')..') \n*⋄︙تـم قفـل التفليش* ')  
 end,nil)   
 end
-if text == 'فتح التفليش' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
+if text == 'تعطيل الحمايه' and msg.reply_to_message_id_ == 0 and Mod(msg) then 
 database:del(bot_id..'lock:tagrvrbot'..msg.chat_id_)   
 list ={"lock:Bot:kick","lock:user:name","lock:Link","lock:forward","lock:Sticker","lock:Animation","lock:Video","lock:Fshar","lock:Fars","Bot:Id:Photo","lock:Audio","lock:vico","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
 for i,lock in pairs(list) do 
@@ -8965,7 +8957,6 @@ Text = [[
 *⋄︙الاضافه*
 *⋄︙الدردشه*
 *⋄︙الدخول*
-*⋄︙التفليش*
 *⋄︙البوتات*
 *⋄︙الاشعارات*
 *⋄︙التعديل*
@@ -9023,13 +9014,14 @@ Text = [[
 *⋄︙سحكاتي ⇆ مسح سحكاتي *
 *⋄︙رسائلي ⇆ مسح رسائلي*
 *⋄︙رتبتي ⇆ اسمي ⇋ايديي*
+*⋄︙التوحيد ⇆ وضع توحيد*
+*⋄︙الاضافات*
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙اوامر الاعضاء ↯*
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙الرابط ⇋ القوانين ⇋ الترحيب*
 *⋄︙ايدي ⇋ اطـردني *
-*⋄︙اسمي ⇋ المطـور  *
-*⋄︙صلاحياتي*
+*⋄︙غنيلي ⇋ صلاحياتي  *
 *⋄︙صلاحياته↫بالرد↫بالمعرف*
 *⋄︙الرتبه↫بالرد↫بالمعرف *
 *⋄︙كشف↫بالرد↫بالمعرف*
@@ -9144,6 +9136,10 @@ Text = [[
 *⋄︙رابط*
 *⋄︙اسم*
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
+*⋄︙ضع لقب*
+*⋄︙لوضع لقب للمشرف*
+*⋄︙الامر بالرد *
+﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙اوامـر الرفـع والتنزيل ↯*
 ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙رفع↫القيود*
@@ -9195,6 +9191,7 @@ Text = [[
 * تفعيل ⇆ تعطيل + امر ↧*
    ﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎﹎
 *⋄︙اطردني*
+*⋄︙الحمايه*
 *⋄︙صيح*
 *⋄︙ضافني*
 *⋄︙الرابط *
@@ -9209,6 +9206,7 @@ Text = [[
 *⋄︙الردود*
 *⋄︙صورتي*
 *⋄︙التنزيل*
+*⋄︙الاضافات*
 *⋄︙الانستا*
 *⋄︙التحويل*
 *⋄︙التحقق*
@@ -9219,6 +9217,11 @@ Text = [[
 *⋄︙نسبه الحب*
 *⋄︙نسبه رجوله*
 *⋄︙نسبه الانوثه*
+*⋄︙كتم الاسم*
+*⋄︙التوحيد*
+*⋄︙تنبيه الاسماء*
+*⋄︙تنبيه المعرف*
+*⋄︙تنبيه الصور*
       ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
 𝙘𝙝↬ [𝙨𝙤𝙪𝙧𝙘𝙚](http://t.me/YYYDR)
 ]]
