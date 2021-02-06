@@ -830,7 +830,6 @@ local keyboard = {
 {'الاشتراك الاجباري ⋄','وضع قناة الاشتراك ⋄'},
 {'تفعيل البوت الخدمي ⋄','تعطيل البوت الخدمي ⋄'},
 {'تنظيف الكروبات ⋄','تنظيف المشتركين ⋄'},
-{'اضف كت تويت','حذف كت تويت'},
 {'جلب نسخه البوت ⋄'},
 {'تحديث السورس ⋄','الاصدار ⋄'},
 {'معلومات السيرفر ⋄'},
@@ -2279,7 +2278,7 @@ if res == 200 then
 audios = json:decode(data)
 if audios.Info == true then
 local done = download_to_file(audios.info,msg.sender_user_id_..'.mp3')
-sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','@YYYDR','غنيلي = اغاني عشوائيه اهداء من البوت','end')
+sendAudio(msg.chat_id_,msg.id_,'./'..msg.sender_user_id_..'.mp3','@YYYDR',' @YYYDR غنيلي = اغاني عشوائيه اهداء من قناة البوت','end')
 os.execute('rm -rf ./'..msg.sender_user_id_..'.mp3') 
 end
 end
@@ -2339,7 +2338,7 @@ database:set(bot_id.."AL:Sre:stats","❌")
 end
 if text == "الاضافات" and Constructor(msg) then
 local Xx = database:get(bot_id.."AL:Sre:stats") or "لم يتم التحديد"
-send(msg.chat_id_, msg.id_,"الاضافات هي :\n— — — — — — — — — \n1- كتم الاسماء \n١- كتم اسم +(اسم)\n٢-الغاء كتم اسم +(اسم)\n٣- الاسماء المكتومه\n٤- تفعيل كتم الاسم\n٥- تعطيل كتم الاسم\n— — — — — — — — — \n2- وضع توحيد \n١- وضع توحيد +(التوحيد)\n٢- تعين عدد الكتم+(العدد)\n٣- التوحيد\n٤- تفعيل التوحيد\n٥- تعطيل التوحيد \n— — — — — — — — — \n3- تنبيه الاسماء \n ۱- تفعيل تنبيه الاسماء \n ۲- تعطيل تنبيه الاسماء\n— — — — — — — — —  \n 4- تنبيه المعرف \n ١- تفعيل تنبيه المعرف \n ۲- تعطيل تنبيه المعرف\n— — — — — — — — —  \n5- تنبيه الصور \n ۱- تفعيل تنبيه الصور \n٢- تعطيل تنبيه الصور \n— — — — — — — — — \n حاله الاضافات هي : "..Xx.."\nاذا كانت ❌ الاضافات معطله\nاذا كانت ✔ الاضافات مفعله")
+send(msg.chat_id_, msg.id_,"الاضافات هي :\n⊶────≺⋆≻────⊷ \n1- كتم الاسماء \n١- كتم اسم +(اسم)\n٢-الغاء كتم اسم +(اسم)\n٣- الاسماء المكتومه\n٤- تفعيل كتم الاسم\n٥- تعطيل كتم الاسم\n⊶────≺⋆≻────⊷ \n2- وضع توحيد \n١- وضع توحيد +(التوحيد)\n٢- تعين عدد الكتم+(العدد)\n٣- التوحيد\n٤- تفعيل التوحيد\n٥- تعطيل التوحيد \n⊶────≺⋆≻────⊷ \n3- تنبيه الاسماء \n ۱- تفعيل تنبيه الاسماء \n ۲- تعطيل تنبيه الاسماء\n⊶────≺⋆≻────⊷  \n 4- تنبيه المعرف \n ١- تفعيل تنبيه المعرف \n ۲- تعطيل تنبيه المعرف\n⊶────≺⋆≻────⊷  \n5- تنبيه الصور \n ۱- تفعيل تنبيه الصور \n٢- تعطيل تنبيه الصور \n⊶────≺⋆≻────⊷ \n حاله الاضافات هي : "..Xx.."\nاذا كانت ❌ الاضافات معطله\nاذا كانت ✔ الاضافات مفعله")
 end
 function bnnaGet(user_id, cb)
 tdcli_function ({
@@ -9689,26 +9688,6 @@ local video = database:get(bot_id.."Add:Rd:Sudo:Video"..text)
 local document = database:get(bot_id.."Add:Rd:Sudo:File"..text)
 local audio = database:get(bot_id.."Add:Rd:Sudo:Audio"..text)
 ------------------------------------------------------------------------
-if text == "اضف كت تويت" and SudoBot(msg) then
-database:set(bot_id.."gamebot:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,true)
-return send(msg.chat_id_, msg.id_,"*⋄︙ارسل السؤال الان*")
-end
-if text == "حذف كت تويت" and SudoBot(msg) then
-database:del(bot_id.."gamebot:List:Manager")
-return send(msg.chat_id_, msg.id_,"*⋄︙تم حذف الاسئله*")
-end
-if text and text:match("^(.*)$") then
-if database:get(bot_id.."gamebot:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_) == "true" then
-send(msg.chat_id_, msg.id_, '\nتم حفظ السؤال بنجاح')
-database:set(bot_id.."gamebot:Set:Manager:rd"..msg.sender_user_id_..":"..msg.chat_id_,"true1uu")
-database:sadd(bot_id.."gamebot:List:Manager", text)
-return false end
-end
-if text == 'كت تويت' then
-local list = database:smembers(bot_id..'gamebot:List:Manager')
-quschen = list[math.random(#list)]
-send(msg.chat_id_, msg.id_,quschen)
-end
 ------------------------------------------------------------------------
 if text1 then 
 send(msg.chat_id_, msg.id_,text1)
