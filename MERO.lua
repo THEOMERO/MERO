@@ -2645,7 +2645,7 @@ GetFile_Bot(msg)
 end
 if text == 'الاوامر المضافه' and Constructor(msg) then
 local list = database:smembers(bot_id..'List:Cmd:Group:New'..msg.chat_id_..'')
-t = '*⋄︙قائمه الاوامر المضافه*\n*⊶─────≺⋆≻─────⊷*\n'
+t = "⋄︙قائمه الاوامر المضافه\n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 Cmds = database:get(bot_id.."Set:Cmd:Group:New1"..msg.chat_id_..':'..v)
 print(Cmds)
@@ -2656,7 +2656,7 @@ t = t..""..k.."↫ ("..v..") \n"
 end
 end
 if #list == 0 then
-t = '*⋄︙لا يوجد اوامر مضافه*'
+t = "⋄︙لا يوجد اوامر مضافه"
 end
 send(msg.chat_id_, msg.id_,'['..t..']')
 end
