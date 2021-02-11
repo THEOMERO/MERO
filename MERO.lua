@@ -4292,14 +4292,6 @@ Reply_Status(msg,msg.sender_user_id_,"reply","⋄︙قام بنشر ملصق ا�
 DeleteMessage(msg.chat_id_,{[0] = tonumber(msg.id_),msg.id_})   
 end   
 end
-if text == 'ملصق' then   
-if tonumber(msg.reply_to_message_id_) > 0 then
-function by_reply(extra, result, success)   
-if result.content_.photo_ then 
-local pn = result.content_.photo_.sizes_[1].photo_.persistent_id_
-Addsticker(msg,msg.chat_id_,pn,msg.sender_user_id_..'.png')
-end   
-end
 tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonumber(msg.reply_to_message_id_) }, by_reply, nil)
 end
 end
