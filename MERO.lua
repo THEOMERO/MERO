@@ -9557,12 +9557,12 @@ database:del(bot_id.."Add:Rd:Sudo:File"..v)
 database:del(bot_id.."Add:Rd:Sudo:Audio"..v)
 database:del(bot_id..'List:Rd:Sudo')
 end
-send(msg.chat_id_, msg.id_,"⋄︙تم مسح ردود المطور")
+send(msg.chat_id_, msg.id_,"*⋄︙تم مسح ردود المطور*")
 end
 
 if text == ("ردود المطور") and SudoBot(msg) then 
 local list = database:smembers(bot_id..'List:Rd:Sudo')
-text = "\n*⋄︙قائمة ردود المطور* \n⊶─────≺⋆≻─────⊷\n"
+text = "\n⋄︙قائمة ردود المطور\n⊶─────≺⋆≻─────⊷\n"
 for k,v in pairs(list) do
 if database:get(bot_id.."Add:Rd:Sudo:Gif"..v) then
 db = 'متحركه 🎭'
@@ -9584,7 +9584,7 @@ end
 text = text..""..k.." ↫ ("..v..") » {"..db.."}\n"
 end
 if #list == 0 then
-text = "*⋄︙لا يوجد ردود للمطور*"
+text = "⋄︙لا يوجد ردود للمطور"
 end
 send(msg.chat_id_, msg.id_,'['..text..']')
 end
@@ -9632,7 +9632,7 @@ photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 database:set(bot_id.."Add:Rd:Sudo:Photo"..test, photo_in_group)  
 end
-send(msg.chat_id_, msg.id_,'⋄︙تم حفظ الرد بنجاح')
+send(msg.chat_id_, msg.id_,'*⋄︙تم حفظ الرد بنجاح*')
 return false  
 end  
 end
@@ -9730,7 +9730,7 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-if text == ("مسح ردود المدير") and Manager(msg) then
+if text == ("مسح ردود المدير") and Constructor(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_)   
