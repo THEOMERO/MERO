@@ -10571,7 +10571,7 @@ send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيت
 return false  
 end
 if data and data.code_ and data.code_ == 400 and data.message_ == "USER_ADMIN_INVALID" then 
-send(msg.chat_id_, msg.id_,'⋄︙عذرا لا استطيع طرد ادمنية المجموعه') 
+send(msg.chat_id_, msg.id_,'*⋄︙عذرا لا استطيع طرد ادمنية المجموعه*') 
 return false  
 end
 if data and data.ID and data.ID == 'Ok' then
@@ -10581,7 +10581,7 @@ return false
 end
 end,nil)   
 else
-send(msg.chat_id_, msg.id_,'⋄︙امر اطردني تم تعطيله من قبل المدراء ') 
+send(msg.chat_id_, msg.id_,'*⋄︙امر اطردني تم تعطيله من قبل المدراء*') 
 end
 end
 if text and text:match("^صيح (.*)$") then
