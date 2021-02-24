@@ -9193,7 +9193,6 @@ Text = [[
 *⋄︙الرابط *
 *⋄︙الرفع*
 *⋄︙الحظر*
-*⋄︙الرفع *
 *⋄︙الايدي*
 *⋄︙الالعاب*
 *⋄︙ردود المطور*
@@ -9730,7 +9729,7 @@ database:sadd(bot_id..'Spam:Texting'..msg.sender_user_id_,text)
 end  
 end
 end
-if text == ("مسح ردود المدير") and Constructor(msg) then
+if text == ("مسح ردود المدير") and BasicConstructor(msg) then
 local list = database:smembers(bot_id..'List:Manager'..msg.chat_id_..'')
 for k,v in pairs(list) do
 database:del(bot_id.."Add:Rd:Manager:Gif"..v..msg.chat_id_)   
