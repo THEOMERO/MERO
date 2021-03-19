@@ -337,8 +337,9 @@ Var = false
 end
 return Var
 end
-function Ban_Groups(Chat_id,User_id) 
-if database:sismember(bot_id.."MERO:Ban:User"..Chat_id,User_id) then
+function Ban_User(Chat_id,User_id) 
+if database:sismember(bot_id..'Ban:User'..Chat_id,User_id) then
+Var = true
 else
 Var = false
 end
@@ -5288,60 +5289,72 @@ end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
-if text == ("طرد") and msg.reply_to_message_id_ ~=0 and Mod(msg) then  
+if text == ("طرد") and msg.reply_to_message_id_ ~=0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
-function Function_MERO(extra, result, success)
-if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+function start_function(extra, result, success)
+if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت*")
+return false 
+end
+if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك طرد ↫* '..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-Kick_Group(result.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⋄︙تم طرده من هنا")  
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+statusk  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'` \n*⋄︙تم طرده 💯*'
+send(msg.chat_id_, msg.id_, usertext..statusk)
 end,nil)
+chat_kick(result.chat_id_, result.sender_user_id_)
+end,nil)   
 end
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_MERO, nil)
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end  
-if text and text:match("^طرد @(.*)$") and Mod(msg) then  
+if text and text:match("^طرد @(.*)$") and Mod(msg) then 
+local username = text:match("^طرد @(.*)$")
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
-end 
-local username = text:match("^طرد @(.*)$")
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+end
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
-function Function_MERO(extra, result, success)
+function start_function(extra, result, success)
 if result.id_ then
-if Rank_Checking(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
+if tonumber(result.id_) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت*")
+return false 
+end
+if Can_or_NotCan(result.id_, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك طرد ↫* '..Rutba(result.id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -5349,54 +5362,70 @@ send(msg.chat_id_,msg.id_,"⋄︙عذرا عزيزي المستخدم هاذا �
 return false 
 end      
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-Kick_Group(msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply","⋄︙تم طرده من هنا")  
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+statusk  = '\n*⋄︙تم طرده 💯*'
+texts = usertext..statusk
+chat_kick(msg.chat_id_, result.id_)
+send(msg.chat_id_, msg.id_, texts)
 end,nil)   
 end
 else
-send(msg.chat_id_, msg.id_, "⋄︙لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_, '⋄︙لا يوجد حساب بهاذا المعرف')
 end
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_MERO, nil)
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end  
 
-if text and text:match("^طرد (%d+)$") and Mod(msg) then  
+if text and text:match("^طرد (%d+)$") and Mod(msg) then 
+local userid = text:match("^طرد (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
-end 
-local userid = text:match("^طرد (%d+)$") 
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+end
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الطرد من قبل المنشئين*') 
 return false
 end
-if Rank_Checking(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
+if tonumber(userid) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك طرد البوت*")
+return false 
+end
+if Can_or_NotCan(userid, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك طرد ↫* '..Rutba(userid,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-Kick_Group(msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply","⋄︙تم طرده من هنا")  
+chat_kick(msg.chat_id_, userid)
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+ usertext = '\n⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+ statusk  = '\n⋄︙تم طرد العضو من هنا'
+send(msg.chat_id_, msg.id_, usertext..statusk)
+else
+ usertext = '\n⋄︙العضو » '..userid..''
+ statusk  = '\n⋄︙تم طرده من هنا'
+send(msg.chat_id_, msg.id_, usertext..statusk)
+end;end,nil)
 end,nil)   
 end
 return false
@@ -6289,33 +6318,19 @@ tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumbe
 return false
 end
 ---------------------------------------------
-if text == "مسح المحظورين" and Constructor(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-database:del(bot_id.."MERO:Ban:User"..msg.chat_id_)
-send(msg.chat_id_, msg.id_, "\n⋄︙تم مسح المحظورين")
-end
-if text == ("المحظورين") then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-local list = database:smembers(bot_id.."MERO:Ban:User"..msg.chat_id_)
-t = "\n⋄︙قائمة محظورين المجموعه \n ⊶─────≺⋆≻─────⊷ \n"
+if text == ('مسح المحظورين') then
+local list = database:smembers(bot_id..'Ban:User'..msg.chat_id_)
 for k,v in pairs(list) do
-local username = database:get(bot_id.."MERO:User:Name" .. v)
+https.request("https://api.telegram.org/bot" .. token .. "/unbanChatMember?chat_id=" ..msg.chat_id_.. "&user_id=" ..v.."") 
+end
+send(msg.chat_id_, msg.id_,"تم مسح المحظورين")
+database:del(bot_id..'Ban:User'..msg.chat_id_)
+end
+if text == ("المحظورين") then
+local list = database:smembers(bot_id..'Ban:User'..msg.chat_id_)
+t = "\n*⋄︙قائمة محظورين المجموعه* \n*⊶─────≺⋆≻─────⊷\n"
+for k,v in pairs(list) do
+local username = database:get(bot_id.."user:Name" .. v)
 if username then
 t = t..""..k.."↬𖣸 [@"..username.."]\n"
 else
@@ -6323,85 +6338,65 @@ t = t..""..k.."- (`"..v.."`)\n"
 end
 end
 if #list == 0 then
-t = "⋄︙لا يوجد محظورين"
+t = "*⋄︙لا يوجد محظورين*"
 end
 send(msg.chat_id_, msg.id_, t)
-end 
-if text == ("حظر") and msg.reply_to_message_id_ ~= 0 and Addictive(msg) then  
+end
+if text == ("حظر") and msg.reply_to_message_id_ ~= 0 and Mod(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الحظر من قبل المنشئين*') 
 return false
 end
-function Function_MERO(extra, result, success)
-if result.sender_user_id_ == tonumber(1425830897) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+function start_function(extra, result, success)
+if tonumber(result.sender_user_id_) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك حظر البوت*")
 return false 
 end
-if result.sender_user_id_ == tonumber(665877797) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
-return false 
-end
-if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+if Can_or_NotCan(result.sender_user_id_, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك حظر ↫* '..Rutba(result.sender_user_id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-database:sadd(bot_id.."MERO:Ban:User"..msg.chat_id_, result.sender_user_id_)
-Kick_Group(result.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply","⋄︙تم حظره من المجموعه")  
+database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم حظره 💯*'
+send(msg.chat_id_, msg.id_, usertext..status)
+end,nil)
+chat_kick(result.chat_id_, result.sender_user_id_)
 end,nil)   
 end
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_MERO, nil)
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
-if text and text:match("^حظر @(.*)$") and Addictive(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+
+if text and text:match("^حظر @(.*)$") and Mod(msg) then
 local username = text:match("^حظر @(.*)$")
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'⋄︙تم تعطيل الحظر من قبل المنشئين') 
 return false
 end
-function Function_MERO(extra, result, success)
+function start_function(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(1425830897) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
-return false 
-end
-if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
-return false 
-end
-if result.id_ == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
-return false 
-end
-if Rank_Checking(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
+if Can_or_NotCan(result.id_, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك حظر ↫* '..Rutba(result.id_,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
@@ -6409,137 +6404,161 @@ send(msg.chat_id_,msg.id_,"⋄︙عذرا عزيزي المستخدم هاذا �
 return false 
 end      
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-database:sadd(bot_id.."MERO:Ban:User"..msg.chat_id_, result.id_)
-Kick_Group(msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply","⋄︙تم حظره من المجموعه")  
+database:sadd(bot_id..'Ban:User'..msg.chat_id_, result.id_)
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم حظره 💯*'
+texts = usertext..status
+chat_kick(msg.chat_id_, result.id_)
+send(msg.chat_id_, msg.id_, texts)
 end,nil)   
 end
 else
-send(msg.chat_id_, msg.id_, "⋄︙لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_, '⋄︙لا يوجد حساب بهاذا المعرف')
 end
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_MERO, nil)
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
 
-if text and text:match("^حظر (%d+)$") and Addictive(msg) then  
+if text and text:match("^حظر (%d+)$") and Mod(msg) then
+local userid = text:match("^حظر (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-local userid = text:match("^حظر (%d+)$") 
-if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,'⋄︙لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+if database:get(bot_id..'Lock:kick'..msg.chat_id_) and not Constructor(msg) then
+send(msg.chat_id_, msg.id_,'*⋄︙تم تعطيل الحظر من قبل المنشئين*') 
 return false
 end
-if userid == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
+if tonumber(userid) == tonumber(bot_id) then  
+send(msg.chat_id_, msg.id_, "*⋄︙لا يمكنك حظر البوت*")
 return false 
 end
-if userid == tonumber(970017493) then
-send(msg.chat_id_, msg.id_, "⋄︙لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
-return false 
-end
-if Rank_Checking(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n⋄︙عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
+if Can_or_NotCan(userid, msg.chat_id_) == true then
+send(msg.chat_id_, msg.id_, '\n*⋄︙عذرا لا يمكنك حظر ↫* '..Rutba(userid,msg.chat_id_)..' ')
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_,"⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,'⋄︙ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !') 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_,"⋄︙البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,'⋄︙البوت ليس ادمن يرجى ترقيتي !') 
 return false  
 end
-database:sadd(bot_id.."MERO:Ban:User"..msg.chat_id_, userid)
-Kick_Group(msg.chat_id_, userid)  
-Reply_Status(msg,userid,"reply","⋄︙تم حظره من المجموعه")  
+database:sadd(bot_id..'Ban:User'..msg.chat_id_, userid)
+chat_kick(msg.chat_id_, userid)  
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+usertext = '\n⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n⋄︙تم حظره من المجموعه'
+send(msg.chat_id_, msg.id_, usertext..status)
+else
+usertext = '\n⋄︙العضو » '..userid..''
+status  = '\n⋄︙تم حظره من المجموعه'
+send(msg.chat_id_, msg.id_, usertext..status)
+end;end,nil)
 end,nil)   
 end
 return false
 end
-if text == ("الغاء حظر") and tonumber(msg.reply_to_message_id_) ~= 0 and Mod(msg) then  
+if text == ("الغاء حظر") and msg.reply_to_message_id_ and Constructor(msg) then
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-function Function_MERO(extra, result, success)
+function start_function(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, '⋄︙انا لست محظورا \n') 
 return false 
 end
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_, result.sender_user_id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_, result.sender_user_id_)
+tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
+usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n*⋄︙الايدي ↫* `'..result.sender_user_id_..'`\n*⋄︙تم الغاء الحظر عنه 💯*'
+send(msg.chat_id_, msg.id_, usertext..status)
+end,nil)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,result.sender_user_id_,"reply","⋄︙تم الغاء حظره من هنا")  
 end
-tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_MERO, nil)
+tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, start_function, nil)
 return false
 end
  
-if text and text:match("^الغاء حظر @(.*)$") and Mod(msg) then  
+if text and text:match("^الغاء حظر @(.*)$") and Constructor(msg) then
+local username = text:match("^الغاء حظر @(.*)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-local username = text:match("^الغاء حظر @(.*)$") 
-function Function_MERO(extra, result, success)
+function start_function(extra, result, success)
 if result.id_ then
 if tonumber(result.id_) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, '⋄︙انا لست محظورا \n') 
 return false 
 end
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_, result.id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,result.id_,"reply","⋄︙تم الغاء حظره من هنا")  
+usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
+status  = '\n*⋄︙تم الغاء الحظر عنه 💯*'
+texts = usertext..status
 else
-send(msg.chat_id_, msg.id_, "⋄︙لا يوجد حساب بهاذا المعرف")
+texts = '⋄︙لا يوجد حساب بهاذا المعرف'
 end
+send(msg.chat_id_, msg.id_, texts)
 end
-tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_MERO, nil)
+tdcli_function ({ID = "SearchPublicChat",username_ = username}, start_function, nil)
 return false
 end
 
-if text and text:match("^الغاء حظر (%d+)$") and Mod(msg) then  
+if text and text:match("^الغاء حظر (%d+)$") and Constructor(msg) then
+local userid = text:match("^الغاء حظر (%d+)$") 
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,'⋄︙عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n ⋄︙قنـاة البـوت ←  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'⋄︙لا تستطيع استخدام البوت يرجى الاشتراك في القناة حتى تتمكن من استخدام الاوامر \n⋄︙اشترك هنا ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
-local userid = text:match("^الغاء حظر (%d+)$") 
 if tonumber(userid) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, '⋄︙انا لست محظورا \n') 
 return false 
 end
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_, userid)
+database:srem(bot_id..'Ban:User'..msg.chat_id_, userid)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,userid,"reply","⋄︙تم الغاء حظره من هنا")  
+tdcli_function ({ID = "GetUser",user_id_ = userid},function(arg,data) 
+if data.first_name_ then
+usertext = '\n⋄︙العضو » ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
+status  = '\n⋄︙تم الغاء حظره من هنا'
+send(msg.chat_id_, msg.id_, usertext..status)
+else
+usertext = '\n⋄︙لعضو » '..userid..''
+status  = '\n⋄︙تم الغاء حظره من هنا'
+send(msg.chat_id_, msg.id_, usertext..status)
+end;end,nil)
 return false
 end
 ------------------------------------------------------------------------
@@ -7079,7 +7098,7 @@ if result.id_ then
 if SudoBot(msg) then
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 database:srem(bot_id..'GBan:User',result.id_)
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_,result.sender_user_id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_,result.id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.id_)
 database:srem(bot_id..'Gmute:User'..msg.chat_id_,result.id_)
 usertext = '\n*⋄︙المستخدم ↫* ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
@@ -7087,7 +7106,7 @@ status  = '\n*⋄︙رفع عنه الحظر ، الكتم ، التقييد*'
 texts = usertext..status
 send(msg.chat_id_, msg.id_,texts)
 else
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_,result.sender_user_id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_,result.id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.id_)
 usertext = '\n العضو » ['..result.title_..'](t.me/'..(username or 'YYYDR')..')'
 status  = '\n⋄︙تم الغاء القيود عنه'
@@ -7115,7 +7134,7 @@ function start_function(extra, result, success)
 if SudoBot(msg) then
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 database:srem(bot_id..'GBan:User',result.sender_user_id_)
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_,result.sender_user_id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙المستخدم ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
@@ -7124,7 +7143,7 @@ send(msg.chat_id_, msg.id_, usertext..status)
 end,nil)
 else
 https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. msg.chat_id_ .. "&user_id=" .. result.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-database:srem(bot_id.."MERO:Ban:User"..msg.chat_id_,result.sender_user_id_)
+database:srem(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_)
 database:srem(bot_id..'Muted:User'..msg.chat_id_,result.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 usertext = '\n*⋄︙العضو ↫* ['..data.first_name_..'](t.me/'..(data.username_ or 'YYYDR')..')'
@@ -7153,7 +7172,7 @@ Muted = 'مكتوم'
 else
 Muted = 'غير مكتوم'
 end
-if database:sismember(bot_id.."MERO:Ban:User"..msg.chat_id_,result.id_) then
+if database:sismember(bot_id..'Ban:User'..msg.chat_id_,result.id_) then
 Ban = 'محظور'
 else
 Ban = 'غير محظور'
@@ -7193,7 +7212,7 @@ Muted = 'مكتوم'
 else
 Muted = 'غير مكتوم'
 end
-if database:sismember(bot_id.."MERO:Ban:User"..msg.chat_id_,result.id_) then
+if database:sismember(bot_id..'Ban:User'..msg.chat_id_,result.sender_user_id_) then
 Ban = 'محظور'
 else
 Ban = 'غير محظور'
@@ -7764,7 +7783,7 @@ setadd = '✓'
 else
 setadd = '✘'
 end
-if not database:get(bot_id.."MERO:Lock:Add:Bot"..msg.chat_id_)  then
+if not database:get(bot_id..'Lock:Add:Bot'..msg.chat_id_)  then
 banm = '✓'
 else
 banm = '✘'
@@ -12469,15 +12488,14 @@ DeleteMessage(msg.chat_id_, {[0] = msg.id_})
 return false  
 end
 --------------------------------------------------------------------------------------------------------------
-if tonumber(msg.sender_user_id_) ~= tonumber(bot_id) then  
-if msg.sender_user_id_ and Ban_Groups(msg.chat_id_,msg.sender_user_id_) then 
-Kick_Group(msg.chat_id_,msg.sender_user_id_) 
+if msg.sender_user_id_ and Ban_User(msg.chat_id_,msg.sender_user_id_) then 
+chat_kick(msg.chat_id_,msg.sender_user_id_) 
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 return false  
 end
 --------------------------------------------------------------------------------------------------------------
-if msg.content_ and msg.content_.members_ and msg.content_.members_[0] and msg.content_.members_[0].id_ and Ban_Groups(msg.chat_id_,msg.content_.members_[0].id_) then 
-Kick_Group(msg.chat_id_,msg.content_.members_[0].id_) 
+if msg.content_ and msg.content_.members_ and msg.content_.members_[0] and msg.content_.members_[0].id_ and Ban_User(msg.chat_id_,msg.content_.members_[0].id_) then 
+chat_kick(msg.chat_id_,msg.content_.members_[0].id_) 
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 return false
 end
